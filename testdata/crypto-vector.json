@@ -1,0 +1,24 @@
+{
+  "key": "0101010101010101010101010101010101010101010101010101010101010101",
+  "room": "02020202020202020202020202020202",
+  "nonce": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
+  "message": {
+    "value": 42,
+    "label": "Drevos"
+  },
+  "appPacket": "{\"v\":1,\"n\":\"AwMDAwMDAwMDAwMD\",\"c\":\"g0Ni+5PxUkuXyNRL7nVFyt1fg3eli7DX2n/OZNc/5zNP7fTZJjy1tm/KV4Nd\"}",
+  "piPacket": "{\"v\":1,\"n\":\"AwMDAwMDAwMDAwMD\",\"c\":\"g0Ni+5PxUkuXyNRL7nVFyt1fg3eli7DX2n/OZNcGa6XfHSdYy4AL0JXGe7Oq\"}"
+}
