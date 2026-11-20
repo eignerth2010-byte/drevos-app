@@ -27,7 +27,7 @@ export function demoStates(): Reading[] {
     attributes: {
       drevos_key: key,
       drevos_gateway_id: "demo-only",
-      drevos_device_name: "Drevos Â· Demo",
+      drevos_device_name: "Drevos · Demo",
       min: key === "timer_dauer" ? 1 : 0,
       max: (
         {
