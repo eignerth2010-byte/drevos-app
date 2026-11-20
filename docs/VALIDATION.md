@@ -39,3 +39,10 @@ Physical Android checks confirmed by the user on 2026-11-20:
 Still required: iPhone signing and physical iOS validation, plus broader Android lifecycle, protected-storage persistence and control testing. The confirmed Android checks cover pairing and local/remote readings, not every native function. Actual heating, smoke ignition and Pi power-off were not triggered by these checks. The downloadable builds remain previews for device testing.
 
 Browser preview demonstrates layout and simulated interactions. It does not prove camera permission, protected storage, clipboard behavior or networking on physical phones. Record native/compiler/live outcomes here as they complete. A Worker dry run or workflow file alone does not prove a deployed working service.
+
+Mac preparation helper follow-up on 2026-11-20:
+
+- The user installed Node.js 24 LTS and reported Xcode 26.5, build 17F42, in a macOS Tahoe VM. The original helper stopped after its heading; the exact exit status on that Mac was not captured.
+- Removed the `xcodebuild | head` pipeline, which could terminate the helper through `pipefail`/SIGPIPE. Xcode output is now captured in full, version parsing is validated, Xcode failures are shown with setup guidance, and later failed steps report their line and status.
+- An isolated Bash harness reproduced the old early-exit behavior using synthetic verbose Xcode output. The revised helper passed synthetic 26.4, 26.5, 27 and verbose-output cases; rejected 26.3, failed and malformed Xcode output before dependency installation; and reported a synthetic npm failure with status 42. Bash syntax also passed.
+- These helper checks used stubs on Linux, not real Xcode, npm installation or oven access. They do not establish a successful native build in the user's VM. Local Mac preparation, iPhone signing and physical iOS validation remain pending until confirmed.
