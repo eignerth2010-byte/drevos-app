@@ -21,6 +21,14 @@ Native compilation completed successfully in [GitHub Actions run 44784098711](ht
 - Browser demo: explicit target application, timer display, German/English labels and corrected temperature symbols were checked. The preview never connected to or controlled a physical oven.
 - The cloud installer passed `sh -n` on the actual Raspberry Pi after its Unix line endings were corrected. Git attributes now preserve Unix line endings for shell scripts and systemd units, and CI checks both installer scripts. The installer also restarts an existing cloud service after an update. These checks did not execute the installation or change PLC values.
 
-Still required: provision the operator's actual relay, run the live Pi agent through that relay, generate this installation's private pairing code, install/sign the apps, and test the full native lifecycle on real iOS/Android devices. Actual heating, smoke ignition and Pi power-off are not triggered by automated tests.
+Live backend checks completed on 2026-11-20:
+
+- Deployed the real Worker with SQLite Durable Objects on the operator's verified Workers Free account. HTTPS health and a real WebSocket exchange passed.
+- Installed gateway 0.1.1 and cloud agent 0.2.0 on the actual Pi 3 B+. Both services are active and configured to start automatically. The existing gateway configuration is byte-for-byte unchanged; a private pre-installation backup remains on the Pi.
+- Generated this installation's private pairing on the Pi. No pairing key is included in this repository or release.
+- Used the app's actual `PiClient`/`CloudTransport` and AES-GCM implementation to read real chamber/core temperature, smoke setting and remaining timer values through the public relay. The verification ran under Node with only Expo's random-byte provider replaced by Node's cryptographic random-byte provider. This verifies the actual connection/encryption code, not a physical phone's storage, camera or networking stack.
+- Stopped only the cloud agent: the app transport rejected reads with a network/unavailable error. Restarted it and successfully read fresh values through the same private pairing. The local gateway and PLC kept running. No PLC control command was sent.
+
+Still required: install/sign the apps and test the full native lifecycle on real iOS/Android devices. Actual heating, smoke ignition and Pi power-off are not triggered by these checks. The downloadable builds remain previews for device testing.
 
 Browser preview demonstrates layout and simulated interactions. It does not prove camera permission, protected storage, clipboard behavior or networking on physical phones. Record native/compiler/live outcomes here as they complete. A Worker dry run or workflow file alone does not prove a deployed working service.
