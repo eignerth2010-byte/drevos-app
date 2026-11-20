@@ -15,11 +15,11 @@ npm ci
 npm run check
 npm run build
 npm test
-npx wrangler login
+npx wrangler login --scopes account:read user:read workers_scripts:write
 npm run deploy
 ```
 
-3. Record the actual generated HTTPS `workers.dev` address. Create `cloud/endpoint.json` containing `{"relay":"https://YOUR-ACTUAL-RELAY.YOUR-ACCOUNT.workers.dev"}`. This address is public configuration, not a credential. The example file is not a working service.
+3. Review the Wrangler authorization in the provider window yourself. `workers_scripts:write` is needed for scripts, Durable Objects, deployments and the public subdomain; the older generic `workers:write` scope alone is insufficient. Record the actual generated HTTPS `workers.dev` address. Create `cloud/endpoint.json` containing `{"relay":"https://YOUR-ACTUAL-RELAY.YOUR-ACCOUNT.workers.dev"}`. This address is public configuration, not a credential. The example file is not a working service.
 4. Publish the endpoint with the installation package. End users then run the Pi installer without choosing a hosting provider; their private code includes this endpoint automatically.
 5. Verify `/health`, a full encrypted Pi/app read exchange, disconnection/reconnection and native-device behavior before a public release.
 
