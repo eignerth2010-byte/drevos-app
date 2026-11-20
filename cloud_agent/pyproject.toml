@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drevos-cloud-agent"
+version = "0.2.0"
+requires-python = ">=3.11"
+description = "Outbound encrypted relay client for the standalone Drevos app"
+dependencies = ["cryptography>=38", "websockets>=15", "qrcode>=8"]
+license = "MIT"
+
+[project.scripts]
+drevos-cloud = "drevos_cloud.agent:main"
+
+[tool.setuptools.packages.find]
+include = ["drevos_cloud*"]
