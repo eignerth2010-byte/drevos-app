@@ -19,6 +19,7 @@ Native compilation completed successfully in [GitHub Actions run 44784098711](ht
 - Unsigned iPhone IPA, version 0.2.0/build 2, minimum iOS 16.4; SHA-256 `76a7b000036f5275a5a4fa7a04883f8dff4070501b2e4d62e8cc9435ee5eb654`. Personal or normal Apple signing is still needed before installation.
 - Artifact ZIP hashes were checked against GitHub's recorded digests before extracting the files. The public source files were compared against the local source, byte for byte.
 - Browser demo: explicit target application, timer display, German/English labels and corrected temperature symbols were checked. The preview never connected to or controlled a physical oven.
+- The cloud installer passed `sh -n` on the actual Raspberry Pi after its Unix line endings were corrected. Git attributes now preserve Unix line endings for shell scripts and systemd units, and CI checks both installer scripts. The installer also restarts an existing cloud service after an update. These checks did not execute the installation or change PLC values.
 
 Still required: provision the operator's actual relay, run the live Pi agent through that relay, generate this installation's private pairing code, install/sign the apps, and test the full native lifecycle on real iOS/Android devices. Actual heating, smoke ignition and Pi power-off are not triggered by automated tests.
 
