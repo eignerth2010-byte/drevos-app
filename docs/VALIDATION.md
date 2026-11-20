@@ -29,6 +29,13 @@ Live backend checks completed on 2026-11-20:
 - Used the app's actual `PiClient`/`CloudTransport` and AES-GCM implementation to read real chamber/core temperature, smoke setting and remaining timer values through the public relay. The verification ran under Node with only Expo's random-byte provider replaced by Node's cryptographic random-byte provider. This verifies the actual connection/encryption code, not a physical phone's storage, camera or networking stack.
 - Stopped only the cloud agent: the app transport rejected reads with a network/unavailable error. Restarted it and successfully read fresh values through the same private pairing. The local gateway and PLC kept running. No PLC control command was sent.
 
-Still required: install/sign the apps and test the full native lifecycle on real iOS/Android devices. Actual heating, smoke ignition and Pi power-off are not triggered by these checks. The downloadable builds remain previews for device testing.
+Physical Android checks confirmed by the user on 2026-11-20:
+
+- Installed and opened the published Android preview, scanned the private Pi pairing QR code and connected the oven. The user confirmed that real chamber and core temperatures were displayed.
+- After being asked to leave the home Wi-Fi and use mobile data (or a mobile-data hotspot), the user confirmed that refreshing still displayed real temperatures. This confirms remote reading on the user's Android device; the exact device model and Android version were not recorded.
+- The private pairing page was closed after setup; its QR code was no longer visible.
+- A read-only Home Assistant check after the Pi update returned chamber/core temperatures, smoke setting and timer values through the existing native integration. The app's own remote path does not use Home Assistant.
+
+Still required: iPhone signing and physical iOS validation, plus broader Android lifecycle, protected-storage persistence and control testing. The confirmed Android checks cover pairing and local/remote readings, not every native function. Actual heating, smoke ignition and Pi power-off were not triggered by these checks. The downloadable builds remain previews for device testing.
 
 Browser preview demonstrates layout and simulated interactions. It does not prove camera permission, protected storage, clipboard behavior or networking on physical phones. Record native/compiler/live outcomes here as they complete. A Worker dry run or workflow file alone does not prove a deployed working service.
