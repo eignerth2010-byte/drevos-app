@@ -4,7 +4,11 @@ Die Drevos-App ist eine **eigenständige App für Android und iPhone/iPad**. Sie
 
 Die App und ihre Funktionen können für die Nutzer kostenlos angeboten werden. Den gemeinsamen Dienst richtet **einmalig der Betreiber des Projekts** ein. Die Nutzer brauchen kein Cloudflare-Konto, keinen eigenen Server und kein Abo. Kostenlose Hosting-Tarife haben Nutzungsgrenzen; ein beliebig großer, dauerhaft kostenloser Betrieb wird nicht zugesichert.
 
-Die Version 0.2.0 ist eine Vorschau. Der öffentliche Dienst muss noch durch den Betreiber freigeschaltet werden. Ein erfolgreicher Quellcode-Test ist kein Ersatz für den Test auf einem echten Handy und am Ofen. Der genaue Prüfstand steht in [VALIDATION](docs/VALIDATION.md).
+Die Version 0.2.0 ist eine Vorschau. Der gemeinsame Dienst ist unter `https://drevos-relay.eigner-th2010.workers.dev` eingerichtet und im Pi-Paket enthalten. Verschlüsselte Abfragen eines echten Ofens sowie Verbindungsabbruch und Wiederverbindung wurden geprüft. Die Android- und iPhone-Pakete wurden erfolgreich gebaut; der Test auf echten Handys steht noch aus. Der genaue Prüfstand steht in [VALIDATION](docs/VALIDATION.md).
+
+## App herunterladen
+
+Die Dateien liegen im [Vorschau-Release](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.2.0-preview.1). Auf Android die Datei `Drevos-Android-0.2.0-Vorschau.apk` herunterladen, öffnen und die Installation selbst am Gerät bestätigen. Der Android-Build verwendet eine Testsignatur. Die iPhone-Datei ist ausdrücklich unsigniert und muss vor der Installation separat signiert werden. Diese Vorschau dient dem Gerätetest.
 
 ## Was benötigt wird
 
