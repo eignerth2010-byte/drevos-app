@@ -4,7 +4,7 @@ This is a **standalone Android and iPhone/iPad app**. Home Assistant, MQTT, VPN 
 
 App users can use the app and service free of charge. **The project operator** sets up the shared service once; ordinary users do not need a hosting account, server or subscription. Free hosting plans have capacity limits. Unlimited permanently free operation is not guaranteed.
 
-Version 0.2.0 is a preview. The shared relay is running at `https://drevos-relay.eigner-th2010.workers.dev` and is included in the Pi package. Encrypted reads from a real oven and disconnection/reconnection have passed. Android and iPhone compiler builds passed; physical phone validation remains pending. See [validation](docs/VALIDATION.md).
+Version 0.2.0 is a preview. The shared relay is running at `https://drevos-relay.eigner-th2010.workers.dev` and is included in the Pi package. Encrypted reads from a real oven and disconnection/reconnection have passed. The user confirmed QR pairing, real temperature readings and access outside the home Wi-Fi on a physical Android device. Android and iPhone compiler builds passed; iPhone signing and physical iOS validation remain pending. See [validation](docs/VALIDATION.md).
 
 ## Download the app
 
