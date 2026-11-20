@@ -1,0 +1,11 @@
+{
+  "$schema":"node_modules/wrangler/config-schema.json",
+  "name":"drevos-relay",
+  "main":"src/index.ts",
+  "compatibility_date":"2026-11-20",
+  "workers_dev":true,
+  "observability":{"enabled":false},
+  "durable_objects":{"bindings":[{"name":"ROOMS","class_name":"OvenRoom"}]},
+  "migrations":[{"tag":"v1","new_sqlite_classes":["OvenRoom"]}],
+  "ratelimits":[{"name":"CONNECT_LIMIT","namespace_id":"9487","simple":{"limit":20,"period":60}}]
+}
