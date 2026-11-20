@@ -1,8 +1,8 @@
 import {afterAll,beforeAll,describe,expect,it} from 'vitest';
-import {Miniflare} from 'miniflare';
+import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
 import {readFile} from 'node:fs/promises';
 let mf:Miniflare;
-beforeAll(async()=>{mf=new Miniflare({modules:true,script:await readFile(new URL('../dist/index.js',import.meta.url),'utf8'),compatibilityDate:'2026-07-30',durableObjects:{ROOMS:{className:'OvenRoom',useSQLite:true}},ratelimits:{CONNECT_LIMIT:{namespace_id:'9487',simple:{limit:1000,period:60}}}} as any);});
+beforeAll(async()=>{mf=new Miniflare(convertV4MiniflareOptions({modules:true,script:await readFile(new URL('../dist/index.js',import.meta.url),'utf8'),compatibilityDate:'2026-07-30',durableObjects:{ROOMS:{className:'OvenRoom',useSQLite:true}},ratelimits:{CONNECT_LIMIT:{namespace_id:'9487',simple:{limit:1000,period:60}}}}));await mf.ready;},15000);
 afterAll(async()=>{await mf?.dispose();});
 function next(ws:any):Promise<any>{return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('No message')),2000);ws.addEventListener('message',(e:any)=>{clearTimeout(timer);resolve(JSON.parse(e.data));},{once:true});});}
 async function socket(room:string){const response=await mf.dispatchFetch('http://localhost/v1/rooms/'+room+'/socket',{headers:{Upgrade:'websocket'}});expect(response.status).toBe(101);const ws=response.webSocket!;ws.accept();return ws;}
