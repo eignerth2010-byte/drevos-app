@@ -136,7 +136,7 @@ function Meter({
       <View style={s.reading}>
         <Text style={s.temperature}>
           {value === undefined
-            ? "â€”"
+            ? "—"
             : value.toLocaleString(undefined, { maximumFractionDigits: 1 })}
         </Text>
         <Text style={s.unit}>{unit}</Text>
@@ -177,8 +177,8 @@ function Setpoint({
     <View style={s.setpoint}>
       <Text style={s.label}>{t[kind]}</Text>
       <Text style={s.hint}>
-        {NUMBERS[kind].min}â€“{NUMBERS[kind].max} {NUMBERS[kind].unit} Â·{" "}
-        {t.target}: {numeric(entity) ?? "â€”"}
+        {NUMBERS[kind].min}–{NUMBERS[kind].max} {NUMBERS[kind].unit} ·{" "}
+        {t.target}: {numeric(entity) ?? "—"}
       </Text>
       <View style={s.inputRow}>
         <TextInput
@@ -653,7 +653,7 @@ function DrevosApp() {
                       onPress={() => void choose(d.id)}
                     >
                       {d.name}
-                      {selected === d.id ? " âœ“" : ""}
+                      {selected === d.id ? " ✓" : ""}
                     </Action>
                   ))}
                 </View>
@@ -663,7 +663,7 @@ function DrevosApp() {
                   <View style={s.boltRow}>
                     <View style={s.bolt} />
                     <Text style={s.eyebrow}>
-                      DREVOS Â· {t.oven.toUpperCase()}
+                      DREVOS · {t.oven.toUpperCase()}
                     </Text>
                     <View style={s.bolt} />
                   </View>
@@ -671,21 +671,20 @@ function DrevosApp() {
                     <Meter
                       title={t.chamber}
                       entity={e.kammertemperatur}
-                      unit="Â°C"
+                      unit="°C"
                       online={online}
                     />
                     <Meter
                       title={t.core}
                       entity={e.kerntemperatur}
-                      unit="Â°C"
+                      unit="°C"
                       online={online}
                     />
                   </View>
                   <View style={s.smoke}>
                     <Text style={s.label}>{t.smoke}</Text>
                     <Text style={s.smokeValue}>
-                      {online ? (numeric(e.raucheinstellung) ?? "â€”") : "â€”"}{" "}
-                      %
+                      {online ? (numeric(e.raucheinstellung) ?? "—") : "—"} %
                     </Text>
                   </View>
                   <View style={s.smokeTrack}>
@@ -742,7 +741,7 @@ function DrevosApp() {
                             {i === 0 ? t.remaining : t.elapsed}
                           </Text>
                           <Text style={s.clock}>
-                            {online ? formatTimer(e[key]) : "â€”"}
+                            {online ? formatTimer(e[key]) : "—"}
                           </Text>
                           <Text style={s.hint}>{t.hoursMinutes}</Text>
                         </View>
@@ -791,7 +790,7 @@ function DrevosApp() {
                     {t.lastRead}:{" "}
                     {lastRead
                       ? new Date(lastRead).toLocaleTimeString(language)
-                      : "â€”"}
+                      : "—"}
                   </Text>
                   <Action
                     subtle
