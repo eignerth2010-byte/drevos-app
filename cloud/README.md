@@ -2,6 +2,8 @@
 
 Only the **project operator** provisions this service. Oven owners use the normal app's pairing flow, with no hosting account or subscription.
 
+The supplied Pi package now includes the project's active endpoint, `https://drevos-relay.eigner-th2010.workers.dev`, in `endpoint.json`. Ordinary users do not run the operator deployment steps below. Deploying a separate relay is optional for a fork or a different operator.
+
 The Worker and one SQLite-backed Durable Object per random oven room provide a live WebSocket relay. Readings, commands and end-to-end keys are not stored. The relay persists only a SHA-256 hash of a random transport credential. TLS plus authenticated end-to-end packets protect the actual oven traffic. See [protocol](../docs/PROTOCOL.md).
 
 ## One-time deployment
