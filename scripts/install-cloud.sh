@@ -38,7 +38,8 @@ chown drevos-cloud:drevos-cloud /etc/drevos-cloud/config.json
 chmod 600 /etc/drevos-cloud/config.json /etc/drevos-cloud/pairing.json
 install -m 644 "$task_source/systemd/drevos-cloud.service" /etc/systemd/system/drevos-cloud.service
 systemctl daemon-reload
-systemctl enable --now drevos-cloud.service
+systemctl enable drevos-cloud.service
+systemctl restart drevos-cloud.service
 echo 'Standalone app connection installed. PLC setpoints and requests were not changed.'
 echo 'Open pairing with: sudo /opt/drevos-cloud/.venv/bin/drevos-cloud --pair --pair-bind YOUR_PI_LAN_IP'
 echo 'The pairing page only opens for five minutes and must never be forwarded to the internet.'
