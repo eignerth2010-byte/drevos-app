@@ -1,0 +1,25 @@
+[Unit]
+Description=Drevos standalone app encrypted relay connection
+After=network-online.target drevos-gateway.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=drevos-cloud
+Group=drevos-cloud
+ExecStart=/opt/drevos-cloud/.venv/bin/drevos-cloud --config /etc/drevos-cloud/config.json
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
