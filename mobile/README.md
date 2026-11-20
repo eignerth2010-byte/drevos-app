@@ -41,6 +41,8 @@ chmod +x macOS-vorbereiten.command
 ./macOS-vorbereiten.command
 ```
 
+For an existing checkout, run `git pull --ff-only` before restarting the helper. The helper prints the detected Xcode version and reports a failed step with its line and exit status. If the Xcode check fails, open **Xcode → Settings → Locations → Command Line Tools**, select the installed Xcode app and retry; see [Apple's command-line tools settings](https://developer.apple.com/documentation/xcode/configuring-command-line-tools-settings).
+
 Choose your team and device in the generated Xcode workspace. macOS 13 Ventura cannot run the required Xcode; use the hosted build route instead. Requirements: [Expo SDK 58](https://docs.expo.dev/versions/v58.0.0/), [Apple Xcode](https://developer.apple.com/xcode/system-requirements/).
 
 App source and the original cabinet illustration are MIT. The supplied Drevos logo has [separate terms](BRAND-NOTICE.md). Available dependency license texts accompany packages in `THIRD_PARTY_NOTICES.txt`.
