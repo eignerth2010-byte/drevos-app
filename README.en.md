@@ -108,6 +108,16 @@ Only the project operator provisions the relay once: [cloud/README](cloud/README
 
 [Privacy](docs/PRIVACY.md) · [Validation](docs/VALIDATION.md) · [GitHub guide](docs/GITHUB.en.md) · [Deutsch](README.de.md)
 
+## Preview
+
+![Drevos sample interface](docs/assets/drevos-app-demo.jpg)
+
+Drevos app 0.3.0 – Web App in demo mode with sample values.
+
+## Contributors
+
+Created by **Thomas Eigner**, with AI assistance from **ChatGPT (OpenAI)** for development, software checks and documentation. [Contributor acknowledgements](CONTRIBUTORS.md).
+
 ## Support this project
 
 If this project helps you, you can support its continued development with a voluntary donation via PayPal. Thank you!

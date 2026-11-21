@@ -43,6 +43,16 @@ The relay cannot decrypt readings or control messages. Commands require a fresh 
 
 Keep gateway configuration, cloud agent configuration and pairing codes private. Neither real credentials nor the original PLC project are part of this repository.
 
+## Vorschau / Preview
+
+![Drevos – Beispielansicht / Sample interface](docs/assets/drevos-app-demo.jpg)
+
+Drevos-App 0.3.0 – Web-App im Demomodus mit Beispielwerten. / Drevos app 0.3.0 – Web App in demo mode with sample values.
+
+## Mitwirkende / Contributors
+
+**Thomas Eigner** – Ersteller / creator. **ChatGPT (OpenAI)** – KI-Unterstützung bei Entwicklung, Tests und Dokumentation / AI assistance with development, software checks and documentation. [Details](CONTRIBUTORS.md).
+
 ## Unterstützen / Support
 
 Wenn dir dieses Projekt hilft, kannst du die Weiterentwicklung mit einer freiwilligen Spende über PayPal unterstützen. Vielen Dank!

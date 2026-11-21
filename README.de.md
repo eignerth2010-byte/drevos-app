@@ -108,6 +108,16 @@ Nur der Projektbetreiber richtet den Dienst einmalig ein: [cloud/README](cloud/R
 
 [Datenschutz und Schlüssel](docs/PRIVACY.md) · [Prüfstand](docs/VALIDATION.md) · [GitHub-Anleitung](docs/GITHUB.de.md) · [English](README.en.md)
 
+## Vorschau
+
+![Drevos – Beispielansicht](docs/assets/drevos-app-demo.jpg)
+
+Drevos-App 0.3.0 – Web-App im Demomodus mit Beispielwerten.
+
+## Mitwirkende
+
+Erstellt von **Thomas Eigner**, mit KI-Unterstützung durch **ChatGPT (OpenAI)** bei Entwicklung, Tests und Dokumentation. [Alle Mitwirkenden](CONTRIBUTORS.md).
+
 ## Projekt unterstützen
 
 Wenn dir dieses Projekt hilft, kannst du die Weiterentwicklung mit einer freiwilligen Spende über PayPal unterstützen. Vielen Dank!
