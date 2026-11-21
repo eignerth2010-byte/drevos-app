@@ -106,4 +106,8 @@ Only the project operator provisions the relay once: [cloud/README](cloud/README
 
 If this project helps you, you can support its continued development with a voluntary donation via PayPal. Thank you!
 
-[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-0070BA?logo=paypal&logoColor=white)](https://www.paypal.me/ThomasEigner877)
+[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-0070BA?logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=GSMP9644VUY8C)
+
+Or scan the QR code:
+
+[![PayPal donation QR code](docs/assets/paypal-donate-qr.png)](https://www.paypal.com/donate/?hosted_button_id=GSMP9644VUY8C)
