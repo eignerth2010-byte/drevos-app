@@ -31,6 +31,7 @@ self.addEventListener("fetch", (event) => {
     request.method !== "GET" ||
     url.origin !== self.location.origin ||
     url.search ||
+    url.pathname === "/android-update.json" ||
     url.pathname.startsWith("/api/")
   )
     return;
