@@ -159,7 +159,7 @@ Die Web-App benötigt keine wöchentliche Apple-Signierung. Sie funktioniert mit
 
 ### Native Android-App als Alternative
 
-Die [Android-Installationsdatei herunterladen](https://github.com/eignerth2010-byte/drevos-app/releases/download/v0.3.0-preview.1/Drevos-Android-0.3.0-Vorschau.apk), am Android-Gerät öffnen und die Installation dieses Vorschaupakets selbst bestätigen. Falls Android nach einer Erlaubnis für die Installationsquelle fragt, diese nur für den verwendeten Browser/Dateimanager und diese Installation freigeben. Danach Drevos öffnen. Die Pi-Schritte 4–6 gelten auch dafür; Node.js oder Android Studio brauchst du zum Installieren der fertigen APK nicht.
+Die [Android-Installationsdatei herunterladen](https://github.com/eignerth2010-byte/drevos-app/releases/download/v0.3.1-preview.1/Drevos-Android-0.3.1-Vorschau.apk), am Android-Gerät öffnen und die Installation dieses Vorschaupakets selbst bestätigen. Falls Android nach einer Erlaubnis für die Installationsquelle fragt, diese nur für den verwendeten Browser/Dateimanager und diese Installation freigeben. Danach Drevos öffnen. Die Pi-Schritte 4–6 gelten auch dafür; Node.js oder Android Studio brauchst du zum Installieren der fertigen APK nicht.
 
 ### Native iPhone-App als Alternative
 
@@ -222,4 +222,4 @@ Bei einem bereits eingerichteten Pi **die vorhandene Speicherkarte und die priva
 
 Wer einen eigenen Vermittlungsdienst betreiben möchte, findet dessen getrennte Entwickleranleitung unter [cloud/README](../cloud/README.md). Für die normale Installation ist dieser zusätzliche Schritt nicht nötig.
 
-Ab 0.3.0 findest du unter **Info** den Ersteller, den freiwilligen Spendenbutton und **Jetzt prüfen** für neue Android-Versionen. Die automatische Prüfung ist dort abschaltbar. Installiere eine neue APK über die vorhandene App, ohne vorher zu deinstallieren. Die Web-App lädt neue Versionen beim nächsten Öffnen automatisch. Es gibt keinen Update-Button; danach erklärt **Was ist neu?** die Änderungen. [Alle Update-Schritte](UPDATES.md).
+Ab 0.3.1 findest du unter **Info** den Ersteller, den freiwilligen Spendenbutton und **Jetzt prüfen** für neue Android-Versionen. Die automatische Prüfung ist dort abschaltbar. Installiere eine neue APK über die vorhandene App, ohne vorher zu deinstallieren. Die Web-App lädt neue Versionen beim nächsten Öffnen automatisch. Es gibt keinen Update-Button; danach erklärt **Was ist neu?** die Änderungen. [Alle Update-Schritte](UPDATES.md).

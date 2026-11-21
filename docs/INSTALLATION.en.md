@@ -125,7 +125,7 @@ Open the same [Drevos Web App](https://drevos-smoker-control.thankfulchick1.chat
 
 ### Native Android alternative
 
-[Download the Android APK](https://github.com/eignerth2010-byte/drevos-app/releases/download/v0.3.0-preview.1/Drevos-Android-0.3.0-Vorschau.apk), open it on Android and personally confirm installation of this preview. If Android asks for install-source permission, grant it only to the browser/file manager used for this installation. Open Drevos afterwards. The same Pi steps apply. Node.js and Android Studio are not needed to install the ready-made APK.
+[Download the Android APK](https://github.com/eignerth2010-byte/drevos-app/releases/download/v0.3.1-preview.1/Drevos-Android-0.3.1-Vorschau.apk), open it on Android and personally confirm installation of this preview. If Android asks for install-source permission, grant it only to the browser/file manager used for this installation. Open Drevos afterwards. The same Pi steps apply. Node.js and Android Studio are not needed to install the ready-made APK.
 
 ### Native iPhone alternative
 
@@ -180,4 +180,4 @@ Keep the existing SD card and private configuration. End oven operation and save
 
 Running your own relay is a separate developer task described in [cloud/README](../cloud/README.md); ordinary installation does not need it.
 
-From 0.3.0, **Info** shows the creator, optional support button and **Check now** for newer Android versions. Automatic checks can be disabled there. Install updates over the existing app without uninstalling first. The Web App loads new versions automatically on its next opening without an update button; **What’s new?** then explains the changes. [Complete update steps](UPDATES.md).
+From 0.3.1, **Info** shows the creator, optional support button and **Check now** for newer Android versions. Automatic checks can be disabled there. Install updates over the existing app without uninstalling first. The Web App loads new versions automatically on its next opening without an update button; **What’s new?** then explains the changes. [Complete update steps](UPDATES.md).

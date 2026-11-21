@@ -1,5 +1,23 @@
 # App-Updates, Versionsnummer und Änderungsfenster / App updates
 
+## 0.3.1 – Schriftzug und Lizenz / Wordmark and license
+
+Eigener vorläufiger Drevos-Schriftzug statt Herstellerlogo. Nutzung privat und
+im eigenen Betrieb bleibt kostenlos. Verkauf, kommerzielle Weitergabe und
+Bündelung mit angebotenen Öfen oder anderen Produkten benötigen vorherige
+schriftliche Freigabe von Thomas Eigner. Frühere MIT-Fassungen behalten ihre
+Rechte. [Lizenzdetails](LICENSING.md).
+
+Temporary community wordmark and revised terms: private and internal business
+use are free; resale, commercial redistribution and commercial bundling require
+prior written permission. Earlier MIT versions retain their rights.
+
+Android 0.3.1 wird als Update mit demselben Paketnamen und derselben Testsignatur
+bereitgestellt. Vorhandene App aktualisieren, nicht deinstallieren. Die Web-App
+lädt den neuen Stand beim nächsten Öffnen; kein Downloadhinweis. Die bisherige
+iPhone-IPA bleibt unverändert auf 0.2.0; aktueller iOS-Quellcode ist enthalten.
+Die Pi-Dienste und die Kopplung benötigen keine Änderung.
+
 ## Deutsch
 
 Ab Version **0.3.0** gibt es einen eigenen **Info-Tab** mit „Erstellt von Thomas Eigner“, Projekt- und Installationslinks sowie einem freiwilligen PayPal-Spendenbutton. Die Versionsnummer steht dort und in der Fußzeile neben **Web-App** beziehungsweise **Eigenständige App**. Die Spende schaltet keine Funktionen frei; die App kann weiterhin kostenlos verwendet werden.
