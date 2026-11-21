@@ -1,5 +1,7 @@
 # Einfach starten – Pi und Drevos-App installieren
 
+**Home Assistant funktioniert bereits? [Den vorhandenen Pi für die App weiterverwenden](HA-UND-APP.de.md#a-home-assistant-funktioniert-schon-die-app-soll-dazukommen).** Für gemeinsamen Betrieb: [HA und App – was brauche ich zusätzlich?](HA-UND-APP.de.md)
+
 [English](INSTALLATION.en.md) · [Materialliste mit Pi-Modellen und Kabel](HARDWARE.md) · [Zur Projektstartseite](../README.md)
 
 Diese Anleitung führt von einem neuen Raspberry Pi bis zu den echten Ofentemperaturen auf dem Handy. Web-App und native Handy-App verwenden **dieselbe Pi-Installation**.
@@ -112,7 +114,7 @@ Nur diese Punkte prüfen; **die übrigen Zeilen mit `id` und `token` unveränder
 
 - `serial_port`: Bei genau einem erkannten Adapter ist der Pfad bereits eingetragen. Ein Eintrag mit `CHOOSE_YOUR_VERIFIED_ADAPTER` muss durch den vollständigen Pfad des passenden Adapters ersetzt werden.
 - `profile`: Für den geprüften Aufbau `drevos_fx3u_v1`. Diesen Namen einzutragen ersetzt keine Prüfung der tatsächlichen Steuerung.
-- `bind`: Für eine neue eigenständige Installation `127.0.0.1` beibehalten. Der Hintergrunddienst auf demselben Pi verwendet diese Adresse.
+- `bind`: Für eine neue reine App-Installation `127.0.0.1` beibehalten. Bei vorhandener HA-Verbindung ihre funktionierende LAN-Adresse erhalten und die [gemeinsame Anleitung](HA-UND-APP.de.md) verwenden.
 - `allow_control`: Zunächst `false` lassen. Damit werden nur Werte gelesen.
 
 In nano mit **Strg+O**, **Enter**, dann **Strg+X** speichern und schließen. Die Datei enthält einen privaten Schlüssel; ihren Inhalt nicht in Chats oder GitHub kopieren.

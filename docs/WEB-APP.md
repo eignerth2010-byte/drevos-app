@@ -1,5 +1,7 @@
 # Drevos Web-App / PWA
 
+**Bestehende HA-Anlage / Existing HA setup:** [HA und App gemeinsam nutzen](HA-UND-APP.de.md) · [HA plus app, English](HA-UND-APP.en.md).
+
 **[Komplette einfache Einrichtung mit Pi – Deutsch](INSTALLATION.de.md)** · **[Complete easy Pi and app setup – English](INSTALLATION.en.md)** · [Pi und Kabel / Hardware](HARDWARE.md)
 
 **[Web-App öffnen / Open Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site)**
