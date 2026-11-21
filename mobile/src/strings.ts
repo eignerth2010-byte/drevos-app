@@ -1,4 +1,7 @@
 export const de = {
+  webVersion: "Drevos · Web-App",
+  browserStorageError:
+    "Die Kopplung kann in diesem Browser nicht sicher gespeichert werden. Bitte einen aktuellen Browser außerhalb des privaten Modus verwenden und Website-Daten zulassen.",
   accessKey: "Zugangsschlüssel",
   pairOven: "Ofen koppeln",
   pasteCode: "Code einfügen",
@@ -113,6 +116,9 @@ export const de = {
   },
 };
 export const en: typeof de = {
+  webVersion: "Drevos · Web app",
+  browserStorageError:
+    "Pairing cannot be stored securely in this browser. Use an up-to-date browser outside private mode and allow website data.",
   accessKey: "Access key",
   pairOven: "Pair oven",
   pasteCode: "Paste code",
