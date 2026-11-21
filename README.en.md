@@ -1,5 +1,7 @@
 # Drevos app – English guide
 
+**Already use Drevos in Home Assistant? [Add only the app](docs/HA-UND-APP.en.md#a-home-assistant-works-add-the-app).** Or [add HA to an existing app setup](docs/HA-UND-APP.en.md#b-the-app-works-add-home-assistant).
+
 **New here? [Easy setup – install the Pi and app](docs/INSTALLATION.en.md).** Includes the hardware list, copyable commands and web/native app setup.
 
 **[Pi models, supplies and exact cable](docs/HARDWARE.md)**. The shared service URL is preconfigured; normal users do not replace a relay/account placeholder.

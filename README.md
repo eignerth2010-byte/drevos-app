@@ -1,5 +1,7 @@
 # Drevos App
 
+**Already have HA or the app? [Was brauche ich zusätzlich?](docs/HA-UND-APP.de.md)** · **[HA + app, English](docs/HA-UND-APP.en.md)**
+
 **[Einfach starten – Pi und App installieren](docs/INSTALLATION.de.md)** · **[Easy setup – Pi and app](docs/INSTALLATION.en.md)**
 
 [Welcher Pi, welches Netzteil und welches Kabel? / Hardware list](docs/HARDWARE.md)

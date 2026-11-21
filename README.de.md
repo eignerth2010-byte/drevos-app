@@ -1,5 +1,7 @@
 # Drevos-App – deutsche Anleitung
 
+**Drevos läuft bereits in Home Assistant? [Nur die App ergänzen](docs/HA-UND-APP.de.md#a-home-assistant-funktioniert-schon-die-app-soll-dazukommen).** Umgekehrt: [Home Assistant zur bestehenden App hinzufügen](docs/HA-UND-APP.de.md#b-die-app-funktioniert-schon-home-assistant-soll-dazukommen).
+
 **Neu hier? [Einfach starten – Pi und App installieren](docs/INSTALLATION.de.md).** Mit Materialliste, Befehlen zum Kopieren und Einrichtung von Web-App oder Handy-App.
 
 **[Welcher Pi und welches Kabel?](docs/HARDWARE.md)** Für die normale Installation ist die Dienstadresse bereits hinterlegt; du musst keinen eigenen Dienstnamen einsetzen.
