@@ -1,5 +1,7 @@
 # Drevos Web-App / PWA
 
+**[Komplette einfache Einrichtung mit Pi – Deutsch](INSTALLATION.de.md)** · **[Complete easy Pi and app setup – English](INSTALLATION.en.md)** · [Pi und Kabel / Hardware](HARDWARE.md)
+
 **[Web-App öffnen / Open Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site)**
 
 ## Deutsch
