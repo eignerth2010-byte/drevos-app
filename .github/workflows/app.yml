@@ -71,10 +71,20 @@ jobs:
         working-directory: mobile
       - run: chmod +x gradlew && ./gradlew assembleRelease -PreactNativeArchitectures=arm64-v8a,armeabi-v7a '-Dorg.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=1g'
         working-directory: mobile/android
+      - name: Verify APK version and signing certificate
+        run: |
+          task_build_tools=$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -1)
+          task_apk=mobile/android/app/build/outputs/apk/release/app-release.apk
+          "$task_build_tools/aapt" dump badging "$task_apk" | sed -n '1p' > mobile/android/apk-info.txt
+          "$task_build_tools/apksigner" verify --print-certs "$task_apk" >> mobile/android/apk-info.txt
+          sha256sum "$task_apk" >> mobile/android/apk-info.txt
+          cat mobile/android/apk-info.txt
       - uses: actions/upload-artifact@v4
         with:
           name: Drevos-Standalone-Android-preview-APK
-          path: mobile/android/app/build/outputs/apk/release/*.apk
+          path: |
+            mobile/android/app/build/outputs/apk/release/*.apk
+            mobile/android/apk-info.txt
           if-no-files-found: error
           retention-days: 14
 
