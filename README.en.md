@@ -6,7 +6,7 @@
 
 **[Pi models, supplies and exact cable](docs/HARDWARE.md)**. The shared service URL is preconfigured; normal users do not replace a relay/account placeholder.
 
-This is a **standalone Android, iPhone/iPad and installable web app**. Home Assistant, MQTT, VPN software and router port forwarding are not required. The Raspberry Pi makes an outbound connection to a shared relay service. An existing HA installation can continue independently.
+This is a **standalone Android, iPhone/iPad and installable web app**. Home Assistant, VPN software and router port forwarding are not required. The Raspberry Pi makes an outbound connection to a shared relay service. An existing HA installation can continue independently.
 
 App users can use the app and service free of charge. **The project operator** sets up the shared service once; ordinary users do not need a hosting account, server or subscription. Free hosting plans have capacity limits. Unlimited permanently free operation is not guaranteed.
 

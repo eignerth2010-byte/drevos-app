@@ -8,7 +8,7 @@
 
 [Deutsch – vollständige Anleitung](README.de.md) · [English – complete guide](README.en.md)
 
-Standalone **iOS, Android and installable web app** for a Drevos smoker connected to a Raspberry Pi. Home Assistant, MQTT, a VPN and router port forwarding are not required. An optional existing Home Assistant integration can continue using the same local gateway.
+Standalone **iOS, Android and installable web app** for a Drevos smoker connected to a Raspberry Pi. Home Assistant, a VPN and router port forwarding are not required. An optional existing Home Assistant integration can continue using the same local gateway.
 
 The owner pairs their oven by scanning or pasting a private code from the Pi's temporary setup page. The same pairing works at home and away through an encrypted, live-only relay. Ordinary app users do not need a hosting account, their own server or a subscription. The service operator needs one hosting account; free-tier usage is limited.
 

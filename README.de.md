@@ -6,7 +6,7 @@
 
 **[Welcher Pi und welches Kabel?](docs/HARDWARE.md)** Für die normale Installation ist die Dienstadresse bereits hinterlegt; du musst keinen eigenen Dienstnamen einsetzen.
 
-Die Drevos-App ist eine **eigenständige App für Android, iPhone/iPad und den Browser**. Sie benötigt weder Home Assistant noch MQTT oder ein VPN. Der Pi verbindet sich von innen mit dem gemeinsamen Vermittlungsdienst. Eine Portfreigabe am Router ist nicht erforderlich.
+Die Drevos-App ist eine **eigenständige App für Android, iPhone/iPad und den Browser**. Sie benötigt weder Home Assistant noch ein VPN. Der Pi verbindet sich von innen mit dem gemeinsamen Vermittlungsdienst. Eine Portfreigabe am Router ist nicht erforderlich.
 
 Die App und ihre Funktionen können für die Nutzer kostenlos angeboten werden. Den gemeinsamen Dienst richtet **einmalig der Betreiber des Projekts** ein. Die Nutzer brauchen kein Cloudflare-Konto, keinen eigenen Server und kein Abo. Kostenlose Hosting-Tarife haben Nutzungsgrenzen; ein beliebig großer, dauerhaft kostenloser Betrieb wird nicht zugesichert.
 
