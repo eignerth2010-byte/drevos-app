@@ -1,4 +1,4 @@
-# Native Drevos app
+# Drevos native and web app
 
 Version 0.2.0. **Standalone**: direct Pi access for local use, or end-to-end encrypted relay access at home and away. No Home Assistant, MQTT or VPN dependency.
 
@@ -17,7 +17,9 @@ npm test
 npm run bundle:check
 ```
 
-`npm run preview` is an isolated web demo. Native pairing is intentionally disabled in the web preview; secrets are kept in iOS Keychain / Android protected storage by the installed app. Camera permission is requested only when the user starts QR scanning.
+Build the installable PWA with `npm run build:web` and host only `dist-web` over HTTPS. The [public Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site) supports encrypted remote pairing, local QR scanning/image decoding and browser-local encrypted persistence. See [German/English PWA instructions](../docs/WEB-APP.md). `npm run preview` is a development server, not the offline-capable deployment artifact. Native apps keep secrets in iOS Keychain / Android protected storage. Camera permission is requested only when the user starts QR scanning.
+
+The browser vault uses AES-GCM and a non-exportable Web Crypto key in IndexedDB. Public shell assets alone are cached offline; commands and pairing keys are never cached by the service worker. A disconnected app cannot send controls, and commands are not queued for reconnection.
 
 ## Android/iPhone builds without a local Mac
 

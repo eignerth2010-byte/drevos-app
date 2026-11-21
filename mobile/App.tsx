@@ -14,7 +14,8 @@ import {
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
-import { CameraView, useCameraPermissions } from "expo-camera";
+import { PairingScanner } from "./src/Scanner";
+import { WebAppTools } from "./src/WebAppTools";
 import {
   CloudPairing,
   pairCloud,
@@ -61,9 +62,11 @@ const C = {
   red: "#ffb0a4",
 };
 const errorText = (error: unknown, t: typeof de) =>
-  error instanceof RuleError || error instanceof ConnectionError
-    ? t.errors[error.code]
-    : t.loginError;
+  error instanceof Error && error.message === "browser-storage"
+    ? t.browserStorageError
+    : error instanceof RuleError || error instanceof ConnectionError
+      ? t.errors[error.code]
+      : t.loginError;
 
 function Action({
   children,
@@ -223,7 +226,6 @@ function DrevosApp() {
     [manual, setManual] = useState(false),
     [pairText, setPairText] = useState("");
   const [cloudPair, setCloudPair] = useState<CloudPairing | null>(null);
-  const [cameraPermission, requestCameraPermission] = useCameraPermissions();
   const scanLock = useRef(false);
   const [language, setLanguage] = useState<Language>("de"),
     [client, setClient] = useState<PiClient | null>(null),
@@ -248,10 +250,6 @@ function DrevosApp() {
     writeAbort = useRef<AbortController | null>(null);
   const t = language === "de" ? de : en;
   useEffect(() => {
-    if (Platform.OS === "web") {
-      setLoading(false);
-      return;
-    }
     let alive = true;
     secureStore
       .load()
@@ -263,7 +261,7 @@ function DrevosApp() {
           setUrl(session.url);
         }
       })
-      .catch(() => setMessage(t.loginError))
+      .catch((error) => setMessage(errorText(error, t)))
       .finally(() => {
         if (alive) setLoading(false);
       });
@@ -273,7 +271,8 @@ function DrevosApp() {
   }, []);
   useEffect(() => {
     const listener = AppState.addEventListener("change", (state) => {
-      active.current = state === "active";
+      active.current =
+        state === "active" && (Platform.OS !== "web" || navigator.onLine);
       setConnected(false);
       pollAbort.current?.abort();
       if (!active.current) {
@@ -284,6 +283,39 @@ function DrevosApp() {
       setTick((v) => v + 1);
     });
     return () => listener.remove();
+  }, [client]);
+  useEffect(() => {
+    if (Platform.OS !== "web") return;
+    const changed = () => {
+      active.current =
+        document.visibilityState === "visible" && navigator.onLine;
+      setConnected(false);
+      pollAbort.current?.abort();
+      writeAbort.current?.abort();
+      client?.suspend();
+      setConfirmation(null);
+      setTick((value) => value + 1);
+    };
+    const leaving = () => {
+      active.current = false;
+      setConnected(false);
+      pollAbort.current?.abort();
+      writeAbort.current?.abort();
+      client?.suspend();
+      setConfirmation(null);
+    };
+    window.addEventListener("offline", changed);
+    window.addEventListener("online", changed);
+    window.addEventListener("pagehide", leaving);
+    window.addEventListener("pageshow", changed);
+    document.addEventListener("visibilitychange", changed);
+    return () => {
+      window.removeEventListener("offline", changed);
+      window.removeEventListener("online", changed);
+      window.removeEventListener("pagehide", leaving);
+      window.removeEventListener("pageshow", changed);
+      document.removeEventListener("visibilitychange", changed);
+    };
   }, [client]);
   useEffect(() => {
     if (!client || demo || !active.current) return;
@@ -345,6 +377,7 @@ function DrevosApp() {
         setPairedId(pair.gatewayId);
         setAccessKey("");
       } else {
+        if (Platform.OS === "web") throw new RuleError("invalid");
         const pair = parsePairing(text);
         setCloudPair(null);
         setUrl(pair.url);
@@ -375,6 +408,7 @@ function DrevosApp() {
       setClient(next);
       setUrl(base);
       setAccessKey("");
+      setCloudPair(null);
       setTab("oven");
     } catch (error) {
       setMessage(errorText(error, t));
@@ -455,8 +489,9 @@ function DrevosApp() {
     setConnected(false);
     try {
       if (client) await client.logout();
-    } catch {
-      /* Local credentials are cleared even if revocation is unreachable. */
+    } catch (error) {
+      setMessage(errorText(error, t));
+      return;
     }
     setClient(null);
     setAccessKey("");
@@ -504,6 +539,7 @@ function DrevosApp() {
           contentContainerStyle={s.content}
         >
           <Brand />
+          <WebAppTools language={language} busy={busy || signingIn} />
           {loading ? (
             <Text style={s.hint}>{t.refreshing}</Text>
           ) : !showApp ? (
@@ -511,16 +547,14 @@ function DrevosApp() {
               <Text style={s.title}>{t.loginTitle}</Text>
               <Text style={s.body}>{t.loginSubtitle}</Text>
               <Text style={s.hint}>{t.loginHint}</Text>
-              {Platform.OS !== "web" && (
-                <Action
-                  onPress={() => {
-                    scanLock.current = false;
-                    setScanning(true);
-                  }}
-                >
-                  {t.pairOven}
-                </Action>
-              )}
+              <Action
+                onPress={() => {
+                  scanLock.current = false;
+                  setScanning(true);
+                }}
+              >
+                {t.pairOven}
+              </Action>
               <Action subtle onPress={() => setShowPaste(!showPaste)}>
                 {t.pasteCode}
               </Action>
@@ -549,10 +583,12 @@ function DrevosApp() {
               {(cloudPair || !!accessKey) && (
                 <Text style={s.body}>{t.pairFound}</Text>
               )}
-              <Action subtle onPress={() => setManual(!manual)}>
-                {t.manual}
-              </Action>
-              {manual && (
+              {Platform.OS !== "web" && (
+                <Action subtle onPress={() => setManual(!manual)}>
+                  {t.manual}
+                </Action>
+              )}
+              {Platform.OS !== "web" && manual && (
                 <View style={{ gap: 12 }}>
                   <Text style={s.label}>{t.server}</Text>
                   <TextInput
@@ -586,20 +622,17 @@ function DrevosApp() {
                   <Text style={s.hint}>{t.localHttp}</Text>
                 </View>
               )}
-              {Platform.OS === "web" ? (
-                <Text style={s.hint}>{t.nativeOnly}</Text>
-              ) : (
-                <Action
-                  disabled={
-                    signingIn ||
-                    !url.trim() ||
-                    (!cloudPair && !accessKey.trim())
-                  }
-                  onPress={() => void login()}
-                >
-                  {signingIn ? t.refreshing : t.login}
-                </Action>
-              )}
+              <Action
+                disabled={
+                  signingIn ||
+                  !url.trim() ||
+                  (!cloudPair && !accessKey.trim()) ||
+                  (Platform.OS === "web" && !cloudPair)
+                }
+                onPress={() => void login()}
+              >
+                {signingIn ? t.refreshing : t.login}
+              </Action>
               <Action
                 subtle
                 onPress={() => {
@@ -856,7 +889,24 @@ function DrevosApp() {
               {message}
             </Text>
           )}
-          <Text style={s.footer}>{t.version}</Text>
+          <Text style={s.footer}>
+            {Platform.OS === "web" ? t.webVersion : t.version}
+          </Text>
+          {Platform.OS === "web" && (
+            <Text
+              accessibilityRole="link"
+              style={[s.footer, { fontSize: 14, padding: 8 }]}
+              onPress={() =>
+                window.open(
+                  "/THIRD_PARTY_NOTICES.txt",
+                  "_blank",
+                  "noopener,noreferrer",
+                )
+              }
+            >
+              {language === "de" ? "Lizenzen" : "Licenses"}
+            </Text>
+          )}
         </ScrollView>
         {showApp && (
           <View style={s.tabs}>
@@ -879,25 +929,14 @@ function DrevosApp() {
       <Modal visible={scanning} onRequestClose={() => setScanning(false)}>
         <SafeAreaView style={s.safe}>
           <Text style={[s.sectionTitle, { padding: 20 }]}>{t.scanHint}</Text>
-          {cameraPermission?.granted ? (
-            <CameraView
-              style={{ flex: 1 }}
-              facing="back"
-              barcodeScannerSettings={{ barcodeTypes: ["qr"] }}
-              onBarcodeScanned={(result) => {
-                if (scanLock.current) return;
-                scanLock.current = true;
-                readPairing(result.data);
-              }}
-            />
-          ) : (
-            <View style={s.panel}>
-              <Text style={s.body}>{t.cameraNeeded}</Text>
-              <Action onPress={() => void requestCameraPermission()}>
-                {t.allowCamera}
-              </Action>
-            </View>
-          )}
+          <PairingScanner
+            language={language}
+            onResult={(text) => {
+              if (scanLock.current) return;
+              scanLock.current = true;
+              readPairing(text);
+            }}
+          />
           <Action subtle onPress={() => setScanning(false)}>
             {t.cancel}
           </Action>
