@@ -1,5 +1,7 @@
 # Handy-App und Pi einfach einrichten
 
+**[HA ist schon installiert – App ergänzen oder umgekehrt](../docs/HA-UND-APP.de.md)**. Pi, Datenkabel und Gateway gemeinsam weiterverwenden.
+
 **[Einfach starten – Pi und App installieren](../docs/INSTALLATION.de.md)**
 
 Hier findest du die gesamte Einrichtung: Materialliste mit Pi, Netzteil und Kabel, Speicherkarte, Anmeldung am Pi, kopierbare Installationsbefehle, Android-/iPhone-/Web-App und QR-Kopplung. Für alle App-Varianten gilt dieselbe Pi-Installation. Die gemeinsame Dienstadresse ist bereits eingetragen.

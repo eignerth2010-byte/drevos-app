@@ -1,5 +1,7 @@
 # Drevos native and web app
 
+**Existing HA or app installation? [Gemeinsamer Pi und Umstieg – Deutsch](../docs/HA-UND-APP.de.md)** · [Shared Pi and migration – English](../docs/HA-UND-APP.en.md)
+
 **[Einfach starten: Pi und Handy-App auf Deutsch](../docs/INSTALLATION.de.md)** · **[Easy Pi and mobile app setup in English](../docs/INSTALLATION.en.md)** · [Hardware / Kabel](../docs/HARDWARE.md)
 
 These beginner guides include the complete Pi installation for the native app as well as the Web App. Development/build instructions follow below.
