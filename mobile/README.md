@@ -6,7 +6,7 @@
 
 These beginner guides include the complete Pi installation for the native app as well as the Web App. Development/build instructions follow below.
 
-Version 0.2.0. **Standalone**: direct Pi access for local use, or end-to-end encrypted relay access at home and away. No Home Assistant or VPN dependency.
+Version 0.3.0. **Standalone**: direct Pi access for local use, or end-to-end encrypted relay access at home and away. No Home Assistant or VPN dependency.
 
 End-user setup is described in [Deutsch](../README.de.md) / [English](../README.en.md). App users pair by scanning or pasting their Pi's private pairing code. They do not create cloud-provider accounts.
 
@@ -54,3 +54,7 @@ For an existing checkout, run `git pull --ff-only` before restarting the helper.
 Choose your team and device in the generated Xcode workspace. macOS 13 Ventura cannot run the required Xcode; use the hosted build route instead. Requirements: [Expo SDK 58](https://docs.expo.dev/versions/v58.0.0/), [Apple Xcode](https://developer.apple.com/xcode/system-requirements/).
 
 App source and the original cabinet illustration are MIT. The supplied Drevos logo has [separate terms](BRAND-NOTICE.md). Available dependency license texts accompany packages in `THIRD_PARTY_NOTICES.txt`.
+
+## Info, support and updates
+
+The Info tab shows creator Thomas Eigner, an optional PayPal support link, the app version and release notes in German/English. Android can check this repository for a newer APK automatically (normally at most daily) or manually. Installation still requires Android confirmation. The Web App loads new versions on its next opening without an update prompt or forced session reload. See [the complete update guide](../docs/UPDATES.md). Version 0.3.0 Android is rebuilt; the downloadable unsigned iPhone binary remains 0.2.0.
