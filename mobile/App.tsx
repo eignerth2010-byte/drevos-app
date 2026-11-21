@@ -117,7 +117,7 @@ function Brand() {
           source={require("./assets/logo.png")}
           style={s.logo}
           resizeMode="contain"
-          accessibilityLabel="Drevos international"
+          accessibilityLabel="Drevos – Community-Projekt"
         />
       </View>
       <Text style={s.eyebrow}>SMOKER CONTROL</Text>

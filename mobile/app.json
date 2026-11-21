@@ -2,14 +2,14 @@
   "expo": {
     "name": "Drevos",
     "slug": "drevos-mobile",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "scheme": "drevos",
     "orientation": "default",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#101315",
     "ios": {
       "bundleIdentifier": "at.eignerth.drevos",
-      "buildNumber": "3",
+      "buildNumber": "4",
       "supportsTablet": true,
       "infoPlist": {
         "NSLocalNetworkUsageDescription": "Drevos verbindet sich direkt mit deinem Raspberry Pi, um deinen Räucherofen zu bedienen.",
@@ -21,7 +21,7 @@
     },
     "android": {
       "package": "at.eignerth.drevos",
-      "versionCode": 3,
+      "versionCode": 4,
       "permissions": [
         "INTERNET",
         "ACCESS_NETWORK_STATE"
