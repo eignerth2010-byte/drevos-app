@@ -1,5 +1,31 @@
 # Validation – 2026-11-21
 
+## 2026-11-21 – App/Web 0.3.1 community wordmark and licensing
+
+- 50 mobile tests, TypeScript and the required formatting check pass. The PWA
+  production build succeeds with the new temporary wordmark and version 0.3.1.
+- The existing public Web App is updated at its unchanged origin. Browser checks
+  confirm the new logo, 0.3.1, German Info text, release notes and the revised
+  resale terms, with no APK update prompt on the Web App.
+- The updated public screenshot is explicitly a demo with synthetic values.
+  No real pairing key, live oven data or control command is used for screenshots.
+- Android 0.3.1 is built from the same native application source through
+  [the dedicated build](https://github.com/eignerth2010-byte/drevos-app/actions/runs/44934237080).
+  Compilation and apksigner verification succeeded. The downloaded artifact
+  and APK SHA-256 were checked. The APK signing certificate matches the earlier
+  previews; ARM64 and ARMv7 are included. The bundled PNG was extracted and
+  visually confirmed to be the new community wordmark. APK versionName is
+  0.3.1 and versionCode is 4. SHA-256:
+  `7667b10e5f6d12fee9eeecfce5dc618ecc3654d0f1d20b2b390e89121a197edd`.
+- Existing iPhone IPA 0.2.0 is not replaced; current iOS source uses the new
+  wordmark. No physical Android/iPhone test of 0.3.1 is claimed.
+- Private and internal business use are free. Resale and commercial bundling
+  need Thomas Eigner's prior written permission. Earlier MIT copies retain
+  their terms. Third-party licenses are not changed.
+- The Pi services, remote protocol and pairing storage are unchanged. No Pi or
+  PLC command was sent and no activation-token system was added.
+
+
 Current Android/Web App preview: 0.3.0; local gateway patch 0.1.1. The earlier 0.2.0 device checks below remain historical evidence for that version. The earlier HA-dependent 0.1.0 app prototype is superseded and is not this app.
 
 Completed locally and in GitHub Actions (70 tests: 31 gateway, 7 Pi agent, 3 relay, 29 mobile):

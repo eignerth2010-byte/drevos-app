@@ -65,6 +65,18 @@ are not retroactively relicensed or replaced. Unchanged material available
 from those earlier versions remains available under MIT. The pre-change main
 commit is linked above; its MIT text is retained below.
 
+## Getrennte HA-Integration / Separate HA integration
+
+Die HA-Integration und ihre Dashboard-Karte im
+[Home-Assistant-Projekt](https://github.com/eignerth2010-byte/drevos-home-assistant)
+bleiben unter MIT frei nutzbar und weitergebbar. Das ändert die Bedingungen der
+hier veröffentlichten Pi-Software und Apps nicht. Alle Funktionen bleiben
+kostenlos nutzbar; nur deren Verkauf und kommerzielle Weitergabe benötigen
+vorherige schriftliche Freigabe.
+
+The separate HA integration/card remain MIT licensed. That does not change the
+resale restrictions on Pi software and apps in this repository. Use remains free.
+
 ## Historischer MIT-Text / Historical MIT text
 
 **Nur für frühere MIT-Fassungen; keine alternative Lizenz für neue
