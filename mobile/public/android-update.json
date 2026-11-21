@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "version": "0.2.0",
-  "versionCode": 2,
-  "downloadUrl": "https://github.com/eignerth2010-byte/drevos-app/releases/download/v0.2.0-preview.1/Drevos-Android-0.2.0-Vorschau.apk",
-  "sha256": "91d4b5a8a25640d486b0928bcd68f01e343d124704fb2038c87bb554e75264a3"
+  "version": "0.3.0",
+  "versionCode": 3,
+  "downloadUrl": "https://github.com/eignerth2010-byte/drevos-app/releases/download/v0.3.0-preview.1/Drevos-Android-0.3.0-Vorschau.apk",
+  "sha256": "06a1ea8d109f8e699f805e7d510d008bb86f202aee59f3b3d2473485369dffa9"
 }
