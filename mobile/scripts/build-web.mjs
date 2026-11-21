@@ -72,7 +72,11 @@ async function files(directory, prefix = "") {
     const relative = path.posix.join(prefix, entry.name);
     if (entry.isDirectory())
       result.push(...(await files(path.join(directory, entry.name), relative)));
-    else if (!["_headers", "sw-template.js", "sw.js"].includes(entry.name))
+    else if (
+      !["_headers", "sw-template.js", "sw.js", "android-update.json"].includes(
+        entry.name,
+      )
+    )
       result.push(relative);
   }
   return result.sort();
