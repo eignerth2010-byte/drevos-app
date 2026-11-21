@@ -1,10 +1,10 @@
-# GitHub and publishing â€“ English
+# GitHub and publishing – English
 
 The public project contains source for the native app, Pi gateway/agent, relay and installers, plus tests, documentation, licenses and approved image assets. Exclude private configuration, pairing keys, original PLC projects and personal photos.
 
 1. Sign into your GitHub account and create a public repository such as `drevos-app`.
 2. Upload/push the project, respecting `.gitignore`. Do not include `node_modules`, build outputs or private files.
-3. Select **Actions â†’ Drevos App â†’ Run workflow**. Enable `build_ios` for an additional unsigned iPhone build.
+3. Select **Actions → Drevos App → Run workflow**. Enable `build_ios` for an additional unsigned iPhone build.
 4. Download artifacts only after successful checks. Clearly label the Android preview APK and **unsigned** iPhone IPA. Actions artifacts expire after 14 days.
 5. For durable distribution, create a preview release with verified binaries, source package, license texts and SHA-256 checksums. Carry over actual tests/limitations from `docs/VALIDATION.md`; a preview is not a validated production product.
 
