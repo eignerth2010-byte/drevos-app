@@ -1,5 +1,9 @@
 # Drevos native and web app
 
+**[Einfach starten: Pi und Handy-App auf Deutsch](../docs/INSTALLATION.de.md)** · **[Easy Pi and mobile app setup in English](../docs/INSTALLATION.en.md)** · [Hardware / Kabel](../docs/HARDWARE.md)
+
+These beginner guides include the complete Pi installation for the native app as well as the Web App. Development/build instructions follow below.
+
 Version 0.2.0. **Standalone**: direct Pi access for local use, or end-to-end encrypted relay access at home and away. No Home Assistant, MQTT or VPN dependency.
 
 End-user setup is described in [Deutsch](../README.de.md) / [English](../README.en.md). App users pair by scanning or pasting their Pi's private pairing code. They do not create cloud-provider accounts.
