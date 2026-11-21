@@ -11,15 +11,15 @@ export const UPDATE_MANIFEST_URL =
 
 export const RELEASE_NOTES = {
   de: [
-    "Neuer Info-Tab mit Projektinformationen und Thomas Eigner als Ersteller.",
-    "Freiwillig über den PayPal-Spendenbutton unterstützen.",
-    "Android: automatische Updateprüfung einstellbar, mit Downloadhinweis für neue APKs.",
-    "Änderungsübersicht nach Updates und sichtbare Versionsnummer in beiden Apps.",
+    "Eigener vorläufiger Drevos-Schriftzug statt Herstellerlogo.",
+    "Private und betriebsinterne Nutzung bleiben kostenlos.",
+    "Verkauf und kommerzielle Weitergabe nur mit vorheriger schriftlicher Freigabe von Thomas Eigner.",
+    "Frühere MIT-Fassungen behalten ihre Rechte. Kopplung und Ofensteuerung bleiben unverändert.",
   ],
   en: [
-    "New Info tab with project details and creator Thomas Eigner.",
-    "Support development with an optional PayPal donation.",
-    "Android: configurable update checks and download notices for new APKs.",
-    "Release notes after updates and visible version numbers in both apps.",
+    "Original temporary community wordmark replaces the manufacturer logo.",
+    "Private and internal business use remain free.",
+    "Resale and commercial redistribution require Thomas Eigner’s prior written permission.",
+    "Earlier MIT versions retain their rights. Pairing and oven controls are unchanged.",
   ],
 };
