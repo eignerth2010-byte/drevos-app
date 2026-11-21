@@ -2,6 +2,10 @@
 
 The app stores pairing credentials in native protected storage: iOS Keychain with device-only accessibility, or Android SecureStore with backup exclusions. It contains no built-in advertising or analytics service. Its demo uses synthetic data.
 
+The installable web app instead encrypts pairing with AES-GCM in origin-local IndexedDB using a non-exportable Web Crypto key. Each save uses a fresh nonce. It never writes pairing to URLs, localStorage or service-worker caches. Only the public app shell is cached for offline startup, not readings or commands. QR-image decoding happens locally in the browser, without an upload. Camera access begins only after an explicit request.
+
+Browser storage is not an OS keychain. Malicious code on the same origin, a compromised device or someone using the unlocked browser profile can still access pairing. Remove pairing before sharing the profile. Clearing website data requires pairing again. Safari and an installed iOS web app may use separate storage; install first and pair inside the installed app. The public web host serves app files and sees ordinary request metadata; the separate relay handles encrypted oven traffic. See [PWA installation and self-hosting](WEB-APP.md).
+
 The Pi's gateway token stays in private local configuration. The remote app receives separate pairing keys. The relay authenticates a random room credential and forwards end-to-end encrypted packets; it has no plaintext oven readings, command bodies or AES keys. It retains a credential hash for reconnects, not packet history. Hosting providers still handle network metadata such as source IPs under their own service terms; this document does not claim that no metadata exists.
 
 Private files:

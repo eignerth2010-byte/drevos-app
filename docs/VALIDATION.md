@@ -1,4 +1,4 @@
-# Validation – 2026-11-20
+# Validation – 2026-11-21
 
 Standalone preview 0.2.0, local gateway patch 0.1.1. The earlier HA-dependent 0.1.0 app prototype is superseded and is not this app.
 
@@ -36,13 +36,28 @@ Physical Android checks confirmed by the user on 2026-11-20:
 - The private pairing page was closed after setup; its QR code was no longer visible.
 - A read-only Home Assistant check after the Pi update returned chamber/core temperatures, smoke setting and timer values through the existing native integration. The app's own remote path does not use Home Assistant.
 
-Still required: iPhone signing and physical iOS validation, plus broader Android lifecycle, protected-storage persistence and control testing. The confirmed Android checks cover pairing and local/remote readings, not every native function. Actual heating, smoke ignition and Pi power-off were not triggered by these checks. The downloadable builds remain previews for device testing.
+Physical iPhone checks confirmed by the user on 2026-11-20:
 
-Browser preview demonstrates layout and simulated interactions. It does not prove camera permission, protected storage, clipboard behavior or networking on physical phones. Record native/compiler/live outcomes here as they complete. A Worker dry run or workflow file alone does not prove a deployed working service.
+- Built and personally signed on the user's macOS Tahoe VM with Xcode 26.5; installed on the user's iPhone. The user confirmed real chamber/core temperatures after QR pairing.
+- After removing USB, disabling Wi-Fi, fully closing and reopening the app, the user confirmed retained pairing and refreshed readings over mobile data. This does not validate every control or native lifecycle case.
+- The free Personal Team signature needs renewal; this limitation applies to the native build, not the PWA.
+
+Still required: broader Android/iOS lifecycle and control testing. The confirmed Android checks cover pairing and local/remote readings, not every native function. Actual heating, smoke ignition and Pi power-off were not triggered by these checks. The downloadable builds remain previews for device testing.
+
+The earlier browser demo checks above describe the November 20 state. The November 21 PWA checks below supersede its demo-only limitation. Physical-phone PWA camera and installation checks are not implied by desktop-browser validation. A Worker dry run or workflow file alone does not prove a deployed working service.
 
 Mac preparation helper follow-up on 2026-11-20:
 
 - The user installed Node.js 24 LTS and reported Xcode 26.5, build 17F42, in a macOS Tahoe VM. The original helper stopped after its heading; the exact exit status on that Mac was not captured.
 - Removed the `xcodebuild | head` pipeline, which could terminate the helper through `pipefail`/SIGPIPE. Xcode output is now captured in full, version parsing is validated, Xcode failures are shown with setup guidance, and later failed steps report their line and status.
 - An isolated Bash harness reproduced the old early-exit behavior using synthetic verbose Xcode output. The revised helper passed synthetic 26.4, 26.5, 27 and verbose-output cases; rejected 26.3, failed and malformed Xcode output before dependency installation; and reported a synthetic npm failure with status 42. Bash syntax also passed.
-- These helper checks used stubs on Linux, not real Xcode, npm installation or oven access. They do not establish a successful native build in the user's VM. Local Mac preparation, iPhone signing and physical iOS validation remain pending until confirmed.
+- These helper checks used stubs on Linux, not real Xcode, npm installation or oven access. They do not establish a successful native build in the user's VM. The later user-confirmed iPhone build and live reading checks are recorded above.
+
+Installable Web App / PWA checks on 2026-11-21:
+
+- Mobile TypeScript check passed; all 40 tests in six files passed. Eleven new tests cover browser-vault encryption, nonce freshness, invalid/corrupt data, serialized save/logout, immutable queued saves, insecure-origin rejection and the service worker's public-only cache boundary. Earlier gateway/agent/relay test totals above are historical, not rerun as part of this web-only change.
+- Production web export completed with a standalone manifest, generated 192/512 icons, explicit-update service worker and only public assets in the offline shell. Android/iOS JavaScript bundles were also generated; no new native binary was compiled for this PWA change.
+- Desktop-browser demo checks covered explicit setpoint application, heating confirmation/cancel and timer display. Real pairing then displayed live chamber/core temperatures through the existing relay; reloading retained pairing. Language persisted after reload; removing pairing returned to the login screen after reload. No physical control command was issued.
+- Local QR-image decoding accepted the actual private oven code and rejected an unrelated QR code. Actual phone-camera permission/scanning remains to be checked on the phone.
+- Public HTTPS deployment: [Drevos Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site). Manifest, service-worker JavaScript and icons returned HTTP 200 with correct content types. Deployment source/archive excludes all actual pairing keys and private Pi configuration.
+- PWA installation on a physical phone, Safari standalone persistence and mobile-data use remain pending user confirmation. Existing native phone checks do not establish these PWA-specific outcomes.
