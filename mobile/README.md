@@ -1,8 +1,8 @@
 # Drevos native and web app
 
-**Existing HA or app installation? [Gemeinsamer Pi und Umstieg â€“ Deutsch](../docs/HA-UND-APP.de.md)** Â· [Shared Pi and migration â€“ English](../docs/HA-UND-APP.en.md)
+**Existing HA or app installation? [Gemeinsamer Pi und Umstieg – Deutsch](../docs/HA-UND-APP.de.md)** · [Shared Pi and migration – English](../docs/HA-UND-APP.en.md)
 
-**[Einfach starten: Pi und Handy-App auf Deutsch](../docs/INSTALLATION.de.md)** Â· **[Easy Pi and mobile app setup in English](../docs/INSTALLATION.en.md)** Â· [Hardware / Kabel](../docs/HARDWARE.md)
+**[Einfach starten: Pi und Handy-App auf Deutsch](../docs/INSTALLATION.de.md)** · **[Easy Pi and mobile app setup in English](../docs/INSTALLATION.en.md)** · [Hardware / Kabel](../docs/HARDWARE.md)
 
 These beginner guides include the complete Pi installation for the native app as well as the Web App. Development/build instructions follow below.
 
@@ -29,7 +29,7 @@ The browser vault uses AES-GCM and a non-exportable Web Crypto key in IndexedDB.
 
 ## Android/iPhone builds without a local Mac
 
-This repository's **Actions â†’ Drevos App â†’ Run workflow** checks all components and builds:
+This repository's **Actions → Drevos App → Run workflow** checks all components and builds:
 
 - A standalone Android preview APK with embedded program and template test signing. It can be installed on an ARM64/ARMv7 Android phone without Metro. Use your own persistent signing key for maintained public releases.
 - Optionally an **unsigned iPhone IPA** compiled on a hosted Mac. This is not directly installable. Sign it for your own device or arrange normal Apple distribution separately.
@@ -49,7 +49,7 @@ chmod +x macOS-vorbereiten.command
 ./macOS-vorbereiten.command
 ```
 
-For an existing checkout, run `git pull --ff-only` before restarting the helper. The helper prints the detected Xcode version and reports a failed step with its line and exit status. If the Xcode check fails, open **Xcode â†’ Settings â†’ Locations â†’ Command Line Tools**, select the installed Xcode app and retry; see [Apple's command-line tools settings](https://developer.apple.com/documentation/xcode/configuring-command-line-tools-settings).
+For an existing checkout, run `git pull --ff-only` before restarting the helper. The helper prints the detected Xcode version and reports a failed step with its line and exit status. If the Xcode check fails, open **Xcode → Settings → Locations → Command Line Tools**, select the installed Xcode app and retry; see [Apple's command-line tools settings](https://developer.apple.com/documentation/xcode/configuring-command-line-tools-settings).
 
 Choose your team and device in the generated Xcode workspace. macOS 13 Ventura cannot run the required Xcode; use the hosted build route instead. Requirements: [Expo SDK 58](https://docs.expo.dev/versions/v58.0.0/), [Apple Xcode](https://developer.apple.com/xcode/system-requirements/).
 
