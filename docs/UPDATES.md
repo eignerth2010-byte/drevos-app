@@ -14,7 +14,7 @@ Den Download öffnen und die Installation **am Android-Gerät bestätigen**. Die
 
 ### Web-App
 
-Für die Web-App wird keine APK installiert. Neu veröffentlichte Dateien werden beim Öffnen geladen; ein bereits aktiver Offline-Cache kann zusätzlich **Neue Version laden** anbieten. Diesen Button verwenden, sobald kein App-Befehl läuft. Eine offene Sitzung wird nicht mitten in einem Ofenbefehl automatisch neu geladen. Die Website-Adresse und die dort gespeicherte Kopplung bleiben bei einem normalen Update gleich.
+Für die Web-App wird keine APK installiert. Neu veröffentlichte Dateien werden beim nächsten Öffnen automatisch geladen. Es gibt keinen Hinweis „Neue Version verfügbar“ und keinen Button zum Laden eines Updates. Eine bereits offene Sitzung wird nicht automatisch neu geladen; so wird kein Ofenbefehl unterbrochen. Die App bei Bedarf vollständig schließen und wieder öffnen. Die Website-Adresse und die dort gespeicherte Kopplung bleiben bei einem normalen Update gleich.
 
 ### Was ist neu?
 
@@ -38,7 +38,7 @@ Version **0.3.0** adds an **Info** tab with creator Thomas Eigner, project/setup
 
 **Android:** install this version once to receive the new update-check feature. **Check for updates automatically** defaults to enabled. It checks on launch/foreground return, normally at most daily; **Check now** works manually. Only public release metadata is fetched from this GitHub project. No oven values or pairing credentials are sent; GitHub still sees normal request metadata such as the IP address. A newer version code offers **Download update**, opening this project's GitHub APK in the browser. Confirm installation on Android. The app does not silently install packages or bypass APK installation with downloaded JavaScript. Update the existing app with a matching package/signature rather than uninstalling it first.
 
-**Web app:** no APK installation is needed. New files load when opening the site; an existing offline cache may offer **Load new version**. Updates require explicit activation when that prompt appears and cannot reload during an app command. A normal update retains the same origin and pairing.
+**Web app:** no APK installation is needed. New files load automatically on the next opening. There is no update-available banner or load-update button. An already open session is never forcibly reloaded, so oven commands are not interrupted. Fully close and reopen the app if needed. A normal update retains the same origin and pairing.
 
 **What’s new?** appears on first opening an unacknowledged app version. **Got it** saves the version locally. Reopen the notes in Info at any time. Pairing, confirmation dialogs and app commands defer the modal. Android stores these preferences separately in protected storage; the browser stores only the acknowledged public version in `localStorage`, separately from encrypted pairing.
 
