@@ -1,6 +1,6 @@
 # Validation – 2026-11-21
 
-Standalone preview 0.2.0, local gateway patch 0.1.1. The earlier HA-dependent 0.1.0 app prototype is superseded and is not this app.
+Current Android/Web App preview: 0.3.0; local gateway patch 0.1.1. The earlier 0.2.0 device checks below remain historical evidence for that version. The earlier HA-dependent 0.1.0 app prototype is superseded and is not this app.
 
 Completed locally and in GitHub Actions (70 tests: 31 gateway, 7 Pi agent, 3 relay, 29 mobile):
 
@@ -69,3 +69,15 @@ Physical iPhone PWA checks confirmed by the user on 2026-11-21:
 - Disabled Wi-Fi, fully closed the installed web app, opened its Home Screen icon again and refreshed over mobile data. The user confirmed that pairing remained saved and live readings worked. Device model and iOS version were not recorded.
 - Closed the temporary setup page after pairing; subsequent requests to it were refused. Existing Android/iOS native pairings were retained. No heating, smoke ignition or Pi shutdown was triggered by these PWA checks.
 - Android PWA installation and broader physical control/lifecycle cases remain untested; the earlier native Android validation is a separate result.
+
+
+## Info, release notes, versions and Android updates – 0.3.0
+
+- Complete checks and Android native compilation passed in [run 44918786566](https://github.com/eignerth2010-byte/drevos-app/actions/runs/44918786566), APK source commit `acd59c78f1994a02970eddbf5eeeb0a3d137f81a`. That run passed 49 mobile tests, formatting/type checks, gateway/agent/relay tests, all-platform JavaScript exports and the PWA build. The iOS native job was intentionally skipped.
+- After removing the Web App update banner at the user's request, 50 mobile tests, TypeScript and a production Web build passed locally. The added test exercises current-HTML network navigation and confirms that messages cannot force worker activation. Only web-specific source, tests and documentation changed after the Android build; Android app inputs did not change.
+- APK identity verified by Android build tools: package `at.eignerth.drevos`, version name `0.3.0`, version code `3`, ARM64 and ARMv7 libraries. `apksigner verify` passed. APK SHA-256: `06a1ea8d109f8e699f805e7d510d008bb86f202aee59f3b3d2473485369dffa9`.
+- The artifact ZIP SHA-256 matched GitHub's digest before extraction. The APK signing certificate digest `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c` matches the previous 0.2.0 preview; template test signing remains in use. This establishes package/signature compatibility for an in-place update, not a confirmed physical-phone installation.
+- Browser checks covered unpaired Info access, creator Thomas Eigner, visible version, correct PayPal destination, German/English release notes, manual reopening and persisted acknowledgement after reload. Demo oven/timer navigation remained available. The updated web-only code showed no update-available banner after navigation from an older cached app. No actual oven was paired or controlled for this UI update.
+- The first 0.3.0 HTTPS deployment passed Info/version/release-note checks and five public runtime assets matched the local build byte for byte. The final deployment removes the Web App's explicit update prompt: new navigations fetch current HTML; already open sessions are not forcibly reloaded. The Android update checker remains Android-only.
+- The public Android update metadata is updated only after its referenced APK is published. Parser tests reject foreign repositories, HTTP, credentials/query parameters, malformed versions, malformed hashes and non-APK paths; preference tests exercise automatic-check timing. The checker is not represented as an in-app APK-download verifier; Android confirms installation and checks package signing.
+- No Pi service, Home Assistant configuration or PLC value changed for this release. Broader native lifecycle/control checks remain outstanding; this 0.3.0 Android UI has not yet been confirmed on a physical device. No heating, ignition or shutdown was triggered.
