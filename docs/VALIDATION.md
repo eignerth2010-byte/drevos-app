@@ -55,9 +55,17 @@ Mac preparation helper follow-up on 2026-11-20:
 
 Installable Web App / PWA checks on 2026-11-21:
 
-- Mobile TypeScript check passed; all 40 tests in six files passed. Eleven new tests cover browser-vault encryption, nonce freshness, invalid/corrupt data, serialized save/logout, immutable queued saves, insecure-origin rejection and the service worker's public-only cache boundary. Earlier gateway/agent/relay test totals above are historical, not rerun as part of this web-only change.
+- Mobile TypeScript check passed; all 40 tests in six files passed. Eleven new tests cover browser-vault encryption, nonce freshness, invalid/corrupt data, serialized save/logout, immutable queued saves, insecure-origin rejection and the service worker's public-only cache boundary. The complete GitHub check job subsequently passed for source commit `7c859d67746f38360d65f54c2751fefaeb12adcc`: [run 44911361315](https://github.com/eignerth2010-byte/drevos-app/actions/runs/44911361315). It reran gateway, agent, relay and mobile tests, formatting/type checks, Android/iOS/web JavaScript exports and the installable PWA build. Native binary compilation was not requested in that run.
 - Production web export completed with a standalone manifest, generated 192/512 icons, explicit-update service worker and only public assets in the offline shell. Android/iOS JavaScript bundles were also generated; no new native binary was compiled for this PWA change.
 - Desktop-browser demo checks covered explicit setpoint application, heating confirmation/cancel and timer display. Real pairing then displayed live chamber/core temperatures through the existing relay; reloading retained pairing. Language persisted after reload; removing pairing returned to the login screen after reload. No physical control command was issued.
-- Local QR-image decoding accepted the actual private oven code and rejected an unrelated QR code. Actual phone-camera permission/scanning remains to be checked on the phone.
+- Local QR-image decoding accepted the actual private oven code and rejected an unrelated QR code. The subsequent iPhone PWA camera check is recorded below.
 - Public HTTPS deployment: [Drevos Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site). Manifest, service-worker JavaScript and icons returned HTTP 200 with correct content types. Deployment source/archive excludes all actual pairing keys and private Pi configuration.
-- PWA installation on a physical phone, Safari standalone persistence and mobile-data use remain pending user confirmation. Existing native phone checks do not establish these PWA-specific outcomes.
+- The actual public deployment also passed real pairing, fresh live readings and restore after reload in the desktop browser. Its explicit update prompt successfully activated the next version. Removing the desktop test pairing cleared that browser only. No physical command was issued.
+
+Physical iPhone PWA checks confirmed by the user on 2026-11-21:
+
+- Opened the published HTTPS URL in Safari, added Drevos to the Home Screen and opened the new icon.
+- Used the web app camera scanner to scan the temporary private Pi QR code and confirmed connection. Real chamber/core temperatures were displayed.
+- Disabled Wi-Fi, fully closed the installed web app, opened its Home Screen icon again and refreshed over mobile data. The user confirmed that pairing remained saved and live readings worked. Device model and iOS version were not recorded.
+- Closed the temporary setup page after pairing; subsequent requests to it were refused. Existing Android/iOS native pairings were retained. No heating, smoke ignition or Pi shutdown was triggered by these PWA checks.
+- Android PWA installation and broader physical control/lifecycle cases remain untested; the earlier native Android validation is a separate result.
