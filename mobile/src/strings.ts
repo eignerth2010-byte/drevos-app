@@ -1,5 +1,8 @@
+import { APP_VERSION } from "./project";
+
 export const de = {
-  webVersion: "Drevos · Web-App",
+  webVersion: `Drevos ${APP_VERSION} · Web-App`,
+  about: "Info",
   browserStorageError:
     "Die Kopplung kann in diesem Browser nicht sicher gespeichert werden. Bitte einen aktuellen Browser außerhalb des privaten Modus verwenden und Website-Daten zulassen.",
   accessKey: "Zugangsschlüssel",
@@ -92,7 +95,7 @@ export const de = {
     "Raspberry Pi jetzt herunterfahren? Die Verbindung zum Ofen wird beendet.",
   localHttp:
     "Die lokale Direktverbindung ist im Heimnetz unverschlüsselt. Für unterwegs den Kopplungscode für den Fernzugriff verwenden.",
-  version: "Drevos 0.2.0 · Eigenständige App",
+  version: `Drevos ${APP_VERSION} · Eigenständige App`,
   lastRead: "Letzte Aktualisierung",
   errors: {
     profile: "Diese Ofensteuerung oder Gateway-Version wird nicht unterstützt.",
@@ -116,7 +119,8 @@ export const de = {
   },
 };
 export const en: typeof de = {
-  webVersion: "Drevos · Web app",
+  webVersion: `Drevos ${APP_VERSION} · Web app`,
+  about: "Info",
   browserStorageError:
     "Pairing cannot be stored securely in this browser. Use an up-to-date browser outside private mode and allow website data.",
   accessKey: "Access key",
@@ -206,7 +210,7 @@ export const en: typeof de = {
   shutdownAsk: "Shut down the Raspberry Pi now? The oven connection will stop.",
   localHttp:
     "Local direct access is unencrypted on your home network. Use the remote pairing code when away.",
-  version: "Drevos 0.2.0 · Standalone app",
+  version: `Drevos ${APP_VERSION} · Standalone app`,
   lastRead: "Last update",
   errors: {
     profile: "This controller profile or gateway version is not supported.",
