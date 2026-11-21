@@ -1,10 +1,14 @@
 # Drevos app – English guide
 
-This is a **standalone Android and iPhone/iPad app**. Home Assistant, MQTT, VPN software and router port forwarding are not required. The Raspberry Pi makes an outbound connection to a shared relay service. An existing HA installation can continue independently.
+This is a **standalone Android, iPhone/iPad and installable web app**. Home Assistant, MQTT, VPN software and router port forwarding are not required. The Raspberry Pi makes an outbound connection to a shared relay service. An existing HA installation can continue independently.
 
 App users can use the app and service free of charge. **The project operator** sets up the shared service once; ordinary users do not need a hosting account, server or subscription. Free hosting plans have capacity limits. Unlimited permanently free operation is not guaranteed.
 
-Version 0.2.0 is a preview. The shared relay is running at `https://drevos-relay.eigner-th2010.workers.dev` and is included in the Pi package. Encrypted reads from a real oven and disconnection/reconnection have passed. The user confirmed QR pairing, real temperature readings and access outside the home Wi-Fi on a physical Android device. Android and iPhone compiler builds passed; iPhone signing and physical iOS validation remain pending. See [validation](docs/VALIDATION.md).
+Version 0.2.0 is a preview. The shared relay is running at `https://drevos-relay.eigner-th2010.workers.dev` and is included in the Pi package. Encrypted reads from a real oven and disconnection/reconnection have passed. The user confirmed QR pairing, real temperature readings and access outside the home Wi-Fi on a physical Android device. Android and iPhone compiler builds passed. The user also confirmed iPhone pairing, retained pairing after restart and real readings over mobile data. The web app passed desktop-browser pairing, live reading, reload and logout checks; phone PWA installation remains to be confirmed. See [validation](docs/VALIDATION.md).
+
+## Install the Web App
+
+**[Open Drevos Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site)**. On iPhone open in Safari, choose **Share → Add to Home Screen**, then pair inside the installed app. On Android choose **Install app** in the browser menu. No Apple Developer subscription or weekly signing is required. [Full PWA guide](docs/WEB-APP.md).
 
 ## Download the app
 
@@ -15,7 +19,7 @@ Files are available in the [preview release](https://github.com/eignerth2010-byt
 - A smoker matching the verified **`drevos_fx3u_v1` PLC profile**. A Drevos badge alone does not establish compatibility. Other programs/controllers require register validation before enabling writes.
 - Raspberry Pi 3 B, 3 B+, 4 B or Zero 2 W, Raspberry Pi OS, Python 3.11+, power supply, microSD and internet. All use the same program; 64-bit OS is recommended. Zero 2 W requires a USB OTG adapter for the cable. Only the 3 B+ has been physically verified.
 - An electrically compatible PLC programming cable. A USB-chip name alone is insufficient; never connect GPIO directly to an RS-232 interface.
-- Android 7+ or iOS/iPadOS 16.4+ and an installed app. Android preview APKs include ARM64 and ARMv7.
+- A current browser with HTTPS, IndexedDB and Web Crypto for the web app. Alternatively, the native app: Android 7+ or iOS/iPadOS 16.4+. Android preview APKs include ARM64 and ARMv7.
 - The operator-provided relay endpoint, automatically included in the Pi package and private pairing code.
 
 ## End-user setup
@@ -86,7 +90,7 @@ Updates reuse the same scripts and preserve existing pairing keys. Back up priva
 
 Loss of connectivity makes readings unavailable and disables controls. Unconfirmed writes are never retried automatically; inspect actual oven state after an error. The PLC continues independently. This app is not an emergency stop. Automatic mode and unsupported temperature units lock manual controls.
 
-The **demo** is isolated synthetic data. Web preview is demo-only; real pairing uses the installed app's protected storage.
+The **demo** is isolated synthetic data. The web app also supports real pairing and remote access. It encrypts pairing in origin-local browser storage; native apps use the operating system's protected storage. See the [PWA guide](docs/WEB-APP.md).
 
 ## Installing Android/iPhone builds
 

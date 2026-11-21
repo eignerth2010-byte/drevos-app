@@ -1,12 +1,16 @@
 # Drevos-App – deutsche Anleitung
 
-Die Drevos-App ist eine **eigenständige App für Android und iPhone/iPad**. Sie benötigt weder Home Assistant noch MQTT oder ein VPN. Der Pi verbindet sich von innen mit dem gemeinsamen Vermittlungsdienst. Eine Portfreigabe am Router ist nicht erforderlich.
+Die Drevos-App ist eine **eigenständige App für Android, iPhone/iPad und den Browser**. Sie benötigt weder Home Assistant noch MQTT oder ein VPN. Der Pi verbindet sich von innen mit dem gemeinsamen Vermittlungsdienst. Eine Portfreigabe am Router ist nicht erforderlich.
 
 Die App und ihre Funktionen können für die Nutzer kostenlos angeboten werden. Den gemeinsamen Dienst richtet **einmalig der Betreiber des Projekts** ein. Die Nutzer brauchen kein Cloudflare-Konto, keinen eigenen Server und kein Abo. Kostenlose Hosting-Tarife haben Nutzungsgrenzen; ein beliebig großer, dauerhaft kostenloser Betrieb wird nicht zugesichert.
 
-Die Version 0.2.0 ist eine Vorschau. Der gemeinsame Dienst ist unter `https://drevos-relay.eigner-th2010.workers.dev` eingerichtet und im Pi-Paket enthalten. Verschlüsselte Abfragen eines echten Ofens sowie Verbindungsabbruch und Wiederverbindung wurden geprüft. Der Nutzer hat auf einem echten Android-Gerät die QR-Kopplung, echte Temperaturen und den Zugriff außerhalb des Heim-WLANs bestätigt. Die Android- und iPhone-Pakete wurden erfolgreich gebaut; für iOS stehen Signierung und Gerätetest noch aus. Der genaue Prüfstand steht in [VALIDATION](docs/VALIDATION.md).
+Die Version 0.2.0 ist eine Vorschau. Der gemeinsame Dienst ist unter `https://drevos-relay.eigner-th2010.workers.dev` eingerichtet und im Pi-Paket enthalten. Verschlüsselte Abfragen eines echten Ofens sowie Verbindungsabbruch und Wiederverbindung wurden geprüft. Der Nutzer hat auf einem echten Android-Gerät die QR-Kopplung, echte Temperaturen und den Zugriff außerhalb des Heim-WLANs bestätigt. Die Android- und iPhone-Pakete wurden erfolgreich gebaut. Der Nutzer hat auch auf dem iPhone Kopplung, gespeicherte Kopplung nach Neustart und echte Werte über mobile Daten bestätigt. Die neue Web-App wurde im Desktop-Browser mit echter Kopplung, Messwerten, Neuladen und Abmelden geprüft; die Installation als Web-App auf dem Handy ist noch zu bestätigen. Der genaue Prüfstand steht in [VALIDATION](docs/VALIDATION.md).
 
-## App herunterladen
+## Web-App installieren
+
+**[Drevos Web-App öffnen](https://drevos-smoker-control.thankfulchick1.chatgpt.site)**. Auf dem iPhone in Safari öffnen, **Teilen → Zum Home-Bildschirm** wählen und anschließend über das neue Symbol koppeln. Auf Android im Browser **App installieren** wählen. Kein Apple-Entwicklerabo und keine wöchentliche Signierung nötig. [Vollständige PWA-Anleitung](docs/WEB-APP.md).
+
+## Native App herunterladen
 
 Die Dateien liegen im [Vorschau-Release](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.2.0-preview.1). Auf Android die Datei `Drevos-Android-0.2.0-Vorschau.apk` herunterladen, öffnen und die Installation selbst am Gerät bestätigen. Der Android-Build verwendet eine Testsignatur. Die iPhone-Datei ist ausdrücklich unsigniert und muss vor der Installation separat signiert werden. Diese Vorschau dient dem Gerätetest.
 
@@ -15,7 +19,7 @@ Die Dateien liegen im [Vorschau-Release](https://github.com/eignerth2010-byte/dr
 - Ein Drevos-Ofen mit dem **geprüften Steuerungsprofil `drevos_fx3u_v1`**. Der Markenname allein bestätigt keine Registerkompatibilität. Bei anderen Steuerungen dürfen Schreibbefehle erst nach Prüfung ihres Registerplans freigeschaltet werden.
 - Raspberry Pi 3 B, 3 B+, 4 B oder Zero 2 W mit Raspberry Pi OS, Python 3.11+, Stromversorgung, microSD und Internetzugang. Alle verwenden dasselbe Programm. 64-Bit-OS wird empfohlen. Der Zero 2 W benötigt für das Programmierkabel zusätzlich einen USB-OTG-Adapter. Physisch geprüft ist bislang der 3 B+.
 - Ein zur SPS elektrisch passendes USB-Programmierkabel. Der Name des USB-Chips allein bestätigt die Eignung nicht. Keine GPIO-Leitung direkt mit einer RS-232-Schnittstelle verbinden.
-- Android 7+ oder iOS/iPadOS 16.4+ und die installierte Drevos-App. Der Android-Testbuild enthält ARM64 und ARMv7.
+- Ein aktueller Browser mit HTTPS, IndexedDB und Web Crypto für die Web-App. Alternativ die native App: Android 7+ oder iOS/iPadOS 16.4+. Der Android-Testbuild enthält ARM64 und ARMv7.
 - Der vom Betreiber bereitgestellte öffentliche Relay-Endpunkt. Die Nutzer erhalten ihn automatisch mit dem Pi-Paket und dem Kopplungscode.
 
 ## So läuft die Einrichtung für den Nutzer ab
@@ -86,7 +90,7 @@ Updates benutzen dieselben Installationsskripte. Bestehende Kopplungsschlüssel 
 
 Bei Verbindungsproblemen stehen Werte auf nicht verfügbar und die Bedienung wird gesperrt. Die App wiederholt keine unbestätigten Befehle. Nach einer Fehlermeldung den tatsächlichen Zustand prüfen. Das SPS-Programm läuft selbstständig weiter; die App ist kein Not-Aus. Automatikbetrieb und nicht unterstützte Temperatureinheiten sperren die manuelle Bedienung.
 
-**Demo** verwendet ausschließlich Beispieldaten und verbindet sich mit keinem Ofen. Die Browser-Vorschau ist eine Demo; die echte Verbindung und der geschützte Schlüsselspeicher sind für die installierte App vorgesehen.
+**Demo** verwendet ausschließlich Beispieldaten und verbindet sich mit keinem Ofen. Auch die Web-App unterstützt echte Kopplung und Fernzugriff. Sie speichert die Kopplung verschlüsselt im jeweiligen Browserprofil; native Apps verwenden den geschützten Betriebssystemspeicher. Die Details stehen in der [Web-App-Anleitung](docs/WEB-APP.md).
 
 ## Android und iPhone installieren
 
