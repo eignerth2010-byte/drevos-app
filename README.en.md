@@ -10,7 +10,7 @@ This is a **standalone Android, iPhone/iPad and installable web app**. Home Assi
 
 App users can use the app and service free of charge. **The project operator** sets up the shared service once; ordinary users do not need a hosting account, server or subscription. Free hosting plans have capacity limits. Unlimited permanently free operation is not guaranteed.
 
-Version 0.2.0 is a preview. The shared relay is running at `https://drevos-relay.eigner-th2010.workers.dev` and is included in the Pi package. Encrypted reads from a real oven and disconnection/reconnection have passed. The user confirmed QR pairing, real temperature readings and access outside the home Wi-Fi on a physical Android device. Android and iPhone compiler builds passed. The user also confirmed iPhone pairing, retained pairing after restart and real readings over mobile data. The web app passed desktop-browser pairing, live reading, reload and logout checks; the user confirmed iPhone Home Screen installation, camera QR pairing, retained pairing after a full restart and live readings over mobile data. See [validation](docs/VALIDATION.md).
+Version **0.3.0 preview** adds a creator/support tab, configurable Android update checks, release notes and visible version numbers. The shared relay at `https://drevos-relay.eigner-th2010.workers.dev` is included in the Pi package. Earlier 0.2.0 Android/iPhone and iPhone Web App checks confirmed real temperatures, retained pairing and mobile-data access. The 0.3.0 browser checks and Android compilation are recorded separately in [validation](docs/VALIDATION.md). This is an independent community project; only the verified `drevos_fx3u_v1` PLC profile is supported.
 
 ## Install the Web App
 
@@ -18,7 +18,7 @@ Version 0.2.0 is a preview. The shared relay is running at `https://drevos-relay
 
 ## Download the app
 
-Files are available in the [preview release](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.2.0-preview.1). On Android, download and open `Drevos-Android-0.2.0-Vorschau.apk`, then personally confirm installation on the device. Android uses a test signature. The iPhone file is explicitly unsigned and needs separate signing before installation. This preview is intended for device testing.
+Download the [Android 0.3.0 preview APK and source](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.3.0-preview.1). Install `Drevos-Android-0.3.0-Vorschau.apk` over the existing app and confirm the update on Android. Do not uninstall first. Android uses the existing template test signature. The earlier [unsigned iPhone 0.2.0 package](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.2.0-preview.1) remains available and requires separate Apple signing; no new iPhone binary was built for this release. [Updates and release notes](docs/UPDATES.md).
 
 ## Requirements
 

@@ -10,7 +10,7 @@ Die Drevos-App ist eine **eigenständige App für Android, iPhone/iPad und den B
 
 Die App und ihre Funktionen können für die Nutzer kostenlos angeboten werden. Den gemeinsamen Dienst richtet **einmalig der Betreiber des Projekts** ein. Die Nutzer brauchen kein Cloudflare-Konto, keinen eigenen Server und kein Abo. Kostenlose Hosting-Tarife haben Nutzungsgrenzen; ein beliebig großer, dauerhaft kostenloser Betrieb wird nicht zugesichert.
 
-Die Version 0.2.0 ist eine Vorschau. Der gemeinsame Dienst ist unter `https://drevos-relay.eigner-th2010.workers.dev` eingerichtet und im Pi-Paket enthalten. Verschlüsselte Abfragen eines echten Ofens sowie Verbindungsabbruch und Wiederverbindung wurden geprüft. Der Nutzer hat auf einem echten Android-Gerät die QR-Kopplung, echte Temperaturen und den Zugriff außerhalb des Heim-WLANs bestätigt. Die Android- und iPhone-Pakete wurden erfolgreich gebaut. Der Nutzer hat auch auf dem iPhone Kopplung, gespeicherte Kopplung nach Neustart und echte Werte über mobile Daten bestätigt. Die neue Web-App wurde im Desktop-Browser mit echter Kopplung, Messwerten, Neuladen und Abmelden geprüft; der Nutzer hat auf dem iPhone die Installation zum Home-Bildschirm, Kamera-QR-Kopplung, gespeicherte Kopplung nach vollständigem Neustart und echte Werte über mobile Daten bestätigt. Der genaue Prüfstand steht in [VALIDATION](docs/VALIDATION.md).
+Version **0.3.0 ist eine Vorschau** mit Info-/Spenden-Tab, einstellbarer Android-Updateprüfung, Änderungsfenster und sichtbarer Versionsnummer. Der gemeinsame Dienst unter `https://drevos-relay.eigner-th2010.workers.dev` ist im Pi-Paket enthalten. Bei der früheren Version 0.2.0 wurden auf Android, iPhone und in der iPhone-Web-App echte Temperaturen, gespeicherte Kopplung und der Zugriff über mobile Daten bestätigt. Die Browserprüfungen und der Android-Build für 0.3.0 stehen getrennt in [VALIDATION](docs/VALIDATION.md). Es handelt sich um ein unabhängiges Community-Projekt; unterstützt wird das geprüfte SPS-Profil `drevos_fx3u_v1`.
 
 ## Web-App installieren
 
@@ -18,7 +18,7 @@ Die Version 0.2.0 ist eine Vorschau. Der gemeinsame Dienst ist unter `https://dr
 
 ## Native App herunterladen
 
-Die Dateien liegen im [Vorschau-Release](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.2.0-preview.1). Auf Android die Datei `Drevos-Android-0.2.0-Vorschau.apk` herunterladen, öffnen und die Installation selbst am Gerät bestätigen. Der Android-Build verwendet eine Testsignatur. Die iPhone-Datei ist ausdrücklich unsigniert und muss vor der Installation separat signiert werden. Diese Vorschau dient dem Gerätetest.
+Die [Android-APK 0.3.0 und der Quellcode](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.3.0-preview.1) stehen zum Download bereit. `Drevos-Android-0.3.0-Vorschau.apk` über die vorhandene App installieren und das Update am Android-Gerät bestätigen. Vorher nicht deinstallieren. Der Android-Build verwendet weiterhin die bisherige Testsignatur. Das frühere [unsignierte iPhone-Paket 0.2.0](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.2.0-preview.1) bleibt verfügbar und muss separat von Apple signiert werden; für diese Veröffentlichung wurde kein neues iPhone-Paket gebaut. [Update-Anleitung und Änderungsfenster](docs/UPDATES.md).
 
 ## Was benötigt wird
 
