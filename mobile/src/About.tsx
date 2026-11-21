@@ -33,15 +33,15 @@ export function About({
     [error, setError] = useState("");
   const copy = german
     ? {
-        title: "Info & UnterstÃ¼tzen",
+        title: "Info & Unterstützen",
         created: "Erstellt von",
-        project: "UnabhÃ¤ngiges Community-Projekt",
+        project: "Unabhängiges Community-Projekt",
         support: "Dir hilft die App?",
         thanks:
-          "Mit einer freiwilligen Spende unterstÃ¼tzt du die Weiterentwicklung. Vielen Dank!",
-        donate: "Ãœber PayPal unterstÃ¼tzen",
+          "Mit einer freiwilligen Spende unterstützt du die Weiterentwicklung. Vielen Dank!",
+        donate: "Über PayPal unterstützen",
         voluntary:
-          "Ã–ffnet PayPal im Browser. Die Spende ist freiwillig; Nutzung bleibt kostenlos. Verkauf und kommerzielle Weitergabe nur mit schriftlicher Freigabe von Thomas Eigner.",
+          "Öffnet PayPal im Browser. Die Spende ist freiwillig; Nutzung bleibt kostenlos. Verkauf und kommerzielle Weitergabe nur mit schriftlicher Freigabe von Thomas Eigner.",
         github: "Projekt auf GitHub",
         guide: "Installationsanleitung",
         notes: "Was ist neu?",
@@ -49,17 +49,17 @@ export function About({
         updates: "Android-Updates",
         auto: "Automatisch nach Updates suchen",
         frequency:
-          "Beim Ã–ffnen der App, hÃ¶chstens einmal tÃ¤glich. Ãœbertragen werden keine Ofen- oder Kopplungsdaten.",
-        check: "Jetzt prÃ¼fen",
-        checking: "Wird geprÃ¼ft â€¦",
-        current: "Du verwendest die aktuelle verÃ¶ffentlichte Android-Version.",
+          "Beim Öffnen der App, höchstens einmal täglich. Übertragen werden keine Ofen- oder Kopplungsdaten.",
+        check: "Jetzt prüfen",
+        checking: "Wird geprüft …",
+        current: "Du verwendest die aktuelle veröffentlichte Android-Version.",
         download: "Update herunterladen",
-        available: "Neue Android-Version verfÃ¼gbar",
-        last: "Letzte PrÃ¼fung",
+        available: "Neue Android-Version verfügbar",
+        last: "Letzte Prüfung",
         install:
-          "Der Download Ã¶ffnet sich im Browser. AnschlieÃŸend bestÃ¤tigst du die APK-Installation am Android-GerÃ¤t. Deine bestehende App dabei aktualisieren; nicht vorher deinstallieren.",
+          "Der Download öffnet sich im Browser. Anschließend bestätigst du die APK-Installation am Android-Gerät. Deine bestehende App dabei aktualisieren; nicht vorher deinstallieren.",
         network:
-          "Updates konnten nicht geprÃ¼ft werden. Bitte spÃ¤ter erneut versuchen.",
+          "Updates konnten nicht geprüft werden. Bitte später erneut versuchen.",
         settings:
           "Die Update-Einstellung konnte nicht gespeichert oder geladen werden.",
       }
@@ -72,17 +72,17 @@ export function About({
           "An optional donation helps support continued development. Thank you!",
         donate: "Support via PayPal",
         voluntary:
-          "Opens PayPal in your browser. Donations are optional; private personal use remains free. Commercial use requires Thomas Eignerâ€™s written permission.",
+          "Opens PayPal in your browser. Donations are optional; private personal use remains free. Commercial use requires Thomas Eigner’s written permission.",
         github: "Project on GitHub",
         guide: "Installation guide",
-        notes: "Whatâ€™s new?",
+        notes: "What’s new?",
         version: "Version",
         updates: "Android updates",
         auto: "Check for updates automatically",
         frequency:
           "When opening the app, at most once a day. No oven data or pairing credentials are sent.",
         check: "Check now",
-        checking: "Checking â€¦",
+        checking: "Checking …",
         current: "You have the current published Android version.",
         download: "Download update",
         available: "New Android version available",
@@ -99,7 +99,7 @@ export function About({
     } catch {
       setError(
         german
-          ? "Der Link konnte nicht geÃ¶ffnet werden."
+          ? "Der Link konnte nicht geöffnet werden."
           : "Could not open this link.",
       );
     }
@@ -136,11 +136,11 @@ export function About({
         <Text style={s.name}>{PROJECT_AUTHOR}</Text>
         <Text style={s.body}>{copy.project}</Text>
         <Text style={s.muted}>
-          {copy.version} {APP_VERSION} Â·{" "}
+          {copy.version} {APP_VERSION} ·{" "}
           {Platform.OS === "web"
             ? "Web-App"
             : german
-              ? "EigenstÃ¤ndige App"
+              ? "Eigenständige App"
               : "Standalone app"}
         </Text>
         {button(copy.notes, onShowChanges)}
