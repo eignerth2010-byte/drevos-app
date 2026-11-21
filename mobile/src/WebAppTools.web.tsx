@@ -5,15 +5,13 @@ type InstallEvent = Event & {
 };
 export function WebAppTools({
   language,
-  busy,
 }: {
   language: "de" | "en";
   busy: boolean;
 }) {
   const german = language === "de",
     [install, setInstall] = useState<InstallEvent | null>(null),
-    [installed, setInstalled] = useState(false),
-    [update, setUpdate] = useState(false);
+    [installed, setInstalled] = useState(false);
   useEffect(() => {
     const media = matchMedia("(display-mode: standalone)");
     const sync = () =>
@@ -27,22 +25,16 @@ export function WebAppTools({
       event.preventDefault();
       setInstall(event as InstallEvent);
     };
-    const ready = () => setUpdate(true),
-      done = () => {
-        setInstalled(true);
-        setInstall(null);
-      };
+    const done = () => {
+      setInstalled(true);
+      setInstall(null);
+    };
     window.addEventListener("beforeinstallprompt", offer);
     window.addEventListener("appinstalled", done);
-    window.addEventListener("drevos:update-ready", ready);
-    void navigator.serviceWorker?.getRegistration().then((r) => {
-      if (r?.waiting) setUpdate(true);
-    });
     return () => {
       media.removeEventListener("change", sync);
       window.removeEventListener("beforeinstallprompt", offer);
       window.removeEventListener("appinstalled", done);
-      window.removeEventListener("drevos:update-ready", ready);
     };
   }, []);
   const ios =
@@ -58,7 +50,7 @@ export function WebAppTools({
     fontWeight: 600,
     cursor: "pointer",
   };
-  if (installed && !update) return null;
+  if (installed) return null;
   return (
     <aside
       aria-label={german ? "Web-App installieren" : "Install web app"}
@@ -74,62 +66,43 @@ export function WebAppTools({
         gap: 12,
       }}
     >
-      {update ? (
+      {!installed && (
         <>
           <strong style={{ fontSize: 18 }}>
-            {german ? "Neue Version verfügbar" : "New version available"}
+            {german
+              ? "Drevos zum Home-Bildschirm hinzufügen"
+              : "Add Drevos to your home screen"}
           </strong>
-          <button
-            disabled={busy}
-            style={button}
-            onClick={() => {
-              void navigator.serviceWorker
-                .getRegistration()
-                .then((r) => r?.waiting?.postMessage({ type: "SKIP_WAITING" }));
+          <p
+            style={{
+              fontSize: 16,
+              lineHeight: 1.5,
+              margin: 0,
+              color: "#a9b4b9",
             }}
           >
-            {german ? "Neue Version laden" : "Load new version"}
-          </button>
-        </>
-      ) : (
-        !installed && (
-          <>
-            <strong style={{ fontSize: 18 }}>
-              {german
-                ? "Drevos zum Home-Bildschirm hinzufügen"
-                : "Add Drevos to your home screen"}
-            </strong>
-            <p
-              style={{
-                fontSize: 16,
-                lineHeight: 1.5,
-                margin: 0,
-                color: "#a9b4b9",
+            {german
+              ? ios
+                ? "In Safari „Teilen“ und „Zum Home-Bildschirm“ wählen. Danach Drevos über das neue Symbol öffnen und den Ofen dort koppeln."
+                : "Im Browsermenü „App installieren“ oder „Zum Startbildschirm hinzufügen“ wählen. Du kannst Drevos auch direkt im Browser verwenden."
+              : ios
+                ? "In Safari choose Share, then Add to Home Screen. Open Drevos using its new icon and pair your oven there."
+                : "Choose Install app or Add to Home screen in your browser menu. You can also use Drevos directly in the browser."}
+          </p>
+          {!!install && (
+            <button
+              style={button}
+              onClick={() => {
+                void install
+                  .prompt()
+                  .then(() => install.userChoice)
+                  .then(() => setInstall(null));
               }}
             >
-              {german
-                ? ios
-                  ? "In Safari „Teilen“ und „Zum Home-Bildschirm“ wählen. Danach Drevos über das neue Symbol öffnen und den Ofen dort koppeln."
-                  : "Im Browsermenü „App installieren“ oder „Zum Startbildschirm hinzufügen“ wählen. Du kannst Drevos auch direkt im Browser verwenden."
-                : ios
-                  ? "In Safari choose Share, then Add to Home Screen. Open Drevos using its new icon and pair your oven there."
-                  : "Choose Install app or Add to Home screen in your browser menu. You can also use Drevos directly in the browser."}
-            </p>
-            {!!install && (
-              <button
-                style={button}
-                onClick={() => {
-                  void install
-                    .prompt()
-                    .then(() => install.userChoice)
-                    .then(() => setInstall(null));
-                }}
-              >
-                {german ? "Drevos installieren" : "Install Drevos"}
-              </button>
-            )}
-          </>
-        )
+              {german ? "Drevos installieren" : "Install Drevos"}
+            </button>
+          )}
+        </>
       )}
     </aside>
   );
