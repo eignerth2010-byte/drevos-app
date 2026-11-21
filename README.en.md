@@ -101,3 +101,9 @@ macOS 13 Ventura cannot run the Xcode 26.4+ required for this Expo SDK 58 projec
 Only the project operator provisions the relay once: [cloud/README](cloud/README.md). Cloudflare's free plan has hard usage limits and does not automatically become a paid subscription; exceeding limits can interrupt connectivity. Plan capacity and maintenance before serving many users. [Official limits](https://developers.cloudflare.com/durable-objects/platform/pricing/).
 
 [Privacy](docs/PRIVACY.md) · [Validation](docs/VALIDATION.md) · [GitHub guide](docs/GITHUB.en.md) · [Deutsch](README.de.md)
+
+## Support this project
+
+If this project helps you, you can support its continued development with a voluntary donation via PayPal. Thank you!
+
+[![Donate via PayPal](https://img.shields.io/badge/Donate-PayPal-0070BA?logo=paypal&logoColor=white)](https://www.paypal.me/ThomasEigner877)

@@ -33,3 +33,11 @@ The relay cannot decrypt readings or control messages. Commands require a fresh 
 - [MIT license](LICENSE); supplied brand assets have [separate terms](mobile/BRAND-NOTICE.md).
 
 Keep gateway configuration, cloud agent configuration and pairing codes private. Neither real credentials nor the original PLC project are part of this repository.
+
+## Unterstützen / Support
+
+Wenn dir dieses Projekt hilft, kannst du die Weiterentwicklung mit einer freiwilligen Spende über PayPal unterstützen. Vielen Dank!
+
+If this project helps you, you can support its continued development with a voluntary donation via PayPal. Thank you!
+
+[![PayPal – Spenden / Donate](https://img.shields.io/badge/Donate-PayPal-0070BA?logo=paypal&logoColor=white)](https://www.paypal.me/ThomasEigner877)

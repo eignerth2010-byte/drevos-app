@@ -101,3 +101,9 @@ macOS 13 Ventura kann das für diesen Expo-SDK-58-Build benötigte Xcode 26.4+ n
 Nur der Projektbetreiber richtet den Dienst einmalig ein: [cloud/README](cloud/README.md). Das kostenlose Cloudflare-Kontingent wird nicht automatisch in ein kostenpflichtiges Abo umgewandelt; beim Erreichen der Gratisgrenzen kann die Verbindung ausfallen. Ein öffentlicher Dienst für viele Nutzer erfordert Kapazitätsplanung und Wartung. [Offizielle Tarifgrenzen](https://developers.cloudflare.com/durable-objects/platform/pricing/).
 
 [Datenschutz und Schlüssel](docs/PRIVACY.md) · [Prüfstand](docs/VALIDATION.md) · [GitHub-Anleitung](docs/GITHUB.de.md) · [English](README.en.md)
+
+## Projekt unterstützen
+
+Wenn dir dieses Projekt hilft, kannst du die Weiterentwicklung mit einer freiwilligen Spende über PayPal unterstützen. Vielen Dank!
+
+[![Über PayPal spenden](https://img.shields.io/badge/Donate-PayPal-0070BA?logo=paypal&logoColor=white)](https://www.paypal.me/ThomasEigner877)
