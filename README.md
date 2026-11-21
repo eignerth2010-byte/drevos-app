@@ -1,5 +1,9 @@
 # Drevos App
 
+**[Einfach starten – Pi und App installieren](docs/INSTALLATION.de.md)** · **[Easy setup – Pi and app](docs/INSTALLATION.en.md)**
+
+[Welcher Pi, welches Netzteil und welches Kabel? / Hardware list](docs/HARDWARE.md)
+
 [Deutsch – vollständige Anleitung](README.de.md) · [English – complete guide](README.en.md)
 
 Standalone **iOS, Android and installable web app** for a Drevos smoker connected to a Raspberry Pi. Home Assistant, MQTT, a VPN and router port forwarding are not required. An optional existing Home Assistant integration can continue using the same local gateway.

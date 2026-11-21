@@ -1,5 +1,9 @@
 # Drevos-App – deutsche Anleitung
 
+**Neu hier? [Einfach starten – Pi und App installieren](docs/INSTALLATION.de.md).** Mit Materialliste, Befehlen zum Kopieren und Einrichtung von Web-App oder Handy-App.
+
+**[Welcher Pi und welches Kabel?](docs/HARDWARE.md)** Für die normale Installation ist die Dienstadresse bereits hinterlegt; du musst keinen eigenen Dienstnamen einsetzen.
+
 Die Drevos-App ist eine **eigenständige App für Android, iPhone/iPad und den Browser**. Sie benötigt weder Home Assistant noch MQTT oder ein VPN. Der Pi verbindet sich von innen mit dem gemeinsamen Vermittlungsdienst. Eine Portfreigabe am Router ist nicht erforderlich.
 
 Die App und ihre Funktionen können für die Nutzer kostenlos angeboten werden. Den gemeinsamen Dienst richtet **einmalig der Betreiber des Projekts** ein. Die Nutzer brauchen kein Cloudflare-Konto, keinen eigenen Server und kein Abo. Kostenlose Hosting-Tarife haben Nutzungsgrenzen; ein beliebig großer, dauerhaft kostenloser Betrieb wird nicht zugesichert.
@@ -50,27 +54,23 @@ sudo systemctl enable --now drevos-gateway.service drevos-native-poweroff.path
 
 Temperaturen und Registerprofil am Display verifizieren. Nur beim bestätigten Profil `allow_control` in der privaten Konfiguration bewusst freigeben und den Gateway-Dienst neu starten. Die App funktioniert auch zum Ablesen, während die Bedienung gesperrt bleibt.
 
-Der Projektbetreiber hinterlegt den echten öffentlichen Endpunkt in `cloud/endpoint.json`. Sobald das Paket ihn enthält:
+**Normale Installation:** Die gemeinsame Dienstadresse ist bereits in `cloud/endpoint.json` eingetragen. Führe auf dem Pi im Projektordner genau diesen Befehl aus; keine Adresse ergänzen und keinen Dienstnamen ersetzen:
 
 ```sh
 sudo sh scripts/install-cloud.sh
 ```
 
-Für einen eigenen Relay-Endpunkt kann der Betreiber ihn als Argument angeben:
-
-```sh
-sudo sh scripts/install-cloud.sh https://DEIN-DIENST.DEIN-KONTO.workers.dev
-```
+Der verwendete gemeinsame Dienst lautet `https://drevos-relay.eigner-th2010.workers.dev`. Ein eigener Cloudflare-Zugang ist für Nutzer nicht erforderlich. Wer bewusst einen eigenen Dienst betreiben möchte, findet diesen getrennten Entwicklerweg in [cloud/README](cloud/README.md).
 
 Der Installer installiert den getrennten Hintergrunddienst `drevos-cloud.service`. Seine privaten Schlüssel liegen unter `/etc/drevos-cloud/`. Ein älteres lokales Gateway wird auf die Version mit sofortiger Ablehnung beschäftigter Schreibzugriffe aktualisiert. Die vorhandene Gateway-Konfiguration und die SPS-Werte bleiben erhalten; beim Aktualisieren wird die API kurz neu gestartet.
 
-Die Kopplungsseite anschließend für fünf Minuten öffnen. `DEINE_PI_IP` durch die LAN-Adresse des Pi ersetzen:
+Die Kopplungsseite anschließend für fünf Minuten öffnen. Mit dem in der einfachen Anleitung festgelegten Gerätenamen ist der Befehl direkt kopierbar:
 
 ```sh
-sudo /opt/drevos-cloud/.venv/bin/drevos-cloud --pair --pair-bind DEINE_PI_IP
+sudo /opt/drevos-cloud/.venv/bin/drevos-cloud --pair --pair-bind drevos-pi.local
 ```
 
-Im Heimnetz `http://drevos-pi.local:8765` öffnen und wie oben koppeln. Bei geändertem Hostnamen `--pair-hostname DEIN-HOSTNAME.local` ergänzen. Keine Portfreigabe für diese Seite oder den Gateway-Port einrichten.
+Im Heimnetz `http://drevos-pi.local:8765` öffnen und wie oben koppeln. Bei geändertem Hostnamen diesen im `--pair-bind`-Argument und in der Browseradresse einsetzen sowie mit `--pair-hostname` angeben. Keine Portfreigabe für diese Seite oder den Gateway-Port einrichten.
 
 Prüfen:
 

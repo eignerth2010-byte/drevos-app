@@ -1,5 +1,9 @@
 # Drevos app – English guide
 
+**New here? [Easy setup – install the Pi and app](docs/INSTALLATION.en.md).** Includes the hardware list, copyable commands and web/native app setup.
+
+**[Pi models, supplies and exact cable](docs/HARDWARE.md)**. The shared service URL is preconfigured; normal users do not replace a relay/account placeholder.
+
 This is a **standalone Android, iPhone/iPad and installable web app**. Home Assistant, MQTT, VPN software and router port forwarding are not required. The Raspberry Pi makes an outbound connection to a shared relay service. An existing HA installation can continue independently.
 
 App users can use the app and service free of charge. **The project operator** sets up the shared service once; ordinary users do not need a hosting account, server or subscription. Free hosting plans have capacity limits. Unlimited permanently free operation is not guaranteed.
@@ -50,27 +54,23 @@ sudo systemctl enable --now drevos-gateway.service drevos-native-poweroff.path
 
 Verify readings and the controller profile against the display. Enable `allow_control` deliberately only for the verified profile, then restart the gateway. The app can display readings while controls remain disabled.
 
-The project operator puts the real HTTPS relay address in `cloud/endpoint.json`. Once included in the package:
+**Normal installation:** The shared service is already configured in `cloud/endpoint.json`. Run exactly this command in the Pi project folder; do not append a server URL or replace an account placeholder:
 
 ```sh
 sudo sh scripts/install-cloud.sh
 ```
 
-An operator using their own relay can provide its URL explicitly:
-
-```sh
-sudo sh scripts/install-cloud.sh https://YOUR-RELAY.YOUR-ACCOUNT.workers.dev
-```
+The included shared service is `https://drevos-relay.eigner-th2010.workers.dev`. App users do not need a Cloudflare account. Running your own relay is a separate developer route in [cloud/README](cloud/README.md).
 
 The installer adds the separate `drevos-cloud.service`, with private keys under `/etc/drevos-cloud/`. It upgrades older gateway software to the version that immediately refuses busy writes, preserving existing configuration and PLC values. A gateway upgrade briefly restarts its API.
 
-Open the five-minute LAN pairing page, replacing `YOUR_PI_IP` with the Pi's LAN address:
+Open the five-minute LAN pairing page using the hostname from the easy setup guide:
 
 ```sh
-sudo /opt/drevos-cloud/.venv/bin/drevos-cloud --pair --pair-bind YOUR_PI_IP
+sudo /opt/drevos-cloud/.venv/bin/drevos-cloud --pair --pair-bind drevos-pi.local
 ```
 
-Visit `http://drevos-pi.local:8765` on the home network. Add `--pair-hostname YOUR-HOSTNAME.local` if the hostname differs. Never forward this setup page or the local gateway port to the internet.
+Visit `http://drevos-pi.local:8765` on the home network. If the hostname differs, use it in `--pair-bind` and the browser URL and also specify it with `--pair-hostname`. Never forward this setup page or the local gateway port to the internet.
 
 Check startup:
 
