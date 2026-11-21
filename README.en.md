@@ -1,4 +1,4 @@
-# Drevos app â€“ English guide
+# Drevos app – English guide
 
 **New in 0.3.1:** Temporary community wordmark and revised resale terms. Use remains free; earlier MIT rights are unaffected. [License details](docs/LICENSING.md).
 
@@ -6,7 +6,7 @@
 
 **Already use Drevos in Home Assistant? [Add only the app](docs/HA-UND-APP.en.md#a-home-assistant-works-add-the-app).** Or [add HA to an existing app setup](docs/HA-UND-APP.en.md#b-the-app-works-add-home-assistant).
 
-**New here? [Easy setup â€“ install the Pi and app](docs/INSTALLATION.en.md).** Includes the hardware list, copyable commands and web/native app setup.
+**New here? [Easy setup – install the Pi and app](docs/INSTALLATION.en.md).** Includes the hardware list, copyable commands and web/native app setup.
 
 **[Pi models, supplies and exact cable](docs/HARDWARE.md)**. The shared service URL is preconfigured; normal users do not replace a relay/account placeholder.
 
@@ -18,7 +18,7 @@ Version **0.3.1 preview** adds a creator/support tab, configurable Android updat
 
 ## Install the Web App
 
-**[Open Drevos Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site)**. On iPhone open in Safari, choose **Share â†’ Add to Home Screen**, then pair inside the installed app. On Android choose **Install app** in the browser menu. No Apple Developer subscription or weekly signing is required. [Full PWA guide](docs/WEB-APP.md).
+**[Open Drevos Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site)**. On iPhone open in Safari, choose **Share → Add to Home Screen**, then pair inside the installed app. On Android choose **Install app** in the browser menu. No Apple Developer subscription or weekly signing is required. [Full PWA guide](docs/WEB-APP.md).
 
 ## Download the app
 
@@ -88,9 +88,9 @@ Updates reuse the same scripts and preserve existing pairing keys. Back up priva
 
 ## Controls
 
-**Oven:** view chamber/core temperatures and smoke level. Edit targets and press **Apply**. Limits: chamber 0â€“120 Â°C, core 0â€“115 Â°C, smoke 0â€“100%. A positive target does not start heating or smoke. Separate heating/smoke starts ask for confirmation; smoke also triggers the PLC's automatic ignition. Zero disables the relevant request; a zero core target disables that completion criterion.
+**Oven:** view chamber/core temperatures and smoke level. Edit targets and press **Apply**. Limits: chamber 0–120 °C, core 0–115 °C, smoke 0–100%. A positive target does not start heating or smoke. Separate heating/smoke starts ask for confirmation; smoke also triggers the PLC's automatic ignition. Zero disables the relevant request; a zero core target disables that completion criterion.
 
-**Timer:** set 1â€“9999 minutes, start, pause and reset. Elapsed/remaining time comes from the PLC, not a phone clock. Starting the timer does not start heating or smoke. Pause/reset/shutdown require heating and smoke off; reset/shutdown also require a paused timer.
+**Timer:** set 1–9999 minutes, start, pause and reset. Elapsed/remaining time comes from the PLC, not a phone clock. Starting the timer does not start heating or smoke. Pause/reset/shutdown require heating and smoke off; reset/shutdown also require a paused timer.
 
 **Connection:** change language, refresh, remove this phone's pairing or shut down the Pi. The app cannot power the Pi back on. Pi shutdown does not disconnect oven mains power.
 
@@ -110,13 +110,13 @@ macOS 13 Ventura cannot run the Xcode 26.4+ required for this Expo SDK 58 projec
 
 Only the project operator provisions the relay once: [cloud/README](cloud/README.md). Cloudflare's free plan has hard usage limits and does not automatically become a paid subscription; exceeding limits can interrupt connectivity. Plan capacity and maintenance before serving many users. [Official limits](https://developers.cloudflare.com/durable-objects/platform/pricing/).
 
-[Privacy](docs/PRIVACY.md) Â· [Validation](docs/VALIDATION.md) Â· [GitHub guide](docs/GITHUB.en.md) Â· [Deutsch](README.de.md)
+[Privacy](docs/PRIVACY.md) · [Validation](docs/VALIDATION.md) · [GitHub guide](docs/GITHUB.en.md) · [Deutsch](README.de.md)
 
 ## Preview
 
 ![Drevos sample interface](docs/assets/drevos-app-demo.jpg)
 
-Drevos app 0.3.1 â€“ Web App in demo mode with sample values.
+Drevos app 0.3.1 – Web App in demo mode with sample values.
 
 ## Contributors
 

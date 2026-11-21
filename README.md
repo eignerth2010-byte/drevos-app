@@ -1,16 +1,16 @@
 # Drevos App
 
-**Lizenz ab 21.11.2026:** Private und betriebsinterne Nutzung kostenlos; Verkauf und kommerzielle Weitergabe nur mit vorheriger schriftlicher Freigabe von **Thomas Eigner**. [Bedingungen, frÃ¼here MIT-Fassungen und Kontakt](docs/LICENSING.md).
+**Lizenz ab 21.11.2026:** Private und betriebsinterne Nutzung kostenlos; Verkauf und kommerzielle Weitergabe nur mit vorheriger schriftlicher Freigabe von **Thomas Eigner**. [Bedingungen, frühere MIT-Fassungen und Kontakt](docs/LICENSING.md).
 
 **License from 2026-11-21:** Free for private and internal business use; resale and commercial redistribution require **Thomas Eigner's prior written permission**. [Terms, earlier MIT versions and contact](docs/LICENSING.md).
 
-**Already have HA or the app? [Was brauche ich zusÃ¤tzlich?](docs/HA-UND-APP.de.md)** Â· **[HA + app, English](docs/HA-UND-APP.en.md)**
+**Already have HA or the app? [Was brauche ich zusätzlich?](docs/HA-UND-APP.de.md)** · **[HA + app, English](docs/HA-UND-APP.en.md)**
 
-**[Einfach starten â€“ Pi und App installieren](docs/INSTALLATION.de.md)** Â· **[Easy setup â€“ Pi and app](docs/INSTALLATION.en.md)**
+**[Einfach starten – Pi und App installieren](docs/INSTALLATION.de.md)** · **[Easy setup – Pi and app](docs/INSTALLATION.en.md)**
 
 [Welcher Pi, welches Netzteil und welches Kabel? / Hardware list](docs/HARDWARE.md)
 
-[Deutsch â€“ vollstÃ¤ndige Anleitung](README.de.md) Â· [English â€“ complete guide](README.en.md)
+[Deutsch – vollständige Anleitung](README.de.md) · [English – complete guide](README.en.md)
 
 Standalone **iOS, Android and installable web app** for a Drevos smoker connected to a Raspberry Pi. Home Assistant, a VPN and router port forwarding are not required. An optional existing Home Assistant integration can continue using the same local gateway.
 
@@ -20,7 +20,7 @@ Version **0.3.1 preview** adds a creator/support tab, configurable Android updat
 
 Download the [Android 0.3.1 preview APK and source](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.3.1-preview.1). Install `Drevos-Android-0.3.1-Vorschau.apk` over the existing app and confirm the update on Android. Do not uninstall first. Android uses the existing template test signature. The earlier [unsigned iPhone 0.2.0 package](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.2.0-preview.1) remains available and requires separate Apple signing; no new iPhone binary was built for this release. [Updates and release notes](docs/UPDATES.md).
 
-**[Open the installable Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site)** Â· [iPhone/Android installation and self-hosting guide](docs/WEB-APP.md). Open in Safari on iPhone, add to the Home Screen, then pair inside the installed app. No weekly Apple signing is required for the web app.
+**[Open the installable Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site)** · [iPhone/Android installation and self-hosting guide](docs/WEB-APP.md). Open in Safari on iPhone, add to the Home Screen, then pair inside the installed app. No weekly Apple signing is required for the web app.
 
 Included: native app, installable PWA and smoker-style interface, local Pi gateway, outbound encrypted Pi agent, Cloudflare relay source, short-lived QR/copy pairing page, installers, systemd units, tests, and German/English user and GitHub guides.
 
@@ -51,22 +51,22 @@ Keep gateway configuration, cloud agent configuration and pairing codes private.
 
 ## Vorschau / Preview
 
-![Drevos â€“ Beispielansicht / Sample interface](docs/assets/drevos-app-demo.jpg)
+![Drevos – Beispielansicht / Sample interface](docs/assets/drevos-app-demo.jpg)
 
-Drevos-App 0.3.1 â€“ Web-App im Demomodus mit Beispielwerten. / Drevos app 0.3.1 â€“ Web App in demo mode with sample values.
+Drevos-App 0.3.1 – Web-App im Demomodus mit Beispielwerten. / Drevos app 0.3.1 – Web App in demo mode with sample values.
 
 ## Mitwirkende / Contributors
 
-**Thomas Eigner** â€“ Ersteller / creator. **ChatGPT (OpenAI)** â€“ KI-UnterstÃ¼tzung bei Entwicklung, Tests und Dokumentation / AI assistance with development, software checks and documentation. [Details](CONTRIBUTORS.md).
+**Thomas Eigner** – Ersteller / creator. **ChatGPT (OpenAI)** – KI-Unterstützung bei Entwicklung, Tests und Dokumentation / AI assistance with development, software checks and documentation. [Details](CONTRIBUTORS.md).
 
-## UnterstÃ¼tzen / Support
+## Unterstützen / Support
 
-Wenn dir dieses Projekt hilft, kannst du die Weiterentwicklung mit einer freiwilligen Spende Ã¼ber PayPal unterstÃ¼tzen. Vielen Dank!
+Wenn dir dieses Projekt hilft, kannst du die Weiterentwicklung mit einer freiwilligen Spende über PayPal unterstützen. Vielen Dank!
 
 If this project helps you, you can support its continued development with a voluntary donation via PayPal. Thank you!
 
-[![PayPal â€“ Spenden / Donate](https://img.shields.io/badge/Donate-PayPal-0070BA?logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=GSMP9644VUY8C)
+[![PayPal – Spenden / Donate](https://img.shields.io/badge/Donate-PayPal-0070BA?logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=GSMP9644VUY8C)
 
 QR-Code scannen / Scan the QR code:
 
-[![PayPal â€“ Spenden-QR-Code / Donation QR code](docs/assets/paypal-donate-qr.png)](https://www.paypal.com/donate/?hosted_button_id=GSMP9644VUY8C)
+[![PayPal – Spenden-QR-Code / Donation QR code](docs/assets/paypal-donate-qr.png)](https://www.paypal.com/donate/?hosted_button_id=GSMP9644VUY8C)
