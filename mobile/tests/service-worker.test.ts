@@ -2,10 +2,11 @@ import { describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
 
-function worker() {
+function worker(online = false) {
   const listeners: Record<string, (event: any) => void> = {};
   const match = vi.fn(async () => new Response("offline application shell"));
   const fetch = vi.fn(async () => {
+    if (online) return new Response("current published HTML");
     throw Error("offline");
   });
   const code = readFileSync(
@@ -29,6 +30,23 @@ function worker() {
   return { listeners, match, fetch };
 }
 describe("offline shell boundary", () => {
+  it("loads the current published app on navigation without cached HTML or forced activation", async () => {
+    const x = worker(true);
+    const request = {
+      method: "GET",
+      url: "https://app.example/",
+      mode: "navigate",
+    };
+    let result: Promise<Response> | undefined;
+    x.listeners.fetch({
+      request,
+      respondWith: (r: Promise<Response>) => (result = r),
+    });
+    expect(await (await result!).text()).toBe("current published HTML");
+    expect(x.fetch).toHaveBeenCalledWith(request, { cache: "no-store" });
+    expect(x.match).not.toHaveBeenCalled();
+    expect(x.listeners.message).toBeUndefined();
+  });
   it.each([
     { method: "POST", url: "https://app.example/api/v1/command", mode: "cors" },
     { method: "GET", url: "https://app.example/api/v1/state", mode: "cors" },
