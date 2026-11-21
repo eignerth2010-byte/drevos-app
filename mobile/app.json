@@ -2,17 +2,17 @@
   "expo": {
     "name": "Drevos",
     "slug": "drevos-mobile",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "scheme": "drevos",
     "orientation": "default",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#101315",
     "ios": {
       "bundleIdentifier": "at.eignerth.drevos",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "supportsTablet": true,
       "infoPlist": {
-        "NSLocalNetworkUsageDescription": "Drevos verbindet sich direkt mit deinem Raspberry Pi, um deinen R\u00e4ucherofen zu bedienen.",
+        "NSLocalNetworkUsageDescription": "Drevos verbindet sich direkt mit deinem Raspberry Pi, um deinen Räucherofen zu bedienen.",
         "NSAppTransportSecurity": {
           "NSAllowsLocalNetworking": true
         },
@@ -21,7 +21,7 @@
     },
     "android": {
       "package": "at.eignerth.drevos",
-      "versionCode": 2,
+      "versionCode": 3,
       "permissions": [
         "INTERNET",
         "ACCESS_NETWORK_STATE"
@@ -50,7 +50,7 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Drevos verwendet die Kamera ausschlie\u00dflich zum Scannen deines lokalen Kopplungscodes.",
+          "cameraPermission": "Drevos verwendet die Kamera ausschließlich zum Scannen deines lokalen Kopplungscodes.",
           "recordAudioAndroid": false
         }
       ]

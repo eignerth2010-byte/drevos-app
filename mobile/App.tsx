@@ -16,6 +16,9 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { PairingScanner } from "./src/Scanner";
 import { WebAppTools } from "./src/WebAppTools";
+import { About } from "./src/About";
+import { WhatsNew } from "./src/WhatsNew";
+import { useAndroidUpdates } from "./src/useAndroidUpdates";
 import {
   CloudPairing,
   pairCloud,
@@ -49,7 +52,7 @@ import {
 import { demoStates, simulate } from "./src/demo";
 import { de, en } from "./src/strings";
 
-type Tab = "oven" | "timer" | "connection";
+type Tab = "oven" | "timer" | "connection" | "about";
 type Confirmation = { text: string; action: () => void };
 const C = {
   bg: "#101315",
@@ -249,6 +252,8 @@ function DrevosApp() {
     pollAbort = useRef<AbortController | null>(null),
     writeAbort = useRef<AbortController | null>(null);
   const t = language === "de" ? de : en;
+  const updates = useAndroidUpdates();
+  const [notesOpenKey, setNotesOpenKey] = useState(0);
   useEffect(() => {
     let alive = true;
     secureStore
@@ -540,8 +545,37 @@ function DrevosApp() {
         >
           <Brand />
           <WebAppTools language={language} busy={busy || signingIn} />
+          {updates?.available && tab !== "about" && (
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => setTab("about")}
+              style={s.banner}
+            >
+              <Text style={s.body}>
+                {language === "de"
+                  ? "Android-Update verfügbar"
+                  : "Android update available"}
+                : {updates.available.version}
+              </Text>
+              <Text style={s.hint}>
+                {language === "de"
+                  ? "Im Info-Tab ansehen"
+                  : "View in the Info tab"}
+              </Text>
+            </Pressable>
+          )}
           {loading ? (
             <Text style={s.hint}>{t.refreshing}</Text>
+          ) : tab === "about" ? (
+            <About
+              language={language}
+              busy={busy || signingIn}
+              updates={updates}
+              onShowChanges={() => setNotesOpenKey((key) => key + 1)}
+              onLanguage={(next) => {
+                void changeLanguage(next);
+              }}
+            />
           ) : !showApp ? (
             <View style={s.panel}>
               <Text style={s.title}>{t.loginTitle}</Text>
@@ -908,24 +942,30 @@ function DrevosApp() {
             </Text>
           )}
         </ScrollView>
-        {showApp && (
-          <View style={s.tabs}>
-            {(["oven", "timer", "connection"] as Tab[]).map((name) => (
-              <Pressable
-                key={name}
-                accessibilityRole="tab"
-                accessibilityState={{ selected: tab === name }}
-                onPress={() => setTab(name)}
-                style={[s.tab, tab === name && s.tabActive]}
-              >
-                <Text style={[s.tabText, tab === name && { color: C.orange }]}>
-                  {t[name]}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-        )}
+        <View style={s.tabs}>
+          {(showApp
+            ? (["oven", "timer", "connection", "about"] as Tab[])
+            : (["oven", "about"] as Tab[])
+          ).map((name) => (
+            <Pressable
+              key={name}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: tab === name }}
+              onPress={() => setTab(name)}
+              style={[s.tab, tab === name && s.tabActive]}
+            >
+              <Text style={[s.tabText, tab === name && { color: C.orange }]}>
+                {t[name]}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
       </KeyboardAvoidingView>
+      <WhatsNew
+        language={language}
+        openKey={notesOpenKey}
+        allowed={!loading && !busy && !signingIn && !scanning && !confirmation}
+      />
       <Modal visible={scanning} onRequestClose={() => setScanning(false)}>
         <SafeAreaView style={s.safe}>
           <Text style={[s.sectionTitle, { padding: 20 }]}>{t.scanHint}</Text>
