@@ -1,5 +1,18 @@
 # Drevos app – English guide
 
+<p align="center">
+  <a href="https://drevos-smoker-control.thankfulchick1.chatgpt.site"><img src="https://img.shields.io/badge/Web_App-Open-18BFF0?style=for-the-badge" alt="Open Drevos Web App"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.3.1-preview.1"><img src="https://img.shields.io/badge/Android-APK_download-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Download Android preview"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/eignerth2010-byte/drevos-app/releases"><img src="https://img.shields.io/github/v/release/eignerth2010-byte/drevos-app?include_prereleases&amp;label=preview" alt="Latest preview release"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/blob/main/docs/LICENSING.md"><img src="https://img.shields.io/badge/use-free-green" alt="Free to use"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Free%20Use-blue" alt="Free Use license with commercial redistribution terms"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/blob/main/docs/PROTOCOL.md"><img src="https://img.shields.io/badge/cloud-encrypted%20relay-8A2BE2" alt="Remote access through an encrypted relay"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/discussions"><img src="https://img.shields.io/badge/community-GitHub-5865F2?logo=github&amp;logoColor=white" alt="Community: GitHub Discussions"></a>
+</p>
+
 **New in 0.3.1:** Temporary community wordmark and revised resale terms. Use remains free; earlier MIT rights are unaffected. [License details](docs/LICENSING.md).
 
 **License from 2026-11-21:** Free for private and internal business use; resale and commercial redistribution require **Thomas Eigner's prior written permission**. [Terms, earlier MIT versions and contact](docs/LICENSING.md).

@@ -1,5 +1,18 @@
 # Drevos-App – deutsche Anleitung
 
+<p align="center">
+  <a href="https://drevos-smoker-control.thankfulchick1.chatgpt.site"><img src="https://img.shields.io/badge/Web_App-%C3%96ffnen-18BFF0?style=for-the-badge" alt="Drevos Web-App öffnen"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.3.1-preview.1"><img src="https://img.shields.io/badge/Android-APK_herunterladen-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android-Vorschau herunterladen"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/eignerth2010-byte/drevos-app/releases"><img src="https://img.shields.io/github/v/release/eignerth2010-byte/drevos-app?include_prereleases&amp;label=preview" alt="Aktuelle Vorschau-Version"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/blob/main/docs/LICENSING.md"><img src="https://img.shields.io/badge/Nutzung-kostenlos-green" alt="Nutzung kostenlos"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Free%20Use-blue" alt="Lizenz: Free Use mit Bedingungen für kommerzielle Weitergabe"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/blob/main/docs/PROTOCOL.md"><img src="https://img.shields.io/badge/cloud-verschl%C3%BCsseltes%20Relay-8A2BE2" alt="Fernzugriff über verschlüsselten Relay-Dienst"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/discussions"><img src="https://img.shields.io/badge/community-GitHub-5865F2?logo=github&amp;logoColor=white" alt="Community: GitHub Discussions"></a>
+</p>
+
 **Neu in 0.3.1:** Eigener vorläufiger Schriftzug und neue Bedingungen für Verkauf und kommerzielle Weitergabe. Nutzung bleibt kostenlos; frühere MIT-Rechte bleiben bestehen. [Lizenzdetails](docs/LICENSING.md).
 
 **Lizenz ab 21.11.2026:** Private und betriebsinterne Nutzung kostenlos; Verkauf und kommerzielle Weitergabe nur mit vorheriger schriftlicher Freigabe von **Thomas Eigner**. [Bedingungen, frühere MIT-Fassungen und Kontakt](docs/LICENSING.md).
