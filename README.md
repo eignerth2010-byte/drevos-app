@@ -1,5 +1,7 @@
 # Drevos App
 
+**Neu: [40 Rezepte und eigene Rezeptvorschläge – Deutsch](docs/RECIPES.de.md)** · **[Recipes and personal drafts – English](docs/RECIPES.en.md)**
+
 <p align="center">
   <a href="https://drevos-smoker-control.thankfulchick1.chatgpt.site"><img src="https://img.shields.io/badge/Web_App-Open-18BFF0?style=for-the-badge" alt="Open Drevos Web App"></a>
   <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.3.1-preview.1"><img src="https://img.shields.io/badge/Android-APK_download-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Download Android preview"></a>
@@ -63,6 +65,10 @@ The relay cannot decrypt readings or control messages. Commands require a fresh 
 Keep gateway configuration, cloud agent configuration and pairing codes private. Neither real credentials nor the original PLC project are part of this repository.
 
 ## Vorschau / Preview
+
+![Rezeptsammlung 0.4.0 – Web-App / Recipe collection](docs/assets/drevos-recipes-web-demo.jpg)
+
+40 Rezepte mit aufbereiteten Bildern, Quellenhinweisen und einzeln vorbereiteten Phasen. Gezeigt ist die Web-App im Demomodus. / 40 recipes with restored photos, source notes and separate phase preparation; Web App in demo mode.
 
 ![Drevos – Beispielansicht / Sample interface](docs/assets/drevos-app-demo.jpg)
 
