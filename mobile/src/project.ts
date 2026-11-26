@@ -11,15 +11,15 @@ export const UPDATE_MANIFEST_URL =
 
 export const RELEASE_NOTES = {
   de: [
-    "40 Drevos-Originalrezepte mit Zutaten, Anleitung und aufbereiteten Produktbildern.",
-    "Jede Phase einzeln auswählen und ihre Werte gemeinsam übertragen. Heizung, Rauch/Zündung und Timer selbst starten; keine automatische Folgephase.",
-    "Eigene Rezepte mit Foto im Browser speichern oder per Formular zur Prüfung einreichen.",
-    "Quellenhinweise zeigen widersprüchliche Angaben und die vermutete Korrektur 85/55 °C bei Rippen, Methode 2. Kein Pi-Update nötig.",
+    "Rezepte werden aus dem gemeinsamen Online-Katalog geladen. Neue Rezepte benötigen künftig kein App-Update.",
+    "Mit „Rezepte aktualisieren“ neue Einträge laden. Der zuletzt gespeicherte Katalog bleibt ohne Internet lesbar; neue Fotos benötigen gegebenenfalls Internet.",
+    "Originale und geprüfte Community-Rezepte werden getrennt gekennzeichnet.",
+    "Eine bereits ausgewählte Phase behält ihre Werte. Jede Phase weiterhin selbst starten; kein Pi-Update nötig.",
   ],
   en: [
-    "40 Drevos original recipes with ingredients, instructions and restored food photographs.",
-    "Select each phase and transfer its settings together. Start heat, smoke/ignition and timer yourself; no automatic next phase.",
-    "Save personal recipes and photos in the browser, or submit them for review with the form.",
-    "Source notes preserve conflicting values and the suggested 85/55 °C correction for Ribs, method 2. No Pi update required.",
+    "Recipes load from the shared online catalog. Future recipe additions do not require an app update.",
+    "Use Refresh recipes to check for new entries. Saved catalog text/settings stay available offline; new photos may require a connection.",
+    "Originals and reviewed community recipes have separate source labels.",
+    "A selected phase keeps its settings. Start every phase yourself; no Pi update needed.",
   ],
 };
