@@ -1,8 +1,10 @@
 # Drevos-App – deutsche Anleitung
 
+**Neue Rezepte ohne weiteres App-Update:** [So funktioniert der gemeinsame Rezeptkatalog](docs/ONLINE-RECIPES.de.md). Einmalig App 0.5.0 / HA 0.3.0 installieren.
+
 <p align="center">
   <a href="https://drevos-smoker-control.thankfulchick1.chatgpt.site"><img src="https://img.shields.io/badge/Web_App-%C3%96ffnen-18BFF0?style=for-the-badge" alt="Drevos Web-App öffnen"></a>
-  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.4.0-preview.1"><img src="https://img.shields.io/badge/Android-APK_herunterladen-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android-Vorschau herunterladen"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.5.0-preview.1"><img src="https://img.shields.io/badge/Android-APK_herunterladen-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android-Vorschau herunterladen"></a>
 </p>
 
 <p align="center">
@@ -13,7 +15,7 @@
   <a href="https://github.com/eignerth2010-byte/drevos-app/discussions"><img src="https://img.shields.io/badge/community-GitHub-5865F2?logo=github&amp;logoColor=white" alt="Community: GitHub Discussions"></a>
 </p>
 
-**Neu in 0.4.0:** 40 Rezepte, aufbereitete Produktbilder, getrennte Phasen und eigene Rezeptvorschläge. [Rezept-Anleitung](docs/RECIPES.de.md). Die Nutzung bleibt kostenlos; [Lizenzdetails](docs/LICENSING.md).
+**Neu in 0.5.0:** Neue Rezepte zentral nachladen, ohne jedes Mal App und HA zu aktualisieren. Gespeicherte Texte und Einstellungen bleiben offline lesbar. [Anleitung](docs/ONLINE-RECIPES.de.md).
 
 **Lizenz ab 21.11.2026:** Private und betriebsinterne Nutzung kostenlos; Verkauf und kommerzielle Weitergabe nur mit vorheriger schriftlicher Freigabe von **Thomas Eigner**. [Bedingungen, frühere MIT-Fassungen und Kontakt](docs/LICENSING.md).
 
@@ -27,7 +29,7 @@ Die Drevos-App ist eine **eigenständige App für Android, iPhone/iPad und den B
 
 Die App und ihre Funktionen können für die Nutzer kostenlos angeboten werden. Den gemeinsamen Dienst richtet **einmalig der Betreiber des Projekts** ein. Die Nutzer brauchen kein Cloudflare-Konto, keinen eigenen Server und kein Abo. Kostenlose Hosting-Tarife haben Nutzungsgrenzen; ein beliebig großer, dauerhaft kostenloser Betrieb wird nicht zugesichert.
 
-Version **0.4.0 ist eine Vorschau** mit 40 Rezepten, aufbereiteten Produktbildern und einzeln wählbaren Phasen. Zahlenwerte ausdrücklich übertragen, jede Phase selbst starten und Pausen selbst einhalten; kein automatischer Wechsel. Eigene Rezept-/Fotoentwürfe und geprüfte Einsendungen nutzen das verlinkte Formular. Der gemeinsame Dienst unter `https://drevos-relay.eigner-th2010.workers.dev` bleibt im Pi-Paket enthalten; ein fertig eingerichteter Pi braucht wegen der Rezepte kein Update. Bei der früheren Version 0.2.0 wurden echte Temperaturen, gespeicherte Kopplung und mobile Daten bestätigt. Die nativen Android-/iPhone-Builds und simulierten Browserprüfungen für 0.4.0 bestanden; physische 0.4.0-Steuerung bleibt ungetestet. Siehe [VALIDATION](docs/VALIDATION.md). Unterstützt wird das geprüfte SPS-Profil `drevos_fx3u_v1`.
+Version **0.5.0 ist eine Vorschau** mit gemeinsamem Online-Rezeptkatalog. Nach diesem einmaligen Update kommen neue Rezepte ohne weiteres App-Release; zuletzt geladene Texte und Einstellungen bleiben lokal gespeichert. Ausgewählte Phasen behalten ihre Werte, alle Funktionen werden selbst gestartet. Der eingerichtete Pi braucht kein Update. [Einfache Erklärung](docs/ONLINE-RECIPES.de.md). Lokale Prüfungen bestanden; native Builds und physische Gerätetests stehen getrennt in [VALIDATION](docs/VALIDATION.md). Unterstützt wird das geprüfte SPS-Profil `drevos_fx3u_v1`.
 
 ## Web-App installieren
 
@@ -35,7 +37,7 @@ Version **0.4.0 ist eine Vorschau** mit 40 Rezepten, aufbereiteten Produktbilder
 
 ## Native App herunterladen
 
-Die [Android-APK 0.4.0, der Quellcode und das unsignierte iPhone-Paket](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.4.0-preview.1) stehen zum Download bereit. `Drevos-Android-0.4.0-preview.apk` über die vorhandene App installieren und am Android-Gerät bestätigen. Vorher nicht deinstallieren. Die bisherige Testsignatur bleibt erhalten, versionCode 5. Das neue unsignierte iPhone-Paket 0.4.0 muss separat von Apple signiert werden. [Update-Anleitung und Änderungsfenster](docs/UPDATES.md).
+Die [Android-APK 0.5.0, der Quellcode und das unsignierte iPhone-Paket](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.5.0-preview.1) stehen zum Download bereit. `Drevos-Android-0.5.0-preview.apk` über die vorhandene App installieren und am Android-Gerät bestätigen. Vorher nicht deinstallieren. Die bisherige Testsignatur bleibt erhalten, versionCode 6. Das neue unsignierte iPhone-Paket 0.5.0 muss separat von Apple signiert werden. [Update-Anleitung und Änderungsfenster](docs/UPDATES.md).
 
 ## Was benötigt wird
 
