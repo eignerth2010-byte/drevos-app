@@ -17,6 +17,16 @@ import { StatusBar } from "expo-status-bar";
 import { PairingScanner } from "./src/Scanner";
 import { WebAppTools } from "./src/WebAppTools";
 import { About } from "./src/About";
+import { RecipeBook } from "./src/RecipeBook";
+import {
+  recipes,
+  recipePhase,
+  phaseCommands,
+  requireIdle,
+  verifyPrepared,
+  verifyTargets,
+  RecipePhase,
+} from "./src/recipes";
 import { WhatsNew } from "./src/WhatsNew";
 import { useAndroidUpdates } from "./src/useAndroidUpdates";
 import {
@@ -52,7 +62,7 @@ import {
 import { demoStates, simulate } from "./src/demo";
 import { de, en } from "./src/strings";
 
-type Tab = "oven" | "timer" | "connection" | "about";
+type Tab = "oven" | "timer" | "recipes" | "connection" | "about";
 type Confirmation = { text: string; action: () => void };
 const C = {
   bg: "#101315",
@@ -155,20 +165,34 @@ function Setpoint({
   entity,
   disabled,
   onApply,
+  prefill,
   t,
 }: {
   kind: NumberKey;
   entity?: Reading;
   disabled: boolean;
   onApply: (c: Command) => Promise<boolean>;
+  prefill?: { revision: number; value: number; applied: boolean };
   t: typeof de;
 }) {
   const initial = () => numeric(entity)?.toString() ?? "";
-  const [draft, setDraft] = useState(initial),
-    [dirty, setDirty] = useState(false),
+  const [draft, setDraft] = useState(() =>
+      prefill ? String(prefill.value) : initial(),
+    ),
+    [dirty, setDirty] = useState(!!prefill && !prefill.applied),
     [error, setError] = useState("");
   useEffect(() => {
-    if (!dirty) setDraft(initial());
+    if (prefill) {
+      setDraft(String(prefill.value));
+      setDirty(!prefill.applied);
+      setError("");
+    } else {
+      setDraft(initial());
+      setDirty(false);
+    }
+  }, [prefill?.revision, prefill?.applied]);
+  useEffect(() => {
+    if (!dirty && (!prefill || prefill.applied)) setDraft(initial());
   }, [entity?.state, dirty]);
   async function apply() {
     try {
@@ -254,6 +278,22 @@ function DrevosApp() {
   const t = language === "de" ? de : en;
   const updates = useAndroidUpdates();
   const [notesOpenKey, setNotesOpenKey] = useState(0);
+  const pageScroll = useRef<React.ComponentRef<typeof ScrollView>>(null);
+  useEffect(() => {
+    pageScroll.current?.scrollTo({ y: 0, animated: false });
+  }, [tab]);
+  const recipeBrowse = useRef<{ selected: string | null; search: string }>({
+    selected: null,
+    search: "",
+  });
+  const [recipeDraft, setRecipeDraft] = useState<{
+    id: string;
+    index: number;
+    gatewayId: string;
+    revision: number;
+    phase: RecipePhase;
+    prepared: boolean;
+  } | null>(null);
   useEffect(() => {
     let alive = true;
     secureStore
@@ -410,6 +450,7 @@ function DrevosApp() {
       setDemo(false);
       setDevices([]);
       setSelected(undefined);
+      setRecipeDraft(null);
       setClient(next);
       setUrl(base);
       setAccessKey("");
@@ -459,6 +500,25 @@ function DrevosApp() {
   }
   function switchCommand(key: SwitchKey) {
     const value = e[key]?.state !== "on";
+    if (
+      value &&
+      ["heizelement", "rauchbetrieb", "timer_lauf"].includes(key) &&
+      recipeDraft &&
+      recipeDraft.gatewayId === device?.id
+    ) {
+      try {
+        if (!recipeDraft.prepared || !device) throw Error("recipe");
+        verifyTargets(
+          device,
+          phaseCommands(recipePhase(recipeDraft.id, recipeDraft.index)),
+        );
+        if (key === "timer_lauf" && recipeDraft.phase.durationMinutes === 0)
+          throw Error("recipe");
+      } catch {
+        setMessage(t.recipeStaged);
+        return;
+      }
+    }
     if (value && (key === "heizelement" || key === "rauchbetrieb"))
       setConfirmation({
         text: key === "heizelement" ? t.heatAsk : t.smokeAsk,
@@ -469,6 +529,7 @@ function DrevosApp() {
     else void command({ key, value });
   }
   async function choose(id: string) {
+    setRecipeDraft(null);
     setSelected(id);
     setConfirmation(null);
     setMessage("");
@@ -499,6 +560,7 @@ function DrevosApp() {
       return;
     }
     setClient(null);
+    setRecipeDraft(null);
     setAccessKey("");
     setPairedId(undefined);
     setCloudPair(null);
@@ -509,6 +571,111 @@ function DrevosApp() {
     setTab("oven");
   }
   const showApp = !!client || demo;
+  function selectRecipe(id: string, index: number) {
+    if (!device || busy) return;
+    try {
+      const phase = recipePhase(id, index);
+      setRecipeDraft({
+        id,
+        index,
+        gatewayId: device.id,
+        revision: Date.now(),
+        phase,
+        prepared: false,
+      });
+      setTab("oven");
+      setMessage(t.recipeStaged);
+    } catch {
+      setMessage(t.recipeInvalid);
+    }
+  }
+  function recipePrefill(key: NumberKey) {
+    if (!recipeDraft || recipeDraft.gatewayId !== device?.id) return undefined;
+    const value = {
+      kammertemperatur_soll: recipeDraft.phase.chamberC,
+      kerntemperatur_ziel: recipeDraft.phase.coreC,
+      rauch_soll: recipeDraft.phase.smokePercent,
+      timer_dauer: recipeDraft.phase.durationMinutes,
+    }[key];
+    return key === "timer_dauer" && value === 0
+      ? undefined
+      : {
+          revision: recipeDraft.revision,
+          value,
+          applied: recipeDraft.prepared,
+        };
+  }
+  async function prepareRecipe() {
+    if (
+      !recipeDraft ||
+      !device ||
+      recipeDraft.gatewayId !== device.id ||
+      !controls ||
+      writing.current ||
+      !active.current
+    )
+      return;
+    let commands: Command[];
+    try {
+      requireIdle(device);
+      commands = phaseCommands(recipePhase(recipeDraft.id, recipeDraft.index));
+      for (const c of commands) commandFor(device, c);
+      if (
+        recipeDraft.phase.durationMinutes > 0 &&
+        !/^0+:00:00$/.test(device.entities.timer_laufzeit?.state || "")
+      )
+        throw Error("recipe-reset");
+    } catch (error) {
+      setMessage(
+        error instanceof Error && error.message === "recipe-reset"
+          ? t.recipeReset
+          : t.recipeIdle,
+      );
+      return;
+    }
+    writing.current = true;
+    setBusy(true);
+    setMessage(t.pending);
+    pollAbort.current?.abort();
+    const controller = new AbortController();
+    writeAbort.current = controller;
+    let current = device;
+    try {
+      for (const c of commands) {
+        if (controller.signal.aborted || !active.current)
+          throw Error("aborted");
+        requireIdle(current);
+        commandFor(current, c);
+        const next = demo
+          ? simulate(Object.values(current.entities), c)
+          : client
+            ? await client.command(current.id, c, controller.signal)
+            : [];
+        if (controller.signal.aborted) throw Error("aborted");
+        const found = next.find((d) => d.id === current.id);
+        if (!found) throw Error("missing");
+        current = found;
+        setDevices(next);
+      }
+      verifyPrepared(current, commands);
+      setRecipeDraft((value) =>
+        value?.revision === recipeDraft.revision
+          ? { ...value, prepared: true }
+          : value,
+      );
+      setConnected(true);
+      setLastRead(Date.now());
+      setMessage(demo ? t.demoApplied : t.recipePrepared);
+    } catch {
+      if (!demo) setConnected(false);
+      setMessage(t.recipeInterrupted);
+    } finally {
+      writing.current = false;
+      setBusy(false);
+      writeAbort.current = null;
+      setTick((v) => v + 1);
+    }
+  }
   function switches(keys: SwitchKey[]) {
     return keys.map((key) => (
       <View key={key} style={s.switchRow}>
@@ -540,6 +707,7 @@ function DrevosApp() {
         style={s.flex}
       >
         <ScrollView
+          ref={pageScroll}
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={s.content}
         >
@@ -575,6 +743,19 @@ function DrevosApp() {
               onLanguage={(next) => {
                 void changeLanguage(next);
               }}
+            />
+          ) : tab === "recipes" ? (
+            <RecipeBook
+              initialBrowse={recipeBrowse.current}
+              onBrowse={(context) => {
+                if (context.selected !== recipeBrowse.current.selected)
+                  pageScroll.current?.scrollTo({ y: 0, animated: false });
+                recipeBrowse.current = context;
+              }}
+              language={language}
+              busy={busy || signingIn}
+              canPrepare={!!device}
+              onSelect={selectRecipe}
             />
           ) : !showApp ? (
             <View style={s.panel}>
@@ -706,6 +887,42 @@ function DrevosApp() {
               {online && !controls && !busy && (
                 <Text style={s.banner}>{t.locked}</Text>
               )}
+              {recipeDraft &&
+                recipeDraft.gatewayId === device?.id &&
+                (tab === "oven" || tab === "timer") && (
+                  <View style={s.panel}>
+                    <Text style={s.sectionTitle}>
+                      {recipes.find((r) => r.id === recipeDraft.id)?.name} ·{" "}
+                      {recipeDraft.phase.name}
+                    </Text>
+                    <Text style={s.body}>
+                      {recipeDraft.phase.durationMinutes} min ·{" "}
+                      {recipeDraft.phase.chamberC} °C ·{" "}
+                      {recipeDraft.phase.coreC} °C ·{" "}
+                      {recipeDraft.phase.smokePercent} %
+                    </Text>
+                    <Text style={s.hint}>
+                      {recipeDraft.prepared ? t.recipePrepared : t.recipeStaged}
+                    </Text>
+                    {recipeDraft.phase.durationMinutes === 0 && (
+                      <Text style={s.hint}>{t.recipeNoTimer}</Text>
+                    )}
+                    <Text style={s.hint}>{t.recipeReset}</Text>
+                    <Action
+                      disabled={!controls}
+                      onPress={() => void prepareRecipe()}
+                    >
+                      {t.recipeTransfer}
+                    </Action>
+                    <Action
+                      subtle
+                      disabled={busy}
+                      onPress={() => setRecipeDraft(null)}
+                    >
+                      {t.recipeClear}
+                    </Action>
+                  </View>
+                )}
               {(!device || tab === "connection") && (
                 <View style={s.panel}>
                   <Text style={s.sectionTitle}>{t.select}</Text>
@@ -777,6 +994,7 @@ function DrevosApp() {
                       entity={e[key]}
                       disabled={!controls || !available(e[key])}
                       onApply={command}
+                      prefill={recipePrefill(key)}
                       t={t}
                     />
                   ))}
@@ -820,11 +1038,18 @@ function DrevosApp() {
                     entity={e.timer_dauer}
                     disabled={!controls || !available(e.timer_dauer)}
                     onApply={command}
+                    prefill={recipePrefill("timer_dauer")}
                     t={t}
                   />
                   <Text style={s.body}>{t.timerHint}</Text>
                   <Action
-                    disabled={!controls || !available(e.timer_lauf)}
+                    disabled={
+                      !controls ||
+                      !available(e.timer_lauf) ||
+                      (recipeDraft?.gatewayId === device.id &&
+                        recipeDraft.phase.durationMinutes === 0 &&
+                        e.timer_lauf?.state !== "on")
+                    }
                     onPress={() => switchCommand("timer_lauf")}
                   >
                     {e.timer_lauf?.state === "on" ? t.pause : t.start}
@@ -944,18 +1169,24 @@ function DrevosApp() {
         </ScrollView>
         <View style={s.tabs}>
           {(showApp
-            ? (["oven", "timer", "connection", "about"] as Tab[])
-            : (["oven", "about"] as Tab[])
+            ? (["oven", "timer", "recipes", "connection", "about"] as Tab[])
+            : (["oven", "recipes", "about"] as Tab[])
           ).map((name) => (
             <Pressable
               key={name}
               accessibilityRole="tab"
               accessibilityState={{ selected: tab === name }}
+              aria-selected={tab === name}
+              disabled={busy || signingIn}
               onPress={() => setTab(name)}
               style={[s.tab, tab === name && s.tabActive]}
             >
               <Text style={[s.tabText, tab === name && { color: C.orange }]}>
-                {t[name]}
+                {name === "connection"
+                  ? language === "de"
+                    ? "Gerät"
+                    : "Device"
+                  : t[name]}
               </Text>
             </Pressable>
           ))}

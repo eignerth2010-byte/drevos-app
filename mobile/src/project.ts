@@ -11,15 +11,15 @@ export const UPDATE_MANIFEST_URL =
 
 export const RELEASE_NOTES = {
   de: [
-    "Eigener vorläufiger Drevos-Schriftzug statt Herstellerlogo.",
-    "Private und betriebsinterne Nutzung bleiben kostenlos.",
-    "Verkauf und kommerzielle Weitergabe nur mit vorheriger schriftlicher Freigabe von Thomas Eigner.",
-    "Frühere MIT-Fassungen behalten ihre Rechte. Kopplung und Ofensteuerung bleiben unverändert.",
+    "40 Drevos-Originalrezepte mit Zutaten, Anleitung und aufbereiteten Produktbildern.",
+    "Jede Phase einzeln auswählen und ihre Werte gemeinsam übertragen. Heizung, Rauch/Zündung und Timer selbst starten; keine automatische Folgephase.",
+    "Eigene Rezepte mit Foto im Browser speichern oder per Formular zur Prüfung einreichen.",
+    "Quellenhinweise zeigen widersprüchliche Angaben und die vermutete Korrektur 85/55 °C bei Rippen, Methode 2. Kein Pi-Update nötig.",
   ],
   en: [
-    "Original temporary community wordmark replaces the manufacturer logo.",
-    "Private and internal business use remain free.",
-    "Resale and commercial redistribution require Thomas Eigner’s prior written permission.",
-    "Earlier MIT versions retain their rights. Pairing and oven controls are unchanged.",
+    "40 Drevos original recipes with ingredients, instructions and restored food photographs.",
+    "Select each phase and transfer its settings together. Start heat, smoke/ignition and timer yourself; no automatic next phase.",
+    "Save personal recipes and photos in the browser, or submit them for review with the form.",
+    "Source notes preserve conflicting values and the suggested 85/55 °C correction for Ribs, method 2. No Pi update required.",
   ],
 };

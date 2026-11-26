@@ -6,7 +6,9 @@
 
 These beginner guides include the complete Pi installation for the native app as well as the Web App. Development/build instructions follow below.
 
-Version 0.3.1. **Standalone**: direct Pi access for local use, or end-to-end encrypted relay access at home and away. No Home Assistant or VPN dependency.
+Version 0.4.0. **Standalone**: direct Pi access for local use, or end-to-end encrypted relay access at home and away. No Home Assistant or VPN dependency.
+
+**Recipes:** [Deutsch](../docs/RECIPES.de.md) · [English](../docs/RECIPES.en.md). The new Recipes tab includes 40 transcribed oven recipes and a phase-by-phase preparation flow. Preparation only transfers numeric settings; users start heat, smoke and timer themselves. Personal drafts and photo submissions open in the browser form.
 
 End-user setup is described in [Deutsch](../README.de.md) / [English](../README.en.md). App users pair by scanning or pasting their Pi's private pairing code. They do not create cloud-provider accounts.
 

@@ -3,6 +3,23 @@ import { APP_VERSION } from "./project";
 export const de = {
   webVersion: `Drevos ${APP_VERSION} · Web-App`,
   about: "Info",
+  recipes: "Rezepte",
+  recipeStaged:
+    "Die Phasenwerte sind vorgefüllt. Heizung, Rauch und Timer zuerst ausschalten, dann gemeinsam übertragen. Starte die gewünschten Funktionen anschließend selbst. Es erfolgt kein automatischer Phasenwechsel.",
+  recipePrepared:
+    "Die Werte wurden am Ofen zurückgelesen. Heizung, Rauch/Zündung und Timer bleiben aus. Starte sie selbst über die Bedienung; die nächste Phase wird erst nach deiner Auswahl vorbereitet.",
+  recipeInvalid:
+    "Diese Phase enthält keine verwendbaren oder noch ungeklärte Werte.",
+  recipeIdle:
+    "Vor der Übertragung müssen Heizung, Rauch und Timer ausgeschaltet und der Ofen im manuellen Betrieb sein.",
+  recipeInterrupted:
+    "Übertragung unterbrochen. Einzelne Werte können bereits angekommen sein. Vor einem Start die Werte am Ofen prüfen; es wird nichts automatisch wiederholt.",
+  recipeTransfer: "Werte dieser Phase an den Ofen übertragen",
+  recipeReset:
+    "Vor jeder neuen Phase den Timer auf der Timer-Seite zurücksetzen. Konvektion und Lüfter bleiben unverändert.",
+  recipeClear: "Phasenauswahl aufheben",
+  recipeNoTimer:
+    "Original-Zeitwert 0: Der Zeittimer bleibt aus. Eine Temperaturvorgabe ersetzt keine bestätigte Garprüfung.",
   browserStorageError:
     "Die Kopplung kann in diesem Browser nicht sicher gespeichert werden. Bitte einen aktuellen Browser außerhalb des privaten Modus verwenden und Website-Daten zulassen.",
   accessKey: "Zugangsschlüssel",
@@ -121,6 +138,22 @@ export const de = {
 export const en: typeof de = {
   webVersion: `Drevos ${APP_VERSION} · Web app`,
   about: "Info",
+  recipes: "Recipes",
+  recipeStaged:
+    "Phase values are prefilled. Turn heat, smoke and the timer off, then transfer the values together. Start the desired functions yourself afterwards. Phases never advance automatically.",
+  recipePrepared:
+    "Values were read back from the oven. Heat, smoke/ignition and the timer remain off. Start them yourself using the controls; another phase is prepared only after you select it.",
+  recipeInvalid: "This phase has no usable values or has unresolved settings.",
+  recipeIdle:
+    "Heat, smoke and the timer must be off and the oven in manual mode before transferring values.",
+  recipeInterrupted:
+    "Transfer interrupted. Some values may already have arrived. Check the oven values before starting; nothing is retried automatically.",
+  recipeTransfer: "Transfer all selected phase values to oven",
+  recipeReset:
+    "Reset the timer on the Timer page before each new phase. Convection and fan remain unchanged.",
+  recipeClear: "Clear phase selection",
+  recipeNoTimer:
+    "Original time value 0: the timed countdown stays off. A temperature setpoint does not confirm safe cooking.",
   browserStorageError:
     "Pairing cannot be stored securely in this browser. Use an up-to-date browser outside private mode and allow website data.",
   accessKey: "Access key",

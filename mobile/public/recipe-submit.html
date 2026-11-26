@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="referrer" content="origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; form-action https://formsubmit.co; base-uri 'none'; object-src 'none'; frame-src 'none'"
+    />
+    <meta name="theme-color" content="#101315" />
+    <title>Drevos – Rezept einreichen</title>
+    <link rel="stylesheet" href="recipe-submit.css" />
+    <script type="module" src="recipe-submit.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <a class="brand" href="/">Drevos</a
+        ><button id="language" type="button">English</button>
+      </header>
+      <section id="success" hidden aria-live="polite">
+        <h1 data-i18n="sentTitle">Vorschlag übermittelt</h1>
+        <p data-i18n="sentText">
+          Vielen Dank! Thomas prüft dein Rezept vor einer möglichen
+          Veröffentlichung. Es wird nicht automatisch in die Rezeptsammlung
+          aufgenommen.
+        </p>
+        <a class="primary" href="recipe-submit.html" data-i18n="another"
+          >Weiteres Rezept einreichen</a
+        >
+      </section>
+      <section id="entry">
+        <p class="eyebrow" data-i18n="eyebrow">DEIN REZEPT FÜR DIE COMMUNITY</p>
+        <h1 data-i18n="title">Rezept einreichen</h1>
+        <p class="intro" data-i18n="intro">
+          Zeig uns dein Räucherrezept mit Produktfoto und Ofeneinstellungen.
+          Thomas prüft den Vorschlag und kann ihn anschließend in die
+          Integration und die Apps aufnehmen.
+        </p>
+        <section class="saved" aria-labelledby="saved-title">
+          <h2 id="saved-title" data-i18n="savedTitle">Meine Rezepte</h2>
+          <p class="hint" data-i18n="savedHint">
+            Entwürfe mit Foto bleiben nur in diesem Browser auf diesem Gerät.
+            Sie werden nicht automatisch gesendet oder zwischen Geräten
+            synchronisiert. Gelöschte Browserdaten entfernen auch die Rezepte.
+          </p>
+          <label for="saved-recipes" data-i18n="savedChoose"
+            >Gespeichertes Rezept auswählen</label
+          >
+          <select id="saved-recipes">
+            <option value="" data-i18n="savedEmpty">
+              Noch keine gespeicherten Rezepte
+            </option>
+          </select>
+          <div class="actions">
+            <button id="load" type="button" data-i18n="load" disabled>
+              Öffnen</button
+            ><button id="new" type="button" data-i18n="new">Neues Rezept</button
+            ><button id="delete" type="button" data-i18n="delete" disabled>
+              Löschen
+            </button>
+          </div>
+          <p id="saved-status" class="hint" role="status"></p>
+        </section>
+        <form
+          action="https://formsubmit.co/eigner.th2010@gmail.com"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="Drevos – Rezeptvorschlag"
+          />
+          <input type="hidden" name="_template" value="table" />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://drevos-smoker-control.thankfulchick1.chatgpt.site/recipe-submit.html?submitted=1"
+          />
+          <input
+            class="honeypot"
+            type="text"
+            name="_honey"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <fieldset>
+            <legend data-i18n="recipe">Rezept und Produktfoto</legend>
+            <label for="recipe-name" data-i18n="name">Rezeptname *</label>
+            <input
+              id="recipe-name"
+              name="Rezeptname"
+              maxlength="80"
+              required
+              autocomplete="off"
+            />
+            <label for="source" data-i18n="source"
+              >Woher stammt das Rezept? *</label
+            >
+            <select id="source" name="Angegebene Quelle" required>
+              <option value="Eigenes Rezept" data-i18n="own">
+                Eigenes Rezept
+              </option>
+              <option
+                value="Vom Drevos-Ofendisplay übernommen, noch zu prüfen"
+                data-i18n="display"
+              >
+                Vom Drevos-Ofendisplay übernommen
+              </option>
+              <option
+                value="Andere Quelle, in den Hinweisen genannt"
+                data-i18n="other"
+              >
+                Andere Quelle – bitte in den Hinweisen nennen
+              </option>
+            </select>
+            <p class="hint" data-i18n="sourceHint">
+              Eigene Einsendungen werden als Community-Rezepte gekennzeichnet.
+              Die Bezeichnung „Drevos-Originalrezept“ vergeben wir nach Prüfung
+              der Herkunft.
+            </p>
+            <label for="photo" data-i18n="photo"
+              >Produktfoto * (bis 8 MB)</label
+            >
+            <input
+              id="photo"
+              name="attachment"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif"
+              required
+              aria-describedby="photo-hint"
+            />
+            <p id="photo-hint" class="hint" data-i18n="photoHint">
+              Wähle ein Foto des fertigen Produkts. JPG, PNG, WebP und
+              iPhone-Fotos im HEIC-/HEIF-Format sind möglich.
+            </p>
+            <img
+              id="photo-preview"
+              hidden
+              alt="Vorschau des ausgewählten Produktfotos"
+            />
+            <p
+              id="photo-fallback"
+              class="hint"
+              hidden
+              data-i18n="photoFallback"
+            >
+              Das Foto ist ausgewählt. Dieses Bildformat kann hier nicht als
+              Vorschau angezeigt werden.
+            </p>
+            <label for="ingredients" data-i18n="ingredients"
+              >Zutaten und Mengen *</label
+            >
+            <textarea
+              id="ingredients"
+              name="Zutaten und Mengen"
+              rows="6"
+              maxlength="12000"
+              required
+            ></textarea>
+            <label for="method" data-i18n="method"
+              >Vorbereitung und Zubereitung *</label
+            >
+            <textarea
+              id="method"
+              name="Vorbereitung und Zubereitung"
+              rows="7"
+              maxlength="12000"
+              required
+            ></textarea>
+          </fieldset>
+          <fieldset>
+            <legend data-i18n="settings">Ofeneinstellungen je Phase</legend>
+            <p class="hint" data-i18n="phaseHint">
+              Mindestens eine Phase ausfüllen. Nicht benötigte Phasen leer
+              lassen. Werte so eintragen, wie sie am Ofen eingestellt werden.
+            </p>
+            <div id="phases"></div>
+          </fieldset>
+          <fieldset>
+            <legend data-i18n="details">Hinweise und Rückfragen</legend>
+            <label for="notes" data-i18n="notes"
+              >Hinweise, Ofenmodell und gegebenenfalls Quelle</label
+            >
+            <textarea
+              id="notes"
+              name="Hinweise, Ofenmodell und Quelle"
+              rows="4"
+              maxlength="5000"
+            ></textarea>
+            <label for="author" data-i18n="author"
+              >Dein Name oder Spitzname (optional)</label
+            >
+            <input
+              id="author"
+              name="Name für die Veröffentlichung"
+              maxlength="80"
+              autocomplete="nickname"
+            />
+            <p class="hint" data-i18n="authorHint">
+              Nur ausfüllen, wenn dieser Name beim veröffentlichten Rezept
+              genannt werden darf.
+            </p>
+            <label for="email" data-i18n="email"
+              >E-Mail für Rückfragen (optional, wird nicht
+              veröffentlicht)</label
+            >
+            <input
+              id="email"
+              name="email"
+              type="email"
+              maxlength="254"
+              autocomplete="email"
+            />
+            <label class="consent"
+              ><input
+                type="checkbox"
+                name="Veröffentlichung nach Prüfung erlaubt"
+                value="Ja"
+                required
+              /><span data-i18n="consent"
+                >Ich erlaube die Veröffentlichung meines Rezepts und Fotos nach
+                Prüfung in den Drevos-Projekten. Ich darf das eingereichte
+                Material dafür weitergeben.</span
+              ></label
+            >
+          </fieldset>
+          <button id="save" type="button" data-i18n="save">
+            Rezept und Foto auf diesem Gerät speichern
+          </button>
+          <p id="error" class="error" role="alert" hidden></p>
+          <p class="hint">
+            <span data-i18n="delivery"
+              >Dein Vorschlag und Foto werden über FormSubmit an</span
+            >
+            <strong>eigner.th2010@gmail.com</strong>
+            <span data-i18n="deliveryEnd"
+              >gesendet. Es werden keine Kopplungscodes oder
+              Ofen-Zugangsschlüssel benötigt.</span
+            >
+            <a
+              href="https://formsubmit.co/privacy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="privacy"
+              >Datenschutz des Versanddienstes</a
+            >
+          </p>
+          <button class="primary" type="submit" data-i18n="submit">
+            Rezept zur Prüfung senden
+          </button>
+        </form>
+      </section>
+      <footer>
+        Thomas Eigner ·
+        <a
+          href="https://github.com/eignerth2010-byte/drevos-app"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Drevos Community-Projekt</a
+        >
+      </footer>
+    </main>
+  </body>
+</html>
