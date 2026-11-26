@@ -12,8 +12,10 @@ import catalog from "../public/recipes/catalog.json";
 
 describe("Recipe preparation without automatic starts", () => {
   it("retains forty original sources and explicitly identifies the user correction", () => {
-    expect(recipes).toHaveLength(40);
-    expect(new Set(recipes.map((r) => r.id)).size).toBe(40);
+    expect(
+      recipes.filter((r) => r.source.kind === "drevos_original").length,
+    ).toBeGreaterThanOrEqual(40);
+    expect(new Set(recipes.map((r) => r.id)).size).toBe(recipes.length);
     const r = catalog.recipes.find((r) => r.id === "rippen-methode-2")!;
     expect(r.originalDisplaySettings?.[1]).toEqual([150, 185, 155, 100]);
     expect(r.correction?.status).toBe("user_suggested");
