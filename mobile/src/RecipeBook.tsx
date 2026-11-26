@@ -8,8 +8,21 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { recipes, recipePhase, RECIPE_FORM } from "./recipes";
+import {
+  recipes,
+  recipePhase,
+  phaseStamp,
+  RECIPE_FORM,
+  Recipe,
+} from "./recipes";
 import { recipeImages } from "./recipeImages";
+import { recipeCatalog } from "./recipeCatalog";
+import { recipeImageUrl } from "./catalogClient";
+
+const imageSource = (recipe: Recipe) =>
+  !recipe.imageRevision && recipeImages[recipe.image]
+    ? recipeImages[recipe.image]
+    : { uri: recipeImageUrl(recipe) };
 
 export function RecipeBook({
   language,
@@ -20,7 +33,7 @@ export function RecipeBook({
   onBrowse,
 }: {
   language: "de" | "en";
-  onSelect: (id: string, index: number) => void;
+  onSelect: (id: string, index: number, expected: string) => void;
   busy: boolean;
   canPrepare: boolean;
   initialBrowse?: { selected: string | null; search: string };
@@ -31,7 +44,13 @@ export function RecipeBook({
       initialBrowse?.selected ?? null,
     ),
     [search, setSearch] = useState(initialBrowse?.search ?? ""),
-    [error, setError] = useState("");
+    [error, setError] = useState(""),
+    [catalogState, setCatalogState] = useState(recipeCatalog.snapshot());
+  useEffect(() => {
+    const unsubscribe = recipeCatalog.subscribe(setCatalogState);
+    void recipeCatalog.refresh();
+    return unsubscribe;
+  }, []);
   useEffect(
     () => onBrowse?.({ selected, search }),
     [selected, search, onBrowse],
@@ -65,9 +84,36 @@ export function RecipeBook({
       </Text>
       <Text style={s.muted}>
         {de
-          ? "40 Drevos-Originalrezepte, vom Ofendisplay übertragen. Die Herkunftskennzeichnung ist keine Prüfung der Lebensmittelsicherheit."
-          : "40 Drevos original recipes transcribed from the oven display. Source attribution does not mean food safety approval."}
+          ? `${recipes.length} Rezepte. Originale vom Ofendisplay und geprüfte Community-Beiträge sind getrennt gekennzeichnet. Keine Prüfung der Lebensmittelsicherheit.`
+          : `${recipes.length} recipes. Oven-display originals and reviewed community contributions have separate labels. Food safety has not been reviewed.`}
       </Text>
+      <Text accessibilityLiveRegion="polite" style={s.muted}>
+        {catalogState.busy
+          ? de
+            ? "Rezeptkatalog wird geladen …"
+            : "Loading recipe catalog …"
+          : catalogState.status === "online"
+            ? de
+              ? "Online-Rezeptkatalog geladen."
+              : "Online recipe catalog loaded."
+            : catalogState.status === "offline"
+              ? de
+                ? "Online-Aktualisierung nicht möglich. Gespeicherte Rezepte bleiben verfügbar."
+                : "Could not refresh online. Saved recipes remain available."
+              : de
+                ? "Gespeicherter Rezeptkatalog verfügbar."
+                : "Saved recipe catalog available."}{" "}
+        {de ? "Stand" : "Catalog date"}: {catalogState.catalog.updated}
+        {!catalogState.persistent &&
+          (de
+            ? " Speichern auf diesem Gerät nicht möglich."
+            : " Could not save on this device.")}
+      </Text>
+      {button(
+        de ? "Rezepte aktualisieren" : "Refresh recipes",
+        () => void recipeCatalog.refresh(true),
+        catalogState.busy,
+      )}
       {button(
         de
           ? "Eigenes Rezept speichern / einreichen"
@@ -91,29 +137,40 @@ export function RecipeBook({
           )}
           <View style={s.hero}>
             <Image
-              source={recipeImages[recipe.image]}
+              source={imageSource(recipe)}
               accessibilityLabel={recipe.name}
               style={s.picture}
               resizeMode="cover"
             />
           </View>
           <Text style={s.muted}>
-            {de
-              ? "Produktbild aus dem Displayfoto mit KI aufbereitet."
-              : "Product image restored from the display photo using AI."}
+            {recipe.imageNote || (de ? "Rezeptfoto" : "Recipe photo")}
           </Text>
           <Text accessibilityRole="header" style={s.title}>
             {recipe.name}
           </Text>
           <Text style={s.badge}>
-            {de ? "Drevos-Originalrezept" : "Drevos original recipe"}
+            {recipe.source.kind === "drevos_original"
+              ? de
+                ? "Drevos-Originalrezept"
+                : "Drevos original recipe"
+              : de
+                ? "Community-Rezept"
+                : "Community recipe"}
+            {recipe.source.author ? ` · ${recipe.source.author}` : ""}
           </Text>
           <Text style={s.heading}>{de ? "Zutaten" : "Ingredients"}</Text>
           <Text selectable style={s.body}>
             {recipe.ingredients}
           </Text>
           <Text style={s.heading}>
-            {de ? "Zubereitung – Displaytext" : "Preparation – display text"}
+            {recipe.source.kind === "drevos_original"
+              ? de
+                ? "Zubereitung – Displaytext"
+                : "Preparation – display text"
+              : de
+                ? "Zubereitung"
+                : "Preparation"}
           </Text>
           <Text style={s.muted}>
             {de
@@ -178,7 +235,7 @@ export function RecipeBook({
                       : de
                         ? "Diese Phase vorbereiten"
                         : "Prepare this phase",
-                  () => onSelect(recipe.id, index),
+                  () => onSelect(recipe.id, index, phaseStamp(phase)),
                   blocked || !canPrepare,
                 )}
               </View>
@@ -215,14 +272,20 @@ export function RecipeBook({
                 >
                   <View style={s.thumb}>
                     <Image
-                      source={recipeImages[r.image]}
+                      source={imageSource(r)}
                       style={s.picture}
                       resizeMode="cover"
                     />
                   </View>
                   <Text style={s.name}>{r.name}</Text>
                   <Text style={s.badge}>
-                    {de ? "Drevos-Original" : "Drevos original"}
+                    {r.source.kind === "drevos_original"
+                      ? de
+                        ? "Drevos-Original"
+                        : "Drevos original"
+                      : de
+                        ? "Community-Rezept"
+                        : "Community recipe"}
                   </Text>
                 </Pressable>
               ))}

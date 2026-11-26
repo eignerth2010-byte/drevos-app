@@ -6,7 +6,9 @@
 
 These beginner guides include the complete Pi installation for the native app as well as the Web App. Development/build instructions follow below.
 
-Version 0.4.0. **Standalone**: direct Pi access for local use, or end-to-end encrypted relay access at home and away. No Home Assistant or VPN dependency.
+Version 0.5.0. **Standalone**: direct Pi access for local use, or end-to-end encrypted relay access at home and away. No Home Assistant or VPN dependency.
+
+**Online recipe updates:** [Deutsch](../docs/ONLINE-RECIPES.de.md) · [English](../docs/ONLINE-RECIPES.en.md). Install this version once; future catalog additions need no new binary. Saved recipe text/settings remain available offline.
 
 **Recipes:** [Deutsch](../docs/RECIPES.de.md) · [English](../docs/RECIPES.en.md). The new Recipes tab includes 40 transcribed oven recipes and a phase-by-phase preparation flow. Preparation only transfers numeric settings; users start heat, smoke and timer themselves. Personal drafts and photo submissions open in the browser form.
 
@@ -59,4 +61,4 @@ App source and the original cabinet illustration use the [project license](LICEN
 
 ## Info, support and updates
 
-The Info tab shows creator Thomas Eigner, an optional PayPal support link, the app version and release notes in German/English. Android can check this repository for a newer APK automatically (normally at most daily) or manually. Installation still requires Android confirmation. The Web App loads new versions on its next opening without an update prompt or forced session reload. See [the complete update guide](../docs/UPDATES.md). Version 0.4.0 includes newly compiled Android and unsigned iPhone packages; physical-device validation of this version remains outstanding. Install Android over the existing app to retain pairing; iPhone installation requires Apple signing.
+The Info tab shows creator Thomas Eigner, an optional PayPal support link, the app version and release notes in German/English. Android can check this repository for a newer APK automatically (normally at most daily) or manually. Installation still requires Android confirmation. The Web App loads new versions on its next opening without an update prompt or forced session reload. See [the complete update guide](../docs/UPDATES.md). Version 0.5.0 includes newly compiled Android and unsigned iPhone packages; physical-device validation of this version remains outstanding. Install Android over the existing app to retain pairing; iPhone installation requires Apple signing.

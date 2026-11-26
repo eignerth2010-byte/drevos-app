@@ -1,5 +1,7 @@
 import catalog from "../public/recipes/catalog.json";
 import { Command, Device, commandFor, numeric } from "./model";
+import { normalizeCatalog } from "./catalogClient";
+export { phaseStamp } from "./catalogClient";
 
 export type RecipePhase = {
   name: string;
@@ -19,9 +21,21 @@ export type Recipe = {
   method: string;
   notes: string;
   image: string;
+  imageRevision: string;
+  imageNote: string;
+  source: {
+    kind: string;
+    author: string;
+    reference: string;
+    foodSafetyReviewed: false;
+  };
   phases: RecipePhase[];
 };
-export const recipes: Recipe[] = catalog.recipes;
+export const recipes: Recipe[] = [...normalizeCatalog(catalog).recipes];
+export function replaceRecipes(value: unknown) {
+  const next = normalizeCatalog(value);
+  recipes.splice(0, recipes.length, ...next.recipes);
+}
 export const RECIPE_FORM =
   "https://drevos-smoker-control.thankfulchick1.chatgpt.site/recipe-submit.html";
 export function recipePhase(id: string, index: number): RecipePhase {

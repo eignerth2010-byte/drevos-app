@@ -1,8 +1,10 @@
 # Drevos app – English guide
 
+**New recipes without another application update:** [Shared catalog guide](docs/ONLINE-RECIPES.en.md). Install app 0.5.0 / HA 0.3.0 once.
+
 <p align="center">
   <a href="https://drevos-smoker-control.thankfulchick1.chatgpt.site"><img src="https://img.shields.io/badge/Web_App-Open-18BFF0?style=for-the-badge" alt="Open Drevos Web App"></a>
-  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.4.0-preview.1"><img src="https://img.shields.io/badge/Android-APK_download-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Download Android preview"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.5.0-preview.1"><img src="https://img.shields.io/badge/Android-APK_download-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Download Android preview"></a>
 </p>
 
 <p align="center">
@@ -13,7 +15,7 @@
   <a href="https://github.com/eignerth2010-byte/drevos-app/discussions"><img src="https://img.shields.io/badge/community-GitHub-5865F2?logo=github&amp;logoColor=white" alt="Community: GitHub Discussions"></a>
 </p>
 
-**New in 0.4.0:** 40 recipes, restored photos, separate phases and personal recipe drafts/submissions. [Recipe guide](docs/RECIPES.en.md). Use remains free; [license details](docs/LICENSING.md).
+**New in 0.5.0:** Load new recipes centrally without updating the app or HA each time. Saved text and settings remain readable offline. [Guide](docs/ONLINE-RECIPES.en.md).
 
 **License from 2026-11-21:** Free for private and internal business use; resale and commercial redistribution require **Thomas Eigner's prior written permission**. [Terms, earlier MIT versions and contact](docs/LICENSING.md).
 
@@ -27,7 +29,7 @@ This is a **standalone Android, iPhone/iPad and installable web app**. Home Assi
 
 App users can use the app and service free of charge. **The project operator** sets up the shared service once; ordinary users do not need a hosting account, server or subscription. Free hosting plans have capacity limits. Unlimited permanently free operation is not guaranteed.
 
-Version **0.4.0 preview** adds 40 recipes with restored product photos, separate phase selection and explicit numeric transfer. Start each phase yourself and observe pauses; there is no automatic next phase. Personal recipe/photo drafts and reviewed submissions use the linked form. The shared relay at `https://drevos-relay.eigner-th2010.workers.dev` remains included in the Pi package; an existing configured Pi needs no update for recipes. Earlier 0.2.0 Android/iPhone and iPhone Web App checks confirmed real temperatures, retained pairing and mobile-data access. Native 0.4.0 Android/iPhone builds and simulated browser checks passed; physical 0.4.0 device controls remain untested. See [validation](docs/VALIDATION.md). Only the verified `drevos_fx3u_v1` PLC profile is supported.
+Version **0.5.0 preview** adds a shared online recipe catalog. After this one-time update, new recipe entries load without another app release; the last good text/settings are saved locally. Selected phases retain their values and all controls remain manual. The existing configured Pi needs no update. [Online recipe guide](docs/ONLINE-RECIPES.en.md). Local checks passed; native compilation and physical-device validation are recorded separately in [validation](docs/VALIDATION.md). Only the verified `drevos_fx3u_v1` PLC profile is supported.
 
 ## Install the Web App
 
@@ -35,7 +37,7 @@ Version **0.4.0 preview** adds 40 recipes with restored product photos, separate
 
 ## Download the app
 
-Download the [Android 0.4.0 preview APK, source and unsigned iPhone package](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.4.0-preview.1). Install `Drevos-Android-0.4.0-preview.apk` over the existing app and confirm the update on Android. Do not uninstall first. Android uses the existing template test signature (versionCode 5). The new unsigned iPhone 0.4.0 package requires separate Apple signing. [Updates and release notes](docs/UPDATES.md).
+Download the [Android 0.5.0 preview APK, source and unsigned iPhone package](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.5.0-preview.1). Install `Drevos-Android-0.5.0-preview.apk` over the existing app and confirm the update on Android. Do not uninstall first. Android uses the existing template test signature (versionCode 6). The new unsigned iPhone 0.5.0 package requires separate Apple signing. [Updates and release notes](docs/UPDATES.md).
 
 ## Requirements
 

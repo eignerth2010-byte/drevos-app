@@ -21,6 +21,7 @@ import { RecipeBook } from "./src/RecipeBook";
 import {
   recipes,
   recipePhase,
+  phaseStamp,
   phaseCommands,
   requireIdle,
   verifyPrepared,
@@ -288,6 +289,7 @@ function DrevosApp() {
   });
   const [recipeDraft, setRecipeDraft] = useState<{
     id: string;
+    name: string;
     index: number;
     gatewayId: string;
     revision: number;
@@ -508,10 +510,7 @@ function DrevosApp() {
     ) {
       try {
         if (!recipeDraft.prepared || !device) throw Error("recipe");
-        verifyTargets(
-          device,
-          phaseCommands(recipePhase(recipeDraft.id, recipeDraft.index)),
-        );
+        verifyTargets(device, phaseCommands(recipeDraft.phase));
         if (key === "timer_lauf" && recipeDraft.phase.durationMinutes === 0)
           throw Error("recipe");
       } catch {
@@ -571,12 +570,14 @@ function DrevosApp() {
     setTab("oven");
   }
   const showApp = !!client || demo;
-  function selectRecipe(id: string, index: number) {
+  function selectRecipe(id: string, index: number, expected: string) {
     if (!device || busy) return;
     try {
       const phase = recipePhase(id, index);
+      if (phaseStamp(phase) !== expected) throw Error("recipe-changed");
       setRecipeDraft({
         id,
+        name: recipes.find((r) => r.id === id)?.name ?? id,
         index,
         gatewayId: device.id,
         revision: Date.now(),
@@ -618,7 +619,7 @@ function DrevosApp() {
     let commands: Command[];
     try {
       requireIdle(device);
-      commands = phaseCommands(recipePhase(recipeDraft.id, recipeDraft.index));
+      commands = phaseCommands(recipeDraft.phase);
       for (const c of commands) commandFor(device, c);
       if (
         recipeDraft.phase.durationMinutes > 0 &&
@@ -892,8 +893,7 @@ function DrevosApp() {
                 (tab === "oven" || tab === "timer") && (
                   <View style={s.panel}>
                     <Text style={s.sectionTitle}>
-                      {recipes.find((r) => r.id === recipeDraft.id)?.name} ·{" "}
-                      {recipeDraft.phase.name}
+                      {recipeDraft.name} · {recipeDraft.phase.name}
                     </Text>
                     <Text style={s.body}>
                       {recipeDraft.phase.durationMinutes} min ·{" "}
