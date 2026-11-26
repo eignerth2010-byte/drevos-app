@@ -72,7 +72,7 @@ export function About({
           "An optional donation helps support continued development. Thank you!",
         donate: "Support via PayPal",
         voluntary:
-          "Opens PayPal in your browser. Donations are optional; private personal use remains free. Commercial use requires Thomas Eigner’s written permission.",
+          "Opens PayPal in your browser. Donations are optional; private and internal business use remain free. Resale and commercial distribution require Thomas Eigner’s written permission.",
         github: "Project on GitHub",
         guide: "Installation guide",
         notes: "What’s new?",
