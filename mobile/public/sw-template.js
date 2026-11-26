@@ -39,7 +39,7 @@ self.addEventListener("fetch", (event) => {
           if (!response.ok) throw new Error("Offline shell");
           return response;
         })
-        .catch(async () => (await caches.open(CACHE)).match("/index.html")),
+        .catch(async () => (await caches.open(CACHE)).match(PATHS.has(url.pathname) ? url.pathname : "/index.html")),
     );
   } else if (PATHS.has(url.pathname)) {
     event.respondWith(
