@@ -2,8 +2,8 @@ node_modules/
 .expo/
 dist/
 dist-web/
-android/
-ios/
+/android/
+/ios/
 *.jks
 *.keystore
 *.p12

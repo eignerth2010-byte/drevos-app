@@ -46,6 +46,7 @@ npm ci
 npm run typecheck
 npm test
 npx expo prebuild --platform ios
+ruby scripts/integrate-apple.rb
 open ios/Drevos.xcworkspace
 echo "In Xcode: Signing & Capabilities > Team wählen, iPhone auswählen und Run drücken."
 echo "In Xcode: choose your Team under Signing & Capabilities, select your iPhone, then Run."

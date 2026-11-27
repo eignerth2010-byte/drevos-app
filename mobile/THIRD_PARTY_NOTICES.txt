@@ -1,4 +1,4 @@
-Drevos App 0.5.0 - Third-party notices
+Drevos App 0.6.0 - Third-party notices
 
 Available license and notice texts from the locked production dependency tree. Dependencies retain their own licenses.
 
@@ -16782,3 +16782,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+========================================================================
+Native companion dependencies added for 0.6.0
+
+Google Play services Wearable 20.0.1
+Source: https://developers.google.com/android/guides/setup
+License/terms: https://developer.android.com/studio/terms
+
+AndroidX Car App (app-projected) 1.7.0
+Source: https://developer.android.com/jetpack/androidx/releases/car-app
+License: Apache License 2.0 (full text included elsewhere in this notice collection)
+
+OkHttp 5.5.1
+Source: https://central.sonatype.com/artifact/com.squareup.okhttp3/okhttp
+License: Apache License 2.0 (full text included elsewhere in this notice collection)
+
+Apple system frameworks (WatchConnectivity, CryptoKit, ActivityKit, WidgetKit) are provided by the operating system and are not redistributed as third-party source in this project.
