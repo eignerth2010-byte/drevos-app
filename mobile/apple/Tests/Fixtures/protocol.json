@@ -1,0 +1,12 @@
+{
+  "description": "Public deterministic cross-language test values; not a real pairing",
+  "nonce": "AAECAwQFBgcICQoL",
+  "request": {
+    "client": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "id": "dddddddddddddddddddddddddddddddd",
+    "resource": "info",
+    "type": "read"
+  },
+  "requestCiphertext": "KPrd4JDNZxNVWvRpUuxoZhOLXzhPgWqr8Nhl3QNsgvC87CE9wNqq3csSO/UXT/ObXijbTlXK4cpfpb27cESzcjfvtUeTAhuvEbu49DOtpLWNsn8EwABq/PZ45DTCqNWITPUbQQ7w6bSRqUSHy6EVQnPoyhOe0yU8ox4UlWDJqp6ARg8l0Q==",
+  "responsePacket": "{\"v\":1,\"n\":\"AAECAwQFBgcICQoL\",\"c\":\"KPrR59uSfRUCBfoqQeh6ch6eHGNVwmq88NBo3QBhhrPn+TIpxMa26U4axIjUME0LediCv0r6ug==\"}"
+}
