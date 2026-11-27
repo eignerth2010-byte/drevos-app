@@ -2,6 +2,8 @@
 
 Version 0.6.0 adds watch apps while reusing the configured Pi and cloud pairing. Phone and Wear OS APKs target different device types.
 
+**What's new?** and the version label distinguish Android, iPhone and web apps. Android shows Wear OS and Android Auto changes; iPhone shows Apple Watch and CarPlay changes. Shared changes appear on all platforms. The web app does not show native watch and car app update notes.
+
 ## Compatibility
 
 The deployment targets are watchOS 8+ and Wear OS 3+ (Android API 30). These are build targets, not a claim that every old device has been tested. The Apple Watch must also support an architecture contained in the compiled app. Samsung Galaxy Watch4 and later use Wear OS; compatible Pixel Watch, TicWatch and Fossil devices may also run the Wear app. Legacy Tizen, Garmin, Fitbit and other proprietary watch systems cannot install this APK. [Samsung's Tizen distribution notice](https://developer.samsung.com/galaxy-watch-tizen/notice.html), [Xcode deployment ranges](https://developer.apple.com/xcode/system-requirements/).

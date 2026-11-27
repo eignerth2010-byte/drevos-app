@@ -2,6 +2,8 @@
 
 Die Erweiterung 0.6.0 ergänzt Uhren-Apps. Die normale Handy-APK und eine Wear-OS-APK sind unterschiedliche Pakete für verschiedene Geräte. Vorhandene Pi-Installation und Ofenkopplung werden weiterverwendet.
 
+Die Übersicht **Was ist neu?** und die Versionsanzeige unterscheiden Android-App, iPhone-App und Web-App. Android zeigt Wear OS und Android Auto; iPhone zeigt Apple Watch und CarPlay. Gemeinsame Änderungen erscheinen auf allen Plattformen. Die Web-App zeigt keine Aktualisierungshinweise zu den nativen Uhren- und Auto-Apps.
+
 ## Welche Uhren?
 
 | Plattform | Zielbasis | Hinweise |
