@@ -1,0 +1,12 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+group = 'at.eignerth.drevos'
+version = '0.6.0'
+android { namespace 'at.eignerth.drevos.companion' }
+dependencies {
+  implementation 'com.google.android.gms:play-services-wearable:20.0.1'
+  implementation 'androidx.car.app:app-projected:1.7.0'
+  implementation 'com.squareup.okhttp3:okhttp:5.5.1'
+}
