@@ -1,5 +1,7 @@
 # Drevos-App – deutsche Anleitung
 
+**Uhren & CarPlay (Entwicklung 0.6.0):** [Kompatibilität, Kopplung und Bedienung](docs/WATCH-AND-CARPLAY.de.md).
+
 **Neue Rezepte ohne weiteres App-Update:** [So funktioniert der gemeinsame Rezeptkatalog](docs/ONLINE-RECIPES.de.md). Einmalig App 0.5.0 / HA 0.3.0 installieren.
 
 <p align="center">

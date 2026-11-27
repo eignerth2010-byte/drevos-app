@@ -1,5 +1,7 @@
 # Drevos App
 
+**Watches & CarPlay (0.6.0 development):** [Compatibility, pairing and controls](docs/WATCH-AND-CARPLAY.en.md).
+
 **[Rezepte ohne weitere App-Updates / Shared recipe catalog](docs/ONLINE-RECIPES.de.md)** · **[English](docs/ONLINE-RECIPES.en.md)**
 
 **Neu: [40 Rezepte und eigene Rezeptvorschläge – Deutsch](docs/RECIPES.de.md)** · **[Recipes and personal drafts – English](docs/RECIPES.en.md)**
