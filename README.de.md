@@ -1,10 +1,12 @@
 # Drevos-App – deutsche Anleitung
 
+**Uhren, Android Auto & CarPlay (Vorschau 0.6.0):** [Kompatibilität, Kopplung und Bedienung](docs/WATCH-AND-CARPLAY.de.md).
+
 **Neue Rezepte ohne weiteres App-Update:** [So funktioniert der gemeinsame Rezeptkatalog](docs/ONLINE-RECIPES.de.md). Einmalig App 0.5.0 / HA 0.3.0 installieren.
 
 <p align="center">
   <a href="https://drevos-smoker-control.thankfulchick1.chatgpt.site"><img src="https://img.shields.io/badge/Web_App-%C3%96ffnen-18BFF0?style=for-the-badge" alt="Drevos Web-App öffnen"></a>
-  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.5.0-preview.1"><img src="https://img.shields.io/badge/Android-APK_herunterladen-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android-Vorschau herunterladen"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.6.0-preview.1"><img src="https://img.shields.io/badge/Android-APK_herunterladen-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Android-Vorschau herunterladen"></a>
 </p>
 
 <p align="center">
@@ -29,7 +31,7 @@ Die Drevos-App ist eine **eigenständige App für Android, iPhone/iPad und den B
 
 Die App und ihre Funktionen können für die Nutzer kostenlos angeboten werden. Den gemeinsamen Dienst richtet **einmalig der Betreiber des Projekts** ein. Die Nutzer brauchen kein Cloudflare-Konto, keinen eigenen Server und kein Abo. Kostenlose Hosting-Tarife haben Nutzungsgrenzen; ein beliebig großer, dauerhaft kostenloser Betrieb wird nicht zugesichert.
 
-Version **0.5.0 ist eine Vorschau** mit gemeinsamem Online-Rezeptkatalog. Nach diesem einmaligen Update kommen neue Rezepte ohne weiteres App-Release; zuletzt geladene Texte und Einstellungen bleiben lokal gespeichert. Ausgewählte Phasen behalten ihre Werte, alle Funktionen werden selbst gestartet. Der eingerichtete Pi braucht kein Update. [Einfache Erklärung](docs/ONLINE-RECIPES.de.md). Lokale Prüfungen bestanden; native Builds und physische Gerätetests stehen getrennt in [VALIDATION](docs/VALIDATION.md). Unterstützt wird das geprüfte SPS-Profil `drevos_fx3u_v1`.
+Version **0.6.0 ist eine Vorschau** mit getrennten Apps für Handy und Wear OS, eingebetteter Apple-Watch-App und nativen Auto-Statusanzeigen. Neuerungen werden passend zu Android, iPhone oder Web angezeigt. Der gemeinsame Online-Rezeptkatalog und manuelle Phasenstarts bleiben erhalten; der eingerichtete Pi braucht kein Update. [Uhren und Auto einrichten](docs/WATCH-AND-CARPLAY.de.md). Native Builds, Simulatorprüfungen und offene Gerätetests stehen getrennt in [VALIDATION](docs/VALIDATION.md). Unterstützt wird das geprüfte SPS-Profil `drevos_fx3u_v1`.
 
 ## Web-App installieren
 
@@ -37,7 +39,7 @@ Version **0.5.0 ist eine Vorschau** mit gemeinsamem Online-Rezeptkatalog. Nach d
 
 ## Native App herunterladen
 
-Die [Android-APK 0.5.0, der Quellcode und das unsignierte iPhone-Paket](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.5.0-preview.1) stehen zum Download bereit. `Drevos-Android-0.5.0-preview.apk` über die vorhandene App installieren und am Android-Gerät bestätigen. Vorher nicht deinstallieren. Die bisherige Testsignatur bleibt erhalten, versionCode 6. Das neue unsignierte iPhone-Paket 0.5.0 muss separat von Apple signiert werden. [Update-Anleitung und Änderungsfenster](docs/UPDATES.md).
+Die [Vorschau 0.6.0 für Android, Wear OS und iPhone](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.6.0-preview.1) enthält getrennte Pakete: **`Drevos-Android-0.6.0-ARM.apk` für das Handy**, **`Drevos-Wear-OS-0.6.0-ARM.apk` für die Uhr** und **`Drevos-iPhone-0.6.0-UNSIGNED.ipa` mit Apple-Watch-App**. Die Handy-APK über die vorhandene App installieren, vorher nicht deinstallieren. Paketname und bisherige Testsignatur bleiben erhalten, versionCode 7. iPhone, Watch und Status-Erweiterung müssen vor einer Installation mit deinem Apple-Team signiert werden. Die Web-App wird getrennt veröffentlicht. [Kopplung und Voraussetzungen](docs/WATCH-AND-CARPLAY.de.md) · [Update-Anleitung](docs/UPDATES.md).
 
 ## Was benötigt wird
 

@@ -1,5 +1,18 @@
 # App-Updates, Versionsnummer und Änderungsfenster / App updates
 
+## 0.6.0 – getrennte Hinweise / platform-specific notes
+
+**Android:** Die Handy-App zeigt nur Android-Neuerungen, darunter Wear OS und Android Auto. Die Wear-OS-App ist eine eigene APK. Vorhandene Handy-App aktualisieren, nicht vorher löschen.
+
+**iPhone:** Die iPhone-App zeigt nur Apple-Neuerungen, darunter Apple Watch und Live-Aktivität/CarPlay. Die Watch-App ist im iPhone-Paket enthalten; alle Apple-Targets müssen signiert werden.
+
+**Web-App:** Zeigt gemeinsame Neuerungen, keine Hinweise zu nativen Uhren- oder Auto-Funktionen. Veröffentlichungen der Website erfolgen getrennt von den nativen Paketen. Ein Browser auf dem iPhone bleibt die Web-App und zeigt daher keine nativen iPhone-Neuerungen.
+
+Android and iPhone release notes are separated by the app platform in both languages. Shared notes appear on both and on the web app. Android shows Wear OS/Android Auto; iPhone shows Apple Watch/CarPlay. A web browser on either phone still receives web notes. The platform name appears alongside the version in Info and What's new. Acknowledgement remains once per version, with manual reopening in Info.
+
+[Uhr und Auto einrichten – Deutsch](WATCH-AND-CARPLAY.de.md) · [Watch and car setup – English](WATCH-AND-CARPLAY.en.md)
+
+
 ## 0.3.1 – Schriftzug und Lizenz / Wordmark and license
 
 Eigener vorläufiger Drevos-Schriftzug statt Herstellerlogo. Nutzung privat und

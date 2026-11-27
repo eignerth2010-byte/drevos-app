@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from "react-native";
-import { APP_VERSION, RELEASE_NOTES } from "./project";
+import { APP_VERSION, appPlatformName, releaseNotesFor } from "./project";
 import { releaseStorage } from "./releaseStorage";
 
 export function WhatsNew({
@@ -51,11 +52,13 @@ export function WhatsNew({
       <View style={s.shade}>
         <View style={s.panel} accessibilityViewIsModal>
           <ScrollView contentContainerStyle={s.content}>
-            <Text style={s.eyebrow}>DREVOS {APP_VERSION}</Text>
+            <Text style={s.eyebrow}>
+              DREVOS {APP_VERSION} · {appPlatformName(Platform.OS, language)}
+            </Text>
             <Text accessibilityRole="header" style={s.title}>
               {language === "de" ? "Was ist neu?" : "What’s new?"}
             </Text>
-            {RELEASE_NOTES[language].map((note) => (
+            {releaseNotesFor(Platform.OS, language).map((note) => (
               <Text key={note} style={s.body}>
                 • {note}
               </Text>

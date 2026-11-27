@@ -1,0 +1,1 @@
+{"platforms":["apple","android"],"apple":{"modules":["DrevosCompanionModule"]},"android":{"modules":["at.eignerth.drevos.companion.DrevosCompanionModule"]}}

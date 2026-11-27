@@ -17,6 +17,9 @@ import { StatusBar } from "expo-status-bar";
 import { PairingScanner } from "./src/Scanner";
 import { WebAppTools } from "./src/WebAppTools";
 import { About } from "./src/About";
+import { WearableTools } from "./src/WearableTools";
+import { wearableBridge } from "./src/wearableBridge";
+import { wearableSnapshot } from "./src/wearableModel";
 import { RecipeBook } from "./src/RecipeBook";
 import {
   recipes,
@@ -414,6 +417,14 @@ function DrevosApp() {
     !device?.ambiguous &&
     e.controls_available?.state === "on" &&
     e.automatik?.state === "off";
+  useEffect(() => {
+    if (demo || !wearableBridge) return;
+    void wearableBridge
+      .publishSnapshot(
+        JSON.stringify(wearableSnapshot(device, online, lastRead)),
+      )
+      .catch(() => {});
+  }, [device, online, lastRead, demo]);
   function readPairing(text: string) {
     try {
       const parsed = JSON.parse(text);
@@ -552,6 +563,8 @@ function DrevosApp() {
     pollAbort.current?.abort();
     writeAbort.current?.abort();
     setConnected(false);
+    await wearableBridge?.stopLiveActivity().catch(() => {});
+    await wearableBridge?.clearCarAccess().catch(() => {});
     try {
       if (client) await client.logout();
     } catch (error) {
@@ -736,15 +749,18 @@ function DrevosApp() {
           {loading ? (
             <Text style={s.hint}>{t.refreshing}</Text>
           ) : tab === "about" ? (
-            <About
-              language={language}
-              busy={busy || signingIn}
-              updates={updates}
-              onShowChanges={() => setNotesOpenKey((key) => key + 1)}
-              onLanguage={(next) => {
-                void changeLanguage(next);
-              }}
-            />
+            <>
+              <About
+                language={language}
+                busy={busy || signingIn}
+                updates={updates}
+                onShowChanges={() => setNotesOpenKey((key) => key + 1)}
+                onLanguage={(next) => {
+                  void changeLanguage(next);
+                }}
+              />
+              {!demo && <WearableTools client={client} language={language} />}
+            </>
           ) : tab === "recipes" ? (
             <RecipeBook
               initialBrowse={recipeBrowse.current}

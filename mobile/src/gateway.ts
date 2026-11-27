@@ -176,6 +176,9 @@ export function readingsFromGateway(info: GatewayInfo, state: any): Reading[] {
         drevos_key: key,
         drevos_gateway_id: info.id,
         drevos_device_name: info.name,
+        ...(["kammertemperatur", "kerntemperatur"].includes(key)
+          ? { unit_of_measurement: state.fahrenheit ? "°F" : "°C" }
+          : {}),
         ...limits,
       },
     };

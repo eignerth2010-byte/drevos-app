@@ -1,12 +1,14 @@
 # Drevos App
 
+**Watches, Android Auto & CarPlay (0.6.0 preview):** [Compatibility, pairing and controls](docs/WATCH-AND-CARPLAY.en.md).
+
 **[Rezepte ohne weitere App-Updates / Shared recipe catalog](docs/ONLINE-RECIPES.de.md)** · **[English](docs/ONLINE-RECIPES.en.md)**
 
 **Neu: [40 Rezepte und eigene Rezeptvorschläge – Deutsch](docs/RECIPES.de.md)** · **[Recipes and personal drafts – English](docs/RECIPES.en.md)**
 
 <p align="center">
   <a href="https://drevos-smoker-control.thankfulchick1.chatgpt.site"><img src="https://img.shields.io/badge/Web_App-Open-18BFF0?style=for-the-badge" alt="Open Drevos Web App"></a>
-  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.5.0-preview.1"><img src="https://img.shields.io/badge/Android-APK_download-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Download Android preview"></a>
+  <a href="https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.6.0-preview.1"><img src="https://img.shields.io/badge/Android-APK_download-3DDC84?style=for-the-badge&amp;logo=android&amp;logoColor=white" alt="Download Android preview"></a>
 </p>
 
 <p align="center">
@@ -33,9 +35,9 @@ Standalone **iOS, Android and installable web app** for a Drevos smoker connecte
 
 The owner pairs their oven by scanning or pasting a private code from the Pi's temporary setup page. The same pairing works at home and away through an encrypted, live-only relay. Ordinary app users do not need a hosting account, their own server or a subscription. The service operator needs one hosting account; free-tier usage is limited.
 
-Version **0.5.0 preview** adds a shared online recipe catalog. After this one-time update, new recipe entries load without another app release; the last good text/settings are saved locally. Selected phases retain their values and all controls remain manual. The existing configured Pi needs no update. [Online recipe guide](docs/ONLINE-RECIPES.en.md). Local checks passed; native compilation and physical-device validation are recorded separately in [validation](docs/VALIDATION.md). Only the verified `drevos_fx3u_v1` PLC profile is supported.
+Version **0.6.0 preview** adds a separate Wear OS app, an embedded Apple Watch app and native car status displays. Release notes are specific to Android, iPhone or web. The shared recipe catalog and manual phase starts remain available; the configured Pi needs no update. [Watch and car setup](docs/WATCH-AND-CARPLAY.en.md). Native compilation, simulator checks and outstanding hardware tests are recorded separately in [validation](docs/VALIDATION.md). Only the verified `drevos_fx3u_v1` PLC profile is supported.
 
-Download the [Android 0.5.0 preview APK, source and unsigned iPhone package](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.5.0-preview.1). Install `Drevos-Android-0.5.0-preview.apk` over the existing app and confirm the update on Android. Do not uninstall first. Android uses the existing template test signature (versionCode 6). The new unsigned iPhone 0.5.0 package requires separate Apple signing. [Updates and release notes](docs/UPDATES.md).
+Download the [Android, Wear OS and iPhone 0.6.0 preview](https://github.com/eignerth2010-byte/drevos-app/releases/tag/v0.6.0-preview.1). Use **`Drevos-Android-0.6.0-ARM.apk` on the phone**, **`Drevos-Wear-OS-0.6.0-ARM.apk` on the watch**, and **`Drevos-iPhone-0.6.0-UNSIGNED.ipa` including the Apple Watch app** for Apple signing. Update the existing Android phone app without uninstalling it. Package and template test signature are retained, versionCode 7. The iPhone, Watch and status extension require signing with your Apple team before installation. The web app is published separately. [Pairing and requirements](docs/WATCH-AND-CARPLAY.en.md) · [Updates](docs/UPDATES.md).
 
 **[Open the installable Web App](https://drevos-smoker-control.thankfulchick1.chatgpt.site)** · [iPhone/Android installation and self-hosting guide](docs/WEB-APP.md). Open in Safari on iPhone, add to the Home Screen, then pair inside the installed app. No weekly Apple signing is required for the web app.
 
