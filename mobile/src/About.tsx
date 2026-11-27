@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import {
   APP_VERSION,
+  appPlatformName,
   PROJECT_AUTHOR,
   DONATION_URL,
   PROJECT_URL,
@@ -137,11 +138,7 @@ export function About({
         <Text style={s.body}>{copy.project}</Text>
         <Text style={s.muted}>
           {copy.version} {APP_VERSION} ·{" "}
-          {Platform.OS === "web"
-            ? "Web-App"
-            : german
-              ? "Eigenständige App"
-              : "Standalone app"}
+          {appPlatformName(Platform.OS, language)}
         </Text>
         {button(copy.notes, onShowChanges)}
       </View>
