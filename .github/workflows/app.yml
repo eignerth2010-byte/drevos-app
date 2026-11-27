@@ -11,6 +11,10 @@ on:
         description: Build Android for an x86_64 emulator instead of ARM phones
         type: boolean
         default: false
+      build_wear:
+        description: Also compile the standalone Wear OS app
+        type: boolean
+        default: true
   push:
     branches: [main]
   pull_request:
@@ -110,6 +114,10 @@ jobs:
         working-directory: mobile
       - run: npx expo prebuild --platform ios
         working-directory: mobile
+      - run: swift test --package-path apple
+        working-directory: mobile
+      - run: ruby scripts/integrate-apple.rb
+        working-directory: mobile
       - name: Compile unsigned iPhone app
         run: xcodebuild -workspace ios/Drevos.xcworkspace -scheme Drevos -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO
         working-directory: mobile
@@ -126,3 +134,44 @@ jobs:
           path: mobile/Drevos-iPhone-UNSIGNED.ipa
           if-no-files-found: error
           retention-days: 14
+
+  wear:
+    if: github.event_name == 'workflow_dispatch' && inputs.build_wear
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      DREVOS_WEAR_OS: '1'
+      DREVOS_ANDROID_ABIS: ${{ inputs.android_emulator && 'x86_64' || 'arm64-v8a,armeabi-v7a' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: npm ci
+        working-directory: mobile
+      - run: npx expo prebuild --platform android --no-install
+        working-directory: mobile
+      - run: chmod +x gradlew && ./gradlew assembleRelease -PreactNativeArchitectures="$DREVOS_ANDROID_ABIS" '-Dorg.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=1g'
+        working-directory: mobile/android
+      - name: Verify Wear OS APK
+        run: |
+          task_build_tools=$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -1)
+          task_apk=mobile/android/app/build/outputs/apk/release/app-release.apk
+          "$task_build_tools/aapt" dump badging "$task_apk" | grep -q "uses-feature: name='android.hardware.type.watch'"
+          "$task_build_tools/aapt" dump badging "$task_apk" | sed -n '1p;/^native-code:/p;/android.hardware.type.watch/p' > mobile/android/apk-info.txt
+          "$task_build_tools/apksigner" verify --print-certs "$task_apk" >> mobile/android/apk-info.txt
+          sha256sum "$task_apk" >> mobile/android/apk-info.txt
+          cat mobile/android/apk-info.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Drevos-Wear-OS-${{ inputs.android_emulator && 'x86_64' || 'ARM' }}
+          path: |
+            mobile/android/app/build/outputs/apk/release/*.apk
+            mobile/android/apk-info.txt
+          retention-days: 14
+          if-no-files-found: error
