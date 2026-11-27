@@ -7,6 +7,10 @@ on:
         description: Compile the unsigned iPhone app on a hosted Mac
         type: boolean
         default: true
+      android_emulator:
+        description: Build Android for an x86_64 emulator instead of ARM phones
+        type: boolean
+        default: false
   push:
     branches: [main]
   pull_request:
@@ -56,6 +60,8 @@ jobs:
     needs: check
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      DREVOS_ANDROID_ABIS: ${{ inputs.android_emulator && 'x86_64' || 'arm64-v8a,armeabi-v7a' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -69,19 +75,20 @@ jobs:
         working-directory: mobile
       - run: npx expo prebuild --platform android --no-install
         working-directory: mobile
-      - run: chmod +x gradlew && ./gradlew assembleRelease -PreactNativeArchitectures=arm64-v8a,armeabi-v7a '-Dorg.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=1g'
+      - run: chmod +x gradlew && ./gradlew assembleRelease -PreactNativeArchitectures="$DREVOS_ANDROID_ABIS" '-Dorg.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=1g'
         working-directory: mobile/android
       - name: Verify APK version and signing certificate
         run: |
           task_build_tools=$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -1)
           task_apk=mobile/android/app/build/outputs/apk/release/app-release.apk
           "$task_build_tools/aapt" dump badging "$task_apk" | sed -n '1p' > mobile/android/apk-info.txt
+          "$task_build_tools/aapt" dump badging "$task_apk" | sed -n '/^native-code:/p' >> mobile/android/apk-info.txt
           "$task_build_tools/apksigner" verify --print-certs "$task_apk" >> mobile/android/apk-info.txt
           sha256sum "$task_apk" >> mobile/android/apk-info.txt
           cat mobile/android/apk-info.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: Drevos-Standalone-Android-preview-APK
+          name: ${{ inputs.android_emulator && 'Drevos-Android-Emulator-x86_64' || 'Drevos-Standalone-Android-preview-APK' }}
           path: |
             mobile/android/app/build/outputs/apk/release/*.apk
             mobile/android/apk-info.txt
