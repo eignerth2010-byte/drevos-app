@@ -1,4 +1,19 @@
-# Validation – 2026-11-21
+# Validation – 2026-11-27
+
+## 2026-11-27 – Watches, car status and platform-specific notes (0.6.0)
+
+- Native app source: `eed7564ae4e206873502c39de17060eea26cfa8f`. All 44 changed source files matched their reviewed local hashes. Later README, validation, update-guide and release-feed changes do not change native app inputs.
+- 78 mobile tests, strict TypeScript, formatting, gateway/agent/relay checks and Android/iOS/web exports passed. Five new regression cases in German and English verify that Android excludes Apple notes, iPhone excludes Android notes and web includes only shared changes. Platform labels appear in Info and What's new. Existing once-per-version acknowledgement is retained.
+- [ARM phone/Wear and unsigned Apple build](https://github.com/eignerth2010-byte/drevos-app/actions/runs/46064666572): all jobs passed. [Separate x86_64 phone/Wear build](https://github.com/eignerth2010-byte/drevos-app/actions/runs/46064703538): required jobs passed; the duplicate iOS job was intentionally skipped. Emulator APKs are kept separate from release downloads.
+- Six native Swift tests passed: cross-language AES-GCM vectors, modified ciphertext rejection, session validation, strict state types, numeric limits, offline/automatic/Fahrenheit locks and heat/smoke/timer guards.
+- GitHub artifact ZIP digests were verified before extraction. Local Android build tools verified version 0.6.0/code 7, package `at.eignerth.drevos`, the existing certificate `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`, ARM64+ARMv7 release libraries and x86_64 simulator libraries. Wear manifests require the watch feature and omit camera permission and the car service; phone manifests retain the car service. Phone and Wear signatures match for Data Layer pairing.
+- Android phone simulator (Pixel 10 Pro, x86_64) updated in place and started cold. Wear OS 4/API 33 simulator (384×384 small round, x86_64) installed and started cold. Unpaired round-screen instructions, scrolling and Refresh were visually checked; final packages showed running processes without detected fatal/native-library/JavaScript load errors. No real pairing or oven command was used.
+- The unsigned IPA contains the iOS 16.4 arm64 phone app, watchOS 8 Watch app with armv7k/arm64_32/arm64 and iOS 18 arm64 Live Activity extension. Bundle identifiers, versions and embedded target locations were checked. Apple signing and physical-device installation are still required.
+- ARM phone APK SHA-256: `ab4bf82c0e61fa72cda501c87e0615d2e377106f8599704dcb42e57f5d530a5e`.
+- ARM Wear APK SHA-256: `e68c58ec6d989030cfc07daa56df7c5199fd77ce2fecc42f4790478e884d7705`.
+- Unsigned iPhone IPA SHA-256: `ab1a5f6c5a30af029da56efa55347a84bd196bb8930d3a912d85bcd2658c8d84`.
+- Outstanding: physical watch pairing/reading/control tests, individual old-model compatibility, Android Auto DHU/vehicle tests, CarPlay vehicle test and any store reviews. Native compilation is not a store approval. The Live Activity updates from the active iPhone app and labels old data after suspension; it is not continuously fresh background monitoring.
+- The public PWA is published separately; a native 0.6 release does not claim a new live website deployment. No live HA installation, Pi service, PLC setting or physical heating/ignition/fan/timer command was changed for this work.
 
 ## 2026-11-21 – App/Web 0.3.1 community wordmark and licensing
 
