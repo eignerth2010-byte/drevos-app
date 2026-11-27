@@ -13,6 +13,7 @@ def target(project,name,type,platform,deployment,bundle,plist)
   t=project.targets.find{|x|x.name==name} || project.new_target(type,name,platform,deployment)
   t.build_configurations.each do |config|
     s=config.build_settings
+    s['PRODUCT_NAME']=name
     s['PRODUCT_BUNDLE_IDENTIFIER']=bundle
     s['INFOPLIST_FILE']=plist
     s['GENERATE_INFOPLIST_FILE']='NO'
@@ -22,6 +23,7 @@ def target(project,name,type,platform,deployment,bundle,plist)
     s['TARGETED_DEVICE_FAMILY']=platform==:watchos ? '4' : '1,2'
     s['ENABLE_USER_SCRIPT_SANDBOXING']='NO'
   end
+  t.product_name=name
   t
 end
 def add_sources(project,target,paths)
